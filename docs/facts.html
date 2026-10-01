@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Seduma™ is and isn’t | Quantum Karate™</title>
+<meta name="description" content="Plain facts about Seduma™: what it is, what it isn’t, and the words we use.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quantum Karate™">
+<meta property="og:title" content="What Seduma™ is and isn’t | Quantum Karate™">
+<meta property="og:description" content="Plain facts about Seduma™: what it is, what it isn’t, and the words we use.">
+<meta name="theme-color" content="#0a0b0d">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="site.css">
+<script src="site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.25"><rect x="1.5" y="1.5" width="21" height="21" rx="1"/><circle cx="12" cy="12" r="5.75"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></g><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg><span>Quantum Karate™</span></a>
+    <nav class="nav" aria-label="Primary"><ul><li><a href="index.html">Home</a></li><li><a href="seduma.html">Seduma™</a></li><li><a href="facts.html" aria-current="page">Facts</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<section class="hero hero--page" aria-labelledby="hero-title">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__eyebrow"><span class="label">Seduma™ · Facts</span></div>
+      <h1 id="hero-title" class="h1">What Seduma™ is and isn’t</h1>
+      <p class="hero__sub">Plain facts, in plain words, including the limits.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Facts">
+    <div class="container">
+      <div class="facts">
+        <div class="facts__col" data-reveal>
+          <div class="facts__head"><h2 class="h2" style="margin:0">Seduma™ is</h2><span class="mark"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <ol class="fact-list" role="list"><li><div><strong>A Paper-first, strategy-free runtime.</strong><span>Software that runs trading rules you bring, starting in Practice.</span></div></li><li><div><strong>Practice by default.</strong><span>Paper is the default start. Sending real orders is off by default.</span></div></li><li><div><strong>Built around your own strategy.</strong><span>You bring the strategy — the rules that decide when to place an order.</span></div></li><li><div><strong>Live only when you elect it.</strong><span>Live is available when you elect it, through a confirm-gated step. Completing setup does not turn on Live — you choose later.</span></div></li><li><div><strong>Equipped with an Emergency stop.</strong><span>Emergency stop stays available in Practice and in Live. It does not close open positions.</span></div></li><li><div><strong>Recorded before outside requests.</strong><span>Seduma keeps an audit trail: a record written before it contacts any outside service.</span></div></li><li><div><strong>Uses risk limits you set.</strong><span>You configure the risk limits.</span></div></li><li><div><strong>Open to the connections you bring.</strong><span>Built-in connections are conveniences, not an exclusive list. You can bring another API you have access to.</span></div></li><li><div><strong>Ready to practice without broker keys.</strong><span>Your first Practice run needs no Live or real broker keys.</span></div></li></ol>
+        </div>
+        <div class="facts__col" data-reveal style="--d:1">
+          <div class="facts__head"><h2 class="h2" style="margin:0">Seduma™ isn’t</h2><span class="mark"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 3l6 6M9 3l-6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></div>
+          <ol class="fact-list" role="list"><li><div><strong>A broker.</strong><span>Seduma is not a broker.</span></div></li><li><div><strong>An investment adviser.</strong><span>Seduma is not an investment adviser. It does not pick, recommend, or generate trades.</span></div></li><li><div><strong>A source of strategies.</strong><span>It is strategy-free. It is not a strategy marketplace.</span></div></li><li><div><strong>Trading before you say so.</strong><span>We don’t trade until you say so. Installing Seduma or completing setup does not place live orders.</span></div></li><li><div><strong>A promise of results.</strong><span>Paper/Practice P&amp;L is not a promise of live results. Practice fills are simulated — they are not live fills.</span></div></li><li><div><strong>Unlocked by connecting.</strong><span>Connecting a broker or loading a connection does not unlock Live.</span></div></li><li><div><strong>An auto-close.</strong><span>Emergency stop does not close open positions or cancel orders already at your broker.</span></div></li><li><div><strong>The Neural Agency Engine.</strong><span>Seduma is the front door. The Neural Agency Engine is the research engine. It does not pick or recommend trades, and it is not the Live switch.</span></div></li></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="gloss-title">
+    <div class="container">
+      <p class="index label" data-reveal><span class="index__num">—</span><span>Glossary</span></p>
+      <div class="section__head"><h2 id="gloss-title" class="h2" data-reveal>Words we use.</h2></div>
+      <dl class="glossary"><div data-reveal><dt>Practice</dt><dd>Running trading rules with simulated fills. No real money moves. In Seduma, Practice is the default.</dd></div><div data-reveal><dt>Paper</dt><dd>Another word for Practice.</dd></div><div data-reveal><dt>Real paper</dt><dd>A broker’s own paper account. Still no real money.</dd></div><div data-reveal><dt>Live</dt><dd>Real orders with real money, sent through a connection you set up. In Seduma, Live is off until you elect it yourself.</dd></div><div data-reveal><dt>Confirm-gated</dt><dd>A step that doesn’t take effect until you confirm it yourself. For Live, Seduma won’t turn it on until every item is checked and LIVE is typed.</dd></div><div data-reveal><dt>Fill</dt><dd>The moment an order completes, and the price it completes at. In Practice, fills are simulated.</dd></div><div data-reveal><dt>P&amp;L</dt><dd>The running gain or loss on trades. Paper/Practice P&amp;L is not a promise of live results.</dd></div><div data-reveal><dt>Strategy</dt><dd>The rules that decide when to place an order. You bring these. Seduma does not supply them.</dd></div><div data-reveal><dt>Connection</dt><dd>A link from Seduma to a trading platform you have access to, labeled Real paper, Test sandbox, or Live-capable.</dd></div><div data-reveal><dt>Emergency stop</dt><dd>A control that makes Seduma refuse to send new orders until you release it. It stays available in Practice and in Live. It does not close open positions or cancel orders already at your broker.</dd></div><div data-reveal><dt>Audit trail</dt><dd>A record Seduma writes before it contacts any outside service. It is Seduma’s own log, not an independent audit.</dd></div></dl>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.25"><rect x="1.5" y="1.5" width="21" height="21" rx="1"/><circle cx="12" cy="12" r="5.75"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></g><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg><span>Quantum Karate™</span></a>
+        <p class="tag">Precision is Power</p>
+      </div>
+      <nav aria-label="Footer">
+        <p class="label">Pages</p>
+        <ul><li><a href="index.html">Home</a></li><li><a href="seduma.html">Seduma™</a></li><li><a href="facts.html" aria-current="page">Facts</a></li><li><a href="contact.html">Contact</a></li></ul>
+      </nav>
+      <div>
+        <p class="label">Disclaimer</p>
+        <p class="disclaimer">Seduma is not a broker or an investment adviser. It does not pick, recommend, or generate trades. Practice fills are simulated — they are not live fills. Paper/Practice P&amp;L is not a promise of live results. Not investment advice.</p>
+      </div>
+    </div>
+    <div class="site-footer__base">
+      <p class="label label--case">Master the smallest details. Create the biggest impact.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

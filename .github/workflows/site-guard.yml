@@ -1,0 +1,26 @@
+name: Site guard
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Unit tests
+        run: |
+          python3 -m venv .venv
+          .venv/bin/pip install pytest
+          .venv/bin/pytest -q tests
+
+      - name: Run site guard
+        run: python3 scripts/site_guard.py
