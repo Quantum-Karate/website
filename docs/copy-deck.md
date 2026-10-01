@@ -425,6 +425,6 @@ Do **not** insert ™ inside the disclaimer.
 
 **Ask (Chris via Grok Bot):** remove the personal GitHub handle from live-site copy; company site is `Quantum-Karate/website` → https://quantum-karate.github.io/website/. Keep Quantum Karate™ / Seduma™ branding.
 
-**Applied:** claims-authority line no longer names a personal GitHub owner; it cites Seduma `main` only. Public HTML pages (`index` / `seduma` / `facts` / `contact`) had no personal-handle hits.
+**Applied:** claims-authority line cites Seduma `main` only. Public HTML pages (`index` / `seduma` / `facts` / `contact`) have no personal-account links.
 
-**Flagged for engineering (not Muse copy):** repo README temporary address + DNS still reference the personal `*.github.io` host; the old personal Pages home URL for this site still returns HTTP 200 and should be disabled or redirected to https://quantum-karate.github.io/website/.
+**Engineering follow-up (closed):** the README live address is https://quantum-karate.github.io/website/. The custom-domain DNS example points at `quantum-karate.github.io`. `.github/CODEOWNERS` is an org-team placeholder (`@Quantum-Karate/admins`) only.
