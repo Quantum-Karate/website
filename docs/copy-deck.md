@@ -428,3 +428,38 @@ Do **not** insert ™ inside the disclaimer.
 **Applied:** claims-authority line cites Seduma `main` only. Public HTML pages (`index` / `seduma` / `facts` / `contact`) have no personal-account links.
 
 **Engineering follow-up (closed):** the README live address is https://quantum-karate.github.io/website/. The custom-domain DNS example points at `quantum-karate.github.io`. `.github/CODEOWNERS` is an org-team placeholder (`@Quantum-Karate/admins`) only.
+
+---
+
+## Addendum 2026-10-09 — Practice eval on Payhip, interim waitlist
+
+**Supersedes** the live Home **04 Waitlist** block, the Seduma **Waitlist CTA** block, and Addendum 2026-09-30b for `index.html` and `seduma.html`. The earlier deck text stays as history.
+
+**Section name:** Get Seduma.
+
+**Home** (`index.html`): section index `04` / `Get Seduma`, after “How we talk about it”, before the interim waitlist.
+
+**Seduma** (`seduma.html`): unnumbered band after “Read the plain facts.”, before the interim waitlist. Research keeps index `04`. This band does not add a second `04`.
+
+**Locked strings (both pages) — Get Seduma**
+- H2: Get the Practice eval.
+- Lead: The Practice eval is $49. Practice fills are simulated — they are not live fills. Practice (also called Paper) is the default. Live stays off until the buyer elects it.
+- In the HTML, Practice, Paper, and Live in that lead are `<strong>`.
+- Button: Get it on Payhip → (the arrow is the same decorative span as the other buttons)
+- `href`: `https://payhip.com/b/K7UaW`
+- `rel`: `noopener` (same tab; no `target`)
+
+**What the lead is allowed to say:** the Practice eval price is $49. Fills are simulated, using the existing honesty line. Practice, also called Paper, is the default. Live stays off until the buyer elects it. No performance numbers. No promise that Seduma runs by itself. The spelled-out name Neural Agency Engine is unchanged wherever it already appears.
+
+**Interim waitlist (both pages, after Get Seduma)**
+- H2: Interim Practice waitlist.
+- Lead: The Practice waitlist is still open. The address below opens your email app. No real money moves until you elect Live.
+- Visible address and link text: `v-nat@outlook.com`
+- `href`: `mailto:v-nat@outlook.com?subject=Seduma%20Practice%20waitlist`
+- The mailto link and the visible address are in the HTML. They work with scripting off.
+- Button: Copy email. It is in the HTML with the `hidden` attribute until `site.js` binds a click handler, so a visit without scripting does not offer a control that cannot copy.
+- Status (`role="status"`, `aria-live="polite"`): Copied. `site.js` writes that word for about two seconds after a successful copy, then clears it. The copied text is the address `v-nat@outlook.com`.
+
+**Guard:** `scripts/site_guard.py` allows only this absolute URL: `https://payhip.com/b/K7UaW`. Every other `http`, `https`, protocol-relative, or root-relative reference still fails.
+
+**Ceiling:** named promise untouched. Footer disclaimer untouched. No personal name and no personal handle in the new page text. The waitlist prints the address already used on Contact.

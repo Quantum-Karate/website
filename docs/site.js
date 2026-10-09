@@ -1,4 +1,48 @@
-/* Quantum Karate — site.js (optional, ~0.6 KB). Scroll reveal only. */
+/* Quantum Karate — site.js. Scroll reveal, plus a copy-email enhancement. */
+(function () {
+  document.querySelectorAll("[data-copy-email]").forEach(function (btn) {
+    var statusId = btn.getAttribute("data-copy-status");
+    var status = statusId ? document.getElementById(statusId) : null;
+    var timer = 0;
+    btn.hidden = false;
+    btn.addEventListener("click", function () {
+      var email = btn.getAttribute("data-copy-email") || "";
+      var showCopied = function () {
+        if (!status) return;
+        status.textContent = "Copied";
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function () {
+          status.textContent = "";
+        }, 2000);
+      };
+      var fallbackCopy = function () {
+        var area = document.createElement("textarea");
+        area.value = email;
+        area.setAttribute("readonly", "");
+        area.setAttribute("aria-hidden", "true");
+        area.tabIndex = -1;
+        area.style.position = "fixed";
+        area.style.top = "0";
+        area.style.left = "-9999px";
+        document.body.appendChild(area);
+        area.select();
+        var ok = false;
+        try {
+          ok = document.execCommand("copy");
+        } catch (err) {
+          ok = false;
+        }
+        document.body.removeChild(area);
+        if (ok) showCopied();
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(showCopied, fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+    });
+  });
+})();
 (function () {
   var d = document.documentElement;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

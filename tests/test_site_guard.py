@@ -193,6 +193,40 @@ def test_manifest_allowlist_and_hash_mismatch(tmp_path: Path):
     assert mismatch == ["manifest hash mismatch: index.html"]
 
 
+def test_payhip_practice_eval_link_is_the_only_external_exception():
+    payhip = '<a rel="noopener" href="https://payhip.com/b/K7UaW">Get it on Payhip</a>'
+    assert site_guard.findings_for_text(".html", payhip) == []
+    assert site_guard.findings_for_text(".html", '<a href="https://payhip.com/b/K7UaW/">x</a>')
+    assert site_guard.findings_for_text(".html", '<a href="https://payhip.com/">x</a>')
+    assert site_guard.findings_for_text(".html", '<a href="https://example.com">x</a>')
+    assert site_guard.findings_for_text(".html", '<a href="//payhip.com/b/K7UaW">x</a>')
+
+
+def test_get_seduma_and_interim_waitlist_markup():
+    if not site_guard.DOCS_DIR.is_dir():
+        pytest.skip("docs/ is not present")
+    index = (site_guard.DOCS_DIR / "index.html").read_text(encoding="utf-8")
+    seduma = (site_guard.DOCS_DIR / "seduma.html").read_text(encoding="utf-8")
+    script = (site_guard.DOCS_DIR / "site.js").read_text(encoding="utf-8")
+    mailto = 'href="mailto:v-nat@outlook.com?subject=Seduma%20Practice%20waitlist"'
+    for page in (index, seduma):
+        assert "Get the Practice eval." in page
+        assert 'href="https://payhip.com/b/K7UaW"' in page
+        assert 'rel="noopener"' in page
+        assert "Get it on Payhip" in page
+        assert "$49" in page
+        assert "Practice fills are simulated" in page
+        assert "until the buyer elects it." in page
+        assert mailto in page
+        assert ">v-nat@outlook.com</a>" in page
+        assert "Copy email" in page
+        assert 'role="status"' in page
+        assert "Join the Practice waitlist." not in page
+        assert "Seduma%20waitlist\"" not in page
+    assert "Copied" in script
+    assert "data-copy-email" in script
+
+
 def test_delivered_docs_pass():
     if not site_guard.DOCS_DIR.is_dir():
         pytest.skip("docs/ is not present")
