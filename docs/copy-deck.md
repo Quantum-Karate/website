@@ -458,7 +458,7 @@ Do **not** insert ™ inside the disclaimer.
 - `href`: `mailto:v-nat@outlook.com?subject=Seduma%20Practice%20waitlist`
 - The mailto link and the visible address are in the HTML. They work with scripting off.
 - Button: Copy email. It is in the HTML with the `hidden` attribute until `site.js` binds a click handler, so a visit without scripting does not offer a control that cannot copy.
-- Status (`role="status"`, `aria-live="polite"`): Copied. `site.js` writes that word for about two seconds after a successful copy, then clears it. The copied text is the address `v-nat@outlook.com`.
+- Status (`role="status"`, `aria-live="polite"`): Copied. `site.js` writes that word for about five seconds after a successful copy, then clears it. The copied text is the address `v-nat@outlook.com`.
 
 **Guard:** `scripts/site_guard.py` allows only this absolute URL: `https://payhip.com/b/K7UaW`. Every other `http`, `https`, protocol-relative, or root-relative reference still fails.
 

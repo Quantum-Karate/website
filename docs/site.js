@@ -13,7 +13,7 @@
         window.clearTimeout(timer);
         timer = window.setTimeout(function () {
           status.textContent = "";
-        }, 2000);
+        }, 5000);
       };
       // Run during the click so the copy still works if the async clipboard
       // call is denied. A later rejection would be outside the user gesture.
