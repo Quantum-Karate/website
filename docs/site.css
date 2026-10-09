@@ -678,6 +678,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -0.01em;
   color: hsl(var(--qk-fg));
 }
+.copy-status:not(:empty) { flex-basis: 100%; }
 button.btn { appearance: none; -webkit-appearance: none; }
 
 body[data-theme="seduma"] .hero__sub { max-width: 46ch; }

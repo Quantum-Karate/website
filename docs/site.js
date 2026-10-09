@@ -15,30 +15,30 @@
           status.textContent = "";
         }, 2000);
       };
-      var fallbackCopy = function () {
-        var area = document.createElement("textarea");
-        area.value = email;
-        area.setAttribute("readonly", "");
-        area.setAttribute("aria-hidden", "true");
-        area.tabIndex = -1;
-        area.style.position = "fixed";
-        area.style.top = "0";
-        area.style.left = "-9999px";
-        document.body.appendChild(area);
-        area.select();
-        var ok = false;
-        try {
-          ok = document.execCommand("copy");
-        } catch (err) {
-          ok = false;
-        }
-        document.body.removeChild(area);
-        if (ok) showCopied();
-      };
+      // Run during the click so the copy still works if the async clipboard
+      // call is denied. A later rejection would be outside the user gesture.
+      var area = document.createElement("textarea");
+      area.value = email;
+      area.setAttribute("readonly", "");
+      area.setAttribute("aria-hidden", "true");
+      area.tabIndex = -1;
+      area.style.position = "fixed";
+      area.style.top = "0";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.focus({ preventScroll: true });
+      area.select();
+      var copied = false;
+      try {
+        copied = document.execCommand("copy");
+      } catch (err) {
+        copied = false;
+      }
+      document.body.removeChild(area);
+      btn.focus({ preventScroll: true });
+      if (copied) showCopied();
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(email).then(showCopied, fallbackCopy);
-      } else {
-        fallbackCopy();
+        navigator.clipboard.writeText(email).then(showCopied, function () {});
       }
     });
   });
