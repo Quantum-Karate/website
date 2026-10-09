@@ -25,15 +25,16 @@
 :root {
   color-scheme: dark;
 
-  /* Lockframe base (unchanged values) */
+  /* Lockframe — charcoal canvas and teal accent.
+     Practice marks use this teal. There is no gain/loss color scale. */
   --lf-fg: 210 20% 96%;
-  --lf-fg-muted: 215 12% 62%;
-  --lf-accent: 199 89% 48%;        /* Seduma ops cyan */
-  --lf-accent-fg: 222 18% 6%;
-  --lf-paper: 199 70% 55%;
-  --lf-halted: 0 72% 51%;
-  --lf-lockdown: 215 14% 46%;
-  --lf-ring: 199 89% 48%;
+  --lf-fg-muted: 200 12% 74%;
+  --lf-accent: 172.5 66% 50.4%;    /* #2DD4BF */
+  --lf-accent-fg: 213 29% 6%;      /* #0B0F14 — 10.3:1 on the accent */
+  --lf-paper: 172.5 66% 50.4%;     /* practice mark, same teal */
+  --lf-halted: 0 72% 51%;          /* emergency stop only */
+  --lf-lockdown: 210 12% 52%;      /* off indicator — 4.0:1 on surface-3 */
+  --lf-ring: 172.5 66% 50.4%;
   --lf-radius-sm: 0.25rem;
   --lf-radius-md: 0.375rem;
   --lf-radius-lg: 0.5rem;
@@ -44,24 +45,24 @@
   --lf-duration: 180ms;
   --lf-duration-slow: 280ms;
 
-  /* QK surfaces — deeper, layered near-black (Lockframe bg is 6%) */
-  --qk-bg: 225 16% 4.5%;           /* #0a0b0d canvas */
-  --qk-surface-1: 222 16% 7%;      /* cards */
-  --qk-surface-2: 222 14% 9.5%;    /* console panels */
-  --qk-surface-3: 222 12% 12.5%;   /* insets, chips */
-  --qk-border: 220 12% 14%;        /* hairline */
-  --qk-border-strong: 220 12% 22%;
+  /* Surfaces stacked on charcoal #0B0F14 */
+  --qk-bg: 213 29% 6%;             /* #0B0F14 canvas */
+  --qk-surface-1: 213 22% 9%;      /* cards */
+  --qk-surface-2: 213 18% 12%;     /* console panels */
+  --qk-surface-3: 213 16% 15.5%;   /* insets, chips */
+  --qk-border: 186 14% 20%;        /* hairline */
+  --qk-border-strong: 186 18% 36%; /* component edges — 3.2:1 on canvas */
   --qk-fg: var(--lf-fg);
-  --qk-fg-muted: 215 12% 66%;      /* body secondary — 8.1:1 on bg */
-  --qk-fg-subtle: 215 10% 56%;     /* labels only — 5.9:1 on bg, 5.3:1 on surface-2 (AA) */
-  --qk-danger-fg: 0 84% 72%;       /* Emergency stop text on its tint — 6.9:1 */
+  --qk-fg-muted: 200 12% 74%;      /* body secondary — 8.0:1 on surface-3 */
+  --qk-fg-subtle: 198 10% 66%;     /* labels — 6.5:1 on surface-3 */
+  --qk-danger-fg: 0 84% 78%;       /* emergency-stop text on its tint — 6.4:1 on surface-3 */
 
-  /* Per-page accent. QK pages are monochrome; Seduma page flips to cyan. */
-  --accent: var(--qk-fg);
-  --accent-ink: var(--qk-bg);
-  --ring: var(--qk-fg);
-  --glow: 210 20% 96%;
-  --glow-alpha: 0.06;
+  /* Shared accent. Quantum Karate pages and body[data-theme="seduma"] both use it. */
+  --accent: var(--lf-accent);
+  --accent-ink: var(--lf-accent-fg);
+  --ring: var(--lf-ring);
+  --glow: var(--lf-accent);
+  --glow-alpha: 0.14;
 
   /* Type */
   --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -97,7 +98,7 @@ body[data-theme="seduma"] {
   --accent-ink: var(--lf-accent-fg);
   --ring: var(--lf-ring);
   --glow: var(--lf-accent);
-  --glow-alpha: 0.14;
+  --glow-alpha: 0.2;
 }
 
 /* ---------- 3. Base ---------- */
@@ -250,8 +251,8 @@ a { color: inherit; text-decoration: none; }
 .hero__bg::before {
   content: ""; position: absolute; inset: 0;
   background-image:
-    linear-gradient(hsl(var(--qk-fg) / 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(var(--qk-fg) / 0.045) 1px, transparent 1px);
+    linear-gradient(hsl(var(--lf-accent) / 0.11) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--lf-accent) / 0.11) 1px, transparent 1px);
   background-size: 64px 64px;
   background-position: calc(50% - 32px) -1px;
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
@@ -272,7 +273,7 @@ a { color: inherit; text-decoration: none; }
 /* Home hero: headline left, reticle right */
 .hero--home .hero__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-7); align-items: center; }
 @media (min-width: 960px) { .hero--home .hero__grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
-.reticle { width: min(100%, 460px); margin-inline: auto; color: hsl(var(--qk-fg)); }
+.reticle { width: min(100%, 460px); margin-inline: auto; color: hsl(var(--accent)); }
 .reticle .ring-ticks { transform-origin: 240px 240px; animation: qk-rotate 240s linear infinite; }
 .reticle .sweep { transform-origin: 240px 240px; animation: qk-rotate 16s linear infinite; }
 @media (max-width: 959px) { .reticle { width: min(72vw, 320px); } }
@@ -281,8 +282,8 @@ a { color: inherit; text-decoration: none; }
 .ruler {
   height: 28px; border-top: 1px solid hsl(var(--qk-border));
   background:
-    repeating-linear-gradient(90deg, hsl(var(--qk-fg) / 0.22) 0 1px, transparent 1px 80px) 0 0 / 100% 12px no-repeat,
-    repeating-linear-gradient(90deg, hsl(var(--qk-fg) / 0.1) 0 1px, transparent 1px 8px) 0 0 / 100% 6px no-repeat;
+    repeating-linear-gradient(90deg, hsl(var(--lf-accent) / 0.35) 0 1px, transparent 1px 80px) 0 0 / 100% 12px no-repeat,
+    repeating-linear-gradient(90deg, hsl(var(--lf-accent) / 0.16) 0 1px, transparent 1px 8px) 0 0 / 100% 6px no-repeat;
   background-position: calc(50% - 40px) 0, calc(50%) 0;
 }
 
@@ -322,7 +323,7 @@ a { color: inherit; text-decoration: none; }
 .crop { position: relative; }
 .crop::before, .crop::after {
   content: ""; position: absolute; width: 10px; height: 10px; pointer-events: none;
-  border-color: hsl(var(--qk-fg) / 0.5); border-style: solid; border-width: 0;
+  border-color: hsl(var(--lf-accent) / 0.55); border-style: solid; border-width: 0;
 }
 .crop::before { top: -5px; left: -5px; border-top-width: 1px; border-left-width: 1px; }
 .crop::after { bottom: -5px; right: -5px; border-bottom-width: 1px; border-right-width: 1px; }
@@ -350,12 +351,12 @@ a { color: inherit; text-decoration: none; }
   white-space: nowrap;
 }
 .chip__dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
-.chip--practice { color: hsl(199 80% 70%); background: hsl(199 45% 12%); border-color: hsl(199 45% 24%); }
+.chip--practice { color: hsl(var(--lf-accent)); background: hsl(var(--lf-accent) / 0.12); border-color: hsl(var(--lf-accent) / 0.55); }
 .chip--practice .chip__dot { background: hsl(var(--lf-paper)); animation: qk-breathe 2.8s var(--lf-ease-in-out) infinite; }
 .chip--off { color: hsl(var(--qk-fg-muted)); }
 .chip--off .chip__dot { background: hsl(var(--lf-lockdown)); }
 .chip--honest { color: hsl(var(--qk-fg)); }
-.chip--stop { color: hsl(var(--qk-danger-fg)); background: hsl(0 40% 11%); border-color: hsl(0 40% 24%); }
+.chip--stop { color: hsl(var(--qk-danger-fg)); background: hsl(var(--lf-halted) / 0.16); border-color: hsl(var(--lf-halted) / 0.55); }
 .chip--stop .chip__dot { background: hsl(var(--qk-danger-fg)); }
 .chip--sim { color: hsl(var(--qk-fg-muted)); border-style: dashed; }
 
@@ -370,7 +371,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid hsl(var(--qk-border-strong));
   border-radius: 0.875rem;
   overflow: hidden;
-  box-shadow: 0 1px 0 hsl(var(--qk-fg) / 0.06) inset, 0 40px 80px -40px hsl(222 60% 1% / 0.9), 0 0 0 1px hsl(var(--qk-bg));
+  box-shadow: 0 1px 0 hsl(var(--qk-fg) / 0.06) inset, 0 0 0 1px hsl(var(--lf-accent) / 0.28), 0 40px 80px -40px hsl(0 0% 0% / 0.72);
   font-size: 0.8125rem;
   line-height: 1.45;
 }
@@ -385,7 +386,9 @@ a { color: inherit; text-decoration: none; }
   background: hsl(var(--qk-surface-2));
 }
 .console__lights { display: flex; gap: 6px; }
-.console__lights i { width: 9px; height: 9px; border-radius: 50%; border: 1px solid hsl(var(--qk-border-strong)); }
+.console__lights i { width: 9px; height: 9px; border-radius: 50%; border: 1px solid transparent; background: hsl(var(--lf-lockdown)); }
+.console__lights i:nth-child(1) { background: hsl(var(--lf-accent)); }
+.console__lights i:nth-child(2) { background: hsl(var(--lf-accent) / 0.45); }
 .console__title { font-family: var(--font-mono); font-size: 0.75rem; color: hsl(var(--qk-fg-muted)); letter-spacing: 0.02em; }
 .console__title b { color: hsl(var(--qk-fg)); font-weight: 500; }
 .console__chips { margin-left: auto; display: flex; gap: var(--s-2); flex-wrap: wrap; justify-content: flex-end; }
@@ -406,8 +409,8 @@ a { color: inherit; text-decoration: none; }
 .console__banner {
   display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3);
   padding: var(--s-3) var(--s-4);
-  border: 1px solid hsl(199 45% 22%);
-  background: linear-gradient(90deg, hsl(199 50% 10% / 0.9), hsl(var(--qk-surface-2)));
+  border: 1px solid hsl(var(--lf-accent) / 0.55);
+  background: linear-gradient(90deg, hsl(var(--lf-accent) / 0.14), hsl(var(--qk-surface-2)));
   border-radius: var(--lf-radius-lg);
 }
 .console__banner strong { font-weight: 560; color: hsl(var(--qk-fg)); letter-spacing: -0.01em; }
@@ -430,7 +433,7 @@ a { color: inherit; text-decoration: none; }
   justify-self: start; margin-top: var(--s-1);
   font: 500 0.6875rem/1 var(--font-mono); letter-spacing: 0.04em;
   padding: 0.45rem 0.6rem; border-radius: var(--lf-radius-md);
-  color: hsl(var(--qk-danger-fg)); border: 1px solid hsl(0 45% 32%); background: hsl(0 40% 10%);
+  color: hsl(var(--qk-danger-fg)); border: 1px solid hsl(var(--lf-halted) / 0.55); background: hsl(var(--lf-halted) / 0.16);
 }
 
 .activity { border: 1px solid hsl(var(--qk-border)); border-radius: var(--lf-radius-lg); background: hsl(var(--qk-surface-2)); overflow: hidden; }
@@ -455,7 +458,7 @@ a { color: inherit; text-decoration: none; }
 .row .sym { color: hsl(var(--qk-fg)); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.02em; }
 .row .evt { color: hsl(var(--qk-fg-muted)); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .state { font-family: var(--font-mono); font-size: 0.6875rem; padding: 0.2rem 0.45rem; border-radius: var(--lf-radius-sm); border: 1px solid hsl(var(--qk-border-strong)); color: hsl(var(--qk-fg-muted)); white-space: nowrap; }
-.state--sim { border-style: dashed; color: hsl(199 80% 70%); border-color: hsl(199 45% 30%); }
+.state--sim { border-style: dashed; color: hsl(var(--lf-accent)); border-color: hsl(var(--lf-accent) / 0.55); }
 .state--stop { color: hsl(var(--qk-fg)); }
 
 .locks { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); font-size: 0.75rem; color: hsl(var(--qk-fg-muted)); padding-top: var(--s-1); }
@@ -503,7 +506,7 @@ a { color: inherit; text-decoration: none; }
 .duo .prose { margin-top: var(--s-4); }
 
 /* First-run stepper panel */
-.panel { background: hsl(var(--qk-surface-1)); border: 1px solid hsl(var(--qk-border-strong)); border-radius: 0.875rem; overflow: hidden; box-shadow: 0 30px 60px -40px hsl(222 60% 1% / 0.9); font-size: 0.8125rem; }
+.panel { background: hsl(var(--qk-surface-1)); border: 1px solid hsl(var(--qk-border-strong)); border-radius: 0.875rem; overflow: hidden; box-shadow: 0 0 0 1px hsl(var(--lf-accent) / 0.22), 0 30px 60px -40px hsl(0 0% 0% / 0.72); font-size: 0.8125rem; }
 .panel__head { display: flex; align-items: center; gap: var(--s-2); flex-wrap: wrap; padding: var(--s-3) var(--s-4); border-bottom: 1px solid hsl(var(--qk-border)); background: hsl(var(--qk-surface-2)); }
 .panel__head .chip:last-child { margin-left: auto; }
 .panel__body { padding: var(--s-5); display: grid; gap: var(--s-4); }
@@ -513,7 +516,7 @@ a { color: inherit; text-decoration: none; }
 .wizard li:not(:last-child)::after { content: ""; position: absolute; left: calc(0.875rem - 0.5px); top: 1.75rem; bottom: 0.2rem; width: 1px; background: hsl(var(--qk-border-strong)); }
 .wizard__mark { width: 1.75rem; height: 1.75rem; border-radius: 50%; display: grid; place-items: center; border: 1px solid hsl(var(--qk-border-strong)); font: 500 0.6875rem/1 var(--font-mono); color: hsl(var(--qk-fg-muted)); background: hsl(var(--qk-surface-2)); }
 .wizard__mark svg { width: 12px; height: 12px; }
-.wizard li.is-done .wizard__mark { color: hsl(var(--lf-paper)); border-color: hsl(199 45% 30%); background: hsl(199 45% 11%); }
+.wizard li.is-done .wizard__mark { color: hsl(var(--lf-paper)); border-color: hsl(var(--lf-accent) / 0.55); background: hsl(var(--lf-accent) / 0.14); }
 .wizard li.is-current .wizard__mark { color: hsl(var(--lf-accent-fg)); background: hsl(var(--lf-paper)); border-color: transparent; }
 .wizard__title { font-weight: 560; color: hsl(var(--qk-fg)); padding-top: 0.2rem; }
 .wizard__sub { color: hsl(var(--qk-fg-muted)); font-size: 0.75rem; margin-top: 0.15rem; }
@@ -525,7 +528,7 @@ a { color: inherit; text-decoration: none; }
 .modal-demo { position: relative; padding: clamp(1rem, 3vw, 2.5rem); border-radius: 0.875rem; border: 1px solid hsl(var(--qk-border)); background:
   radial-gradient(ellipse at 50% 0%, hsl(var(--qk-surface-3) / 0.6), transparent 70%),
   repeating-linear-gradient(135deg, hsl(var(--qk-fg) / 0.025) 0 1px, transparent 1px 10px), hsl(var(--qk-bg)); }
-.modal { max-width: 27rem; margin-inline: auto; background: hsl(var(--qk-surface-2)); border: 1px solid hsl(var(--qk-border-strong)); border-radius: 0.75rem; box-shadow: 0 30px 60px -30px hsl(222 60% 1% / 0.95); font-size: 0.8125rem; }
+.modal { max-width: 27rem; margin-inline: auto; background: hsl(var(--qk-surface-2)); border: 1px solid hsl(var(--qk-border-strong)); border-radius: 0.75rem; box-shadow: 0 0 0 1px hsl(var(--lf-accent) / 0.22), 0 30px 60px -30px hsl(0 0% 0% / 0.72); font-size: 0.8125rem; }
 .modal__head { padding: var(--s-4) var(--s-5) 0; display: grid; gap: var(--s-2); }
 .modal__title { font-size: 1rem; font-weight: 600; letter-spacing: -0.015em; }
 .modal__body { padding: var(--s-3) var(--s-5) var(--s-4); color: hsl(var(--qk-fg-muted)); display: grid; gap: var(--s-4); }
@@ -647,7 +650,9 @@ a { color: inherit; text-decoration: none; }
 
 /* Forced colors / high contrast */
 @media (forced-colors: active) {
-  .chip, .card, .console, .panel, .modal, .btn { border: 1px solid CanvasText; }
+  :focus-visible { outline-color: Highlight; }
+  .chip, .card, .console, .panel, .modal, .btn, .email, .field__input { border: 1px solid CanvasText; }
+  .btn--primary, .mbtn--primary { background: Highlight; color: HighlightText; }
   .hero__bg { display: none; }
 }
 
