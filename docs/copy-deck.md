@@ -428,3 +428,29 @@ Do **not** insert ™ inside the disclaimer.
 **Applied:** claims-authority line cites Seduma `main` only. Public HTML pages (`index` / `seduma` / `facts` / `contact`) have no personal-account links.
 
 **Engineering follow-up (closed):** the README live address is https://quantum-karate.github.io/website/. The custom-domain DNS example points at `quantum-karate.github.io`. `.github/CODEOWNERS` is an org-team placeholder (`@Quantum-Karate/admins`) only.
+
+
+---
+
+## Addendum 2026-10-09 — Get Seduma (Payhip) and interim waitlist
+
+Supersedes the primary action in Addendum 2026-09-30b. The footer disclaimer is unchanged, and still ends with `Not investment advice.`
+
+**Primary: Get Seduma**
+- `index.html` section 04 index label: `04` / `Get Seduma` (replaces `Waitlist`).
+- `seduma.html`: the same block after “Read the plain facts.”, still unnumbered, matching the facts band above it.
+- H2: Get the Practice eval.
+- Lead: The Practice eval is $49. Practice (also called Paper) is the default: orders get simulated fills, and no real money moves. Live stays off until the buyer elects it.
+- Button: Get it on Payhip →
+- `href`: `https://payhip.com/b/K7UaW`
+- `rel`: `noopener`
+- `target`: `_blank` (screen-reader text: “opens in a new tab”)
+
+**Secondary: Practice waitlist** (the mailto and the visible address work with JavaScript off)
+- Link: Email the waitlist →
+- `href`: `mailto:v-nat@outlook.com?subject=Seduma%20Practice%20waitlist`
+- Visible address beside the link: `v-nat@outlook.com`
+- Control: Copy email. Copies that address. A status region (`role="status"`, `aria-live="polite"`) briefly shows Copied, then clears. The control is a small ghost button. No motion is added; reduced-motion preferences stay in force for the rest of the page.
+- Without JavaScript, Email the waitlist still opens the visitor’s email app and the address is still on the page. Copy email needs JavaScript.
+
+**Ceiling:** the only new commercial fact is the $49 Practice eval price. No profit or returns claims. No auto-run marketing. Write “Neural Agency Engine” in full wherever that engine is named. No personal GitHub handle or name. Named promise untouched. Footer disclaimer untouched.

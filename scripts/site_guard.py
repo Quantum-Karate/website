@@ -110,6 +110,11 @@ _HOSTNAME_RE = re.compile(
     re.IGNORECASE,
 )
 
+# The published Practice-eval checkout is the only absolute URL the site may link.
+_ALLOWED_EXTERNAL_URLS = frozenset({
+    "https://payhip.com/b/K7UaW",
+})
+
 
 def strip_html_comments(text: str) -> str:
     return _HTML_COMMENT_RE.sub(" ", text)
@@ -179,6 +184,8 @@ def html_claim_texts(raw: str) -> list[str]:
 def reference_problem(value: str) -> str | None:
     value = html.unescape(value).strip()
     if not value or value.startswith("#") or value.lower().startswith("mailto:"):
+        return None
+    if value in _ALLOWED_EXTERNAL_URLS:
         return None
     lowered = value.lower()
     if lowered.startswith(("http://", "https://", "//")):

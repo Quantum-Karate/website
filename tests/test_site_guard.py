@@ -97,6 +97,15 @@ def test_new_banned_terms_and_near_misses():
     assert site_guard.findings_for_text(".js", "if (ok) return;\nvar margin = '0px 0px -8% 0px';\nvar vh = d.clientHeight;\n") == []
 
 
+def test_payhip_checkout_is_the_only_allowed_external_url():
+    payhip = '<a href="https://payhip.com/b/K7UaW" rel="noopener">Get it on Payhip</a>'
+    assert site_guard.findings_for_text(".html", payhip) == []
+    assert site_guard.findings_for_text(".html", '<a href="https://payhip.com/b/OTHER">x</a>')
+    assert site_guard.findings_for_text(".html", '<a href="https://payhip.com/b/K7UaW/">x</a>')
+    assert site_guard.findings_for_text(".html", '<a href="http://payhip.com/b/K7UaW">x</a>')
+    assert site_guard.findings_for_text(".html", '<a href="https://payhip.com/b/K7UaW?x=1">x</a>')
+
+
 def test_href_and_src_rules_allow_mailto_hash_and_relative():
     ok = '<a href="index.html"></a><a href="#main"></a><a href="mailto:{{CONTACT_EMAIL}}"></a><img src="assets/favicon.svg">'
     assert site_guard.findings_for_text(".html", ok) == []
