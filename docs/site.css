@@ -223,6 +223,8 @@ a { color: inherit; text-decoration: none; }
   cursor: pointer;
   transition: background-color var(--lf-duration) var(--lf-ease-out), border-color var(--lf-duration) var(--lf-ease-out), color var(--lf-duration) var(--lf-ease-out), transform var(--lf-duration) var(--lf-ease-out);
 }
+/* Author display (including .btn) overrides the hidden attribute unless this wins. */
+[hidden] { display: none !important; }
 .btn--primary { background: hsl(var(--accent)); color: hsl(var(--accent-ink)); }
 .btn--primary:hover { background: hsl(var(--accent) / 0.86); }
 .btn--ghost { color: hsl(var(--qk-fg)); border-color: hsl(var(--qk-border-strong)); background: hsl(var(--qk-surface-1) / 0.6); }

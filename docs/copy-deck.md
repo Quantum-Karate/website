@@ -463,3 +463,31 @@ Do **not** insert ™ inside the disclaimer.
 **Guard:** `scripts/site_guard.py` allows only this absolute URL: `https://payhip.com/b/K7UaW`. Every other `http`, `https`, protocol-relative, or root-relative reference still fails.
 
 **Ceiling:** named promise untouched. Footer disclaimer untouched. No personal name and no personal handle in the new page text. The waitlist prints the address already used on Contact.
+
+---
+
+## Addendum 2026-10-12 — listing name Seduma Trade Dojo
+
+**Supersedes** the live **Get Seduma** strings in Addendum 2026-10-09 for `index.html` and `seduma.html`. The earlier deck text stays as history. The Payhip URL, price, Practice-first lead, and interim waitlist are unchanged.
+
+**Listing:** Seduma Trade Dojo at `https://payhip.com/b/K7UaW`. The Dojo is the Practice eval. It is not a new product name for Seduma itself.
+
+**Home** (`index.html`): section index `04` / `Seduma Trade Dojo`.
+
+**Seduma** (`seduma.html`): the same unnumbered band. Research keeps index `04`.
+
+**Locked strings (both pages)**
+- H2: Get Seduma Trade Dojo.
+- Lead: Seduma Trade Dojo is the $49 Practice eval. Practice fills are simulated — they are not live fills. Practice (also called Paper) is the default. Live stays off until the buyer elects it. The Neural Agency Engine researches. Seduma is the front door.
+- In the HTML, Practice, Paper, and Live in that lead are `<strong>`.
+- Button: Get Seduma Trade Dojo on Payhip →
+- `href`: `https://payhip.com/b/K7UaW`
+- `rel`: `noopener` (same tab; no `target`)
+
+**What the lead is allowed to say:** the listing name, that this is the $49 Practice eval, the existing simulated-fills line, Practice (also called Paper) as the default, Live off until the buyer elects it, and the existing front-door line with Neural Agency Engine spelled out in full. No performance numbers. No profit claim. No promise that Seduma runs by itself.
+
+**Left off the site, even though the Payhip page mentions them:** win rate, worst drop, balance curve, and any other result metric. Also left off: localhost, and “not cloud trading”.
+
+**Copy email:** the button stays `hidden` until `site.js` removes that attribute. `site.css` keeps `[hidden] { display: none !important; }` so `.btn`’s `display` cannot show the control with scripting off. The temporary copy field sets a 16px font before focus, so iOS Safari does not zoom in on Copy email.
+
+**Ceiling:** named promise untouched. Footer disclaimer untouched. No personal name and no personal handle in the new page text. The waitlist block is unchanged.

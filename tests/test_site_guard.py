@@ -1,6 +1,7 @@
 """In-memory cases for the site claim guard."""
 
 import hashlib
+import re
 import sys
 from pathlib import Path
 
@@ -210,21 +211,45 @@ def test_get_seduma_and_interim_waitlist_markup():
     script = (site_guard.DOCS_DIR / "site.js").read_text(encoding="utf-8")
     mailto = 'href="mailto:v-nat@outlook.com?subject=Seduma%20Practice%20waitlist"'
     for page in (index, seduma):
-        assert "Get the Practice eval." in page
+        assert "Get Seduma Trade Dojo." in page
+        assert "Seduma Trade Dojo is the $49 Practice eval." in page
+        assert "The Neural Agency Engine researches. Seduma is the front door." in page
         assert 'href="https://payhip.com/b/K7UaW"' in page
         assert 'rel="noopener"' in page
-        assert "Get it on Payhip" in page
+        assert "Get Seduma Trade Dojo on Payhip" in page
+        assert "Get the Practice eval." not in page
+        assert "Get it on Payhip" not in page
         assert "$49" in page
         assert "Practice fills are simulated" in page
         assert "until the buyer elects it." in page
         assert mailto in page
         assert ">v-nat@outlook.com</a>" in page
         assert "Copy email" in page
+        assert 'class="btn btn--ghost" hidden data-copy-email="v-nat@outlook.com"' in page
         assert 'role="status"' in page
         assert "Join the Practice waitlist." not in page
         assert "Seduma%20waitlist\"" not in page
+        for banned in ("win rate", "worst drop", "balance curve", "NAE", "profit"):
+            assert banned not in page
     assert "Copied" in script
     assert "data-copy-email" in script
+    assert "Seduma Trade Dojo" in index.split('index__num">04')[1].split("</section>")[0]
+
+
+def test_hidden_copy_button_is_not_shown_by_btn_display():
+    if not site_guard.DOCS_DIR.is_dir():
+        pytest.skip("docs/ is not present")
+    css = (site_guard.DOCS_DIR / "site.css").read_text(encoding="utf-8")
+    assert re.search(r"\[hidden\]\s*\{[^}]*display\s*:\s*none\s*!important", css)
+
+
+def test_copy_textarea_sets_ios_safe_font_size_before_focus():
+    if not site_guard.DOCS_DIR.is_dir():
+        pytest.skip("docs/ is not present")
+    script = (site_guard.DOCS_DIR / "site.js").read_text(encoding="utf-8")
+    font = script.find('area.style.fontSize = "16px"')
+    focus = script.find("area.focus(")
+    assert font != -1 and focus != -1 and font < focus
 
 
 def test_delivered_docs_pass():

@@ -25,6 +25,8 @@
       area.style.position = "fixed";
       area.style.top = "0";
       area.style.left = "-9999px";
+      // iOS Safari zooms a focused field under 16px and does not zoom back out.
+      area.style.fontSize = "16px";
       document.body.appendChild(area);
       area.focus({ preventScroll: true });
       area.select();
