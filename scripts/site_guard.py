@@ -176,9 +176,17 @@ def html_claim_texts(raw: str) -> list[str]:
     return texts
 
 
+# The Practice eval checkout. Every other absolute URL stays blocked.
+_ALLOWED_EXTERNAL_REFS = frozenset({
+    "https://payhip.com/b/K7UaW",
+})
+
+
 def reference_problem(value: str) -> str | None:
     value = html.unescape(value).strip()
     if not value or value.startswith("#") or value.lower().startswith("mailto:"):
+        return None
+    if value in _ALLOWED_EXTERNAL_REFS:
         return None
     lowered = value.lower()
     if lowered.startswith(("http://", "https://", "//")):
