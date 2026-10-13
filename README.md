@@ -30,6 +30,6 @@ Pages is switched on by the repository owner after review. Internal links are re
 2. Set DNS: a CNAME record pointing at `quantum-karate.github.io` for a subdomain, or GitHub's A/AAAA records for an apex domain.
 3. In Settings > Pages, enter the domain and tick Enforce HTTPS.
 
-## Contact email
+## Contact
 
-The contact address is set in `contact.html`.
+The public site does not publish a personal email address. Seduma Trade Dojo, the Practice eval, is listed at https://payhip.com/b/K7UaW.

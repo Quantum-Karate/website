@@ -203,14 +203,15 @@ def test_payhip_practice_eval_link_is_the_only_external_exception():
     assert site_guard.findings_for_text(".html", '<a href="//payhip.com/b/K7UaW">x</a>')
 
 
-def test_get_seduma_and_interim_waitlist_markup():
+def test_get_seduma_payhip_markup_and_no_waitlist():
     if not site_guard.DOCS_DIR.is_dir():
         pytest.skip("docs/ is not present")
     index = (site_guard.DOCS_DIR / "index.html").read_text(encoding="utf-8")
     seduma = (site_guard.DOCS_DIR / "seduma.html").read_text(encoding="utf-8")
+    contact = (site_guard.DOCS_DIR / "contact.html").read_text(encoding="utf-8")
     script = (site_guard.DOCS_DIR / "site.js").read_text(encoding="utf-8")
-    mailto = 'href="mailto:v-nat@outlook.com?subject=Seduma%20Practice%20waitlist"'
-    for page in (index, seduma):
+    css = (site_guard.DOCS_DIR / "site.css").read_text(encoding="utf-8")
+    for page in (index, seduma, contact):
         assert "Get Seduma Trade Dojo." in page
         assert "Seduma Trade Dojo is the $49 Practice eval." in page
         assert "The Neural Agency Engine researches. Seduma is the front door." in page
@@ -222,17 +223,17 @@ def test_get_seduma_and_interim_waitlist_markup():
         assert "$49" in page
         assert "Practice fills are simulated" in page
         assert "until the buyer elects it." in page
-        assert mailto in page
-        assert ">v-nat@outlook.com</a>" in page
-        assert "Copy email" in page
-        assert 'class="btn btn--ghost" hidden data-copy-email="v-nat@outlook.com"' in page
-        assert 'role="status"' in page
-        assert "Join the Practice waitlist." not in page
-        assert "Seduma%20waitlist\"" not in page
+        assert "outlook.com" not in page.lower()
+        assert "mailto:" not in page.lower()
+        assert "waitlist" not in page.lower()
+        assert "Copy email" not in page
+        assert "data-copy-email" not in page
         for banned in ("win rate", "worst drop", "balance curve", "NAE", "profit"):
             assert banned not in page
-    assert "Copied" in script
-    assert "data-copy-email" in script
+    assert "data-copy-email" not in script
+    assert "clipboard" not in script
+    assert "waitlist" not in css
+    assert "outlook.com" not in css.lower()
     assert "Seduma Trade Dojo" in index.split('index__num">04')[1].split("</section>")[0]
 
 
@@ -243,13 +244,59 @@ def test_hidden_copy_button_is_not_shown_by_btn_display():
     assert re.search(r"\[hidden\]\s*\{[^}]*display\s*:\s*none\s*!important", css)
 
 
-def test_copy_textarea_sets_ios_safe_font_size_before_focus():
+def test_canonical_page_urls_are_allowed_and_other_absolute_urls_are_not():
+    for href in (
+        "https://quantum-karate.github.io/website/index.html",
+        "https://quantum-karate.github.io/website/seduma.html",
+        "https://quantum-karate.github.io/website/facts.html",
+        "https://quantum-karate.github.io/website/contact.html",
+    ):
+        assert site_guard.findings_for_text(".html", f'<link rel="canonical" href="{href}">') == []
+    assert site_guard.findings_for_text(".html", '<link rel="canonical" href="https://quantum-karate.github.io/website/">')
+    assert site_guard.findings_for_text(".html", '<link rel="canonical" href="https://example.github.io/website/index.html">')
+
+
+def test_seo_files_canonical_and_software_application():
     if not site_guard.DOCS_DIR.is_dir():
         pytest.skip("docs/ is not present")
-    script = (site_guard.DOCS_DIR / "site.js").read_text(encoding="utf-8")
-    font = script.find('area.style.fontSize = "16px"')
-    focus = script.find("area.focus(")
-    assert font != -1 and focus != -1 and font < focus
+    pages = {
+        "index.html": "https://quantum-karate.github.io/website/index.html",
+        "seduma.html": "https://quantum-karate.github.io/website/seduma.html",
+        "facts.html": "https://quantum-karate.github.io/website/facts.html",
+        "contact.html": "https://quantum-karate.github.io/website/contact.html",
+    }
+    image = "https://quantum-karate.github.io/website/assets/og-seduma.png"
+    og_title = "Seduma Trade Dojo: Practice Trading, Simulated Fills Only"
+    og_description = "A self-hosted console for practicing your own trading rules. All results are simulated, and no real money moves. Live stays off unless you choose it."
+    for name, canonical in pages.items():
+        text = (site_guard.DOCS_DIR / name).read_text(encoding="utf-8")
+        assert f'<link rel="canonical" href="{canonical}">' in text
+        assert f'<meta property="og:url" content="{canonical}">' in text
+        assert f'<meta property="og:title" content="{og_title}">' in text
+        assert f'<meta property="og:description" content="{og_description}">' in text
+        assert f'<meta property="og:image" content="{image}">' in text
+        assert '<meta name="twitter:card" content="summary_large_image">' in text
+        assert f'<meta name="twitter:image" content="{image}">' in text
+        assert "aggregateRating" not in text
+        assert "ratingValue" not in text
+    index = (site_guard.DOCS_DIR / "index.html").read_text(encoding="utf-8")
+    seduma = (site_guard.DOCS_DIR / "seduma.html").read_text(encoding="utf-8")
+    assert "<title>Quantum Karate: Seduma Trade Dojo, Practice-First Trading Console</title>" in index
+    assert 'content="Quantum Karate makes Seduma, a self-hosted console for practicing your own trading rules with simulated fills. Get the Seduma Trade Dojo, the $49 Practice eval."' in index
+    assert "<title>Seduma Trade Dojo: Practice Trading Simulator on Your Computer | Quantum Karate</title>" in seduma
+    assert 'content="Practice your own trading rules with simulated fills on a self-hosted localhost console. No real money moves, and Live stays off until you choose it. Not a broker."' in seduma
+    assert '"@type": "SoftwareApplication"' in seduma
+    assert '"price": "49"' in seduma
+    assert '"priceCurrency": "USD"' in seduma
+    assert '"url": "https://payhip.com/b/K7UaW"' in seduma
+    assert "SoftwareApplication" not in index
+    robots = (site_guard.DOCS_DIR / "robots.txt").read_text(encoding="utf-8")
+    assert "Allow: /" in robots
+    assert "Disallow:" not in robots
+    assert "Sitemap: https://quantum-karate.github.io/website/sitemap.xml" in robots
+    sitemap = (site_guard.DOCS_DIR / "sitemap.xml").read_text(encoding="utf-8")
+    for loc in pages.values():
+        assert f"<loc>{loc}</loc>" in sitemap
 
 
 def test_delivered_docs_pass():
