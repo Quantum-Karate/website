@@ -176,9 +176,14 @@ def html_claim_texts(raw: str) -> list[str]:
     return texts
 
 
-# The Practice eval checkout. Every other absolute URL stays blocked.
+# The Practice eval checkout, plus the four canonical page URLs.
+# Every other absolute URL stays blocked.
 _ALLOWED_EXTERNAL_REFS = frozenset({
     "https://payhip.com/b/K7UaW",
+    "https://quantum-karate.github.io/website/index.html",
+    "https://quantum-karate.github.io/website/seduma.html",
+    "https://quantum-karate.github.io/website/facts.html",
+    "https://quantum-karate.github.io/website/contact.html",
 })
 
 

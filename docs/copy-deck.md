@@ -67,7 +67,7 @@
 - Index: 04 Waitlist
 - H2: Join the Practice waitlist.
 - Lead: Get notified when Seduma™ is ready to try in Practice. No real money moves until you choose Live.
-- Button: Email the waitlist → (`mailto:v-nat@outlook.com?subject=Seduma%20waitlist`)
+- Button: Email the waitlist → (`mailto:[address removed]?subject=Seduma%20waitlist`)
 
 ---
 
@@ -176,7 +176,7 @@
 **Waitlist CTA** (after Read the plain facts.)
 - H2: Join the Practice waitlist.
 - Lead: Get notified when Seduma™ is ready to try in Practice. No real money moves until you choose Live.
-- Button: Email the waitlist → (`mailto:v-nat@outlook.com?subject=Seduma%20waitlist`)
+- Button: Email the waitlist → (`mailto:[address removed]?subject=Seduma%20waitlist`)
 
 ---
 
@@ -368,7 +368,7 @@ The following are **definitions or illustration, not product claims**: Practice,
 - M5. The soft-locks row keeps only "Practice only" (a shipped string). "Auto-trading off" and "Real sending off" are removed.
 - M6. The Research section now reads "The Neural Agency Engine is the research engine behind Seduma." and "It does not pick or recommend trades, and it is not the Live switch. Seduma is the front door." Facts item 8 is updated to match.
 - M7 (Chris decided): no change. The footer disclaimer stays exactly as it was: no advice line and no risk line.
-- M8. The facts.json line is removed. contact.html now uses v-nat@outlook.com for both the mailto link and the visible text (relayed by V-Nat 3). The placeholder comment and the "remove before launch" aside are gone.
+- M8. The facts.json line is removed. contact.html now uses [address removed] for both the mailto link and the visible text (relayed by V-Nat 3). The placeholder comment and the "remove before launch" aside are gone.
 - © line removed from all footers until the LLC exists (Chris decided).
 - S1 "Sending real orders is off by default." · S2 "Seduma is not a broker." / "Seduma is not an investment adviser. It does not pick, recommend, or generate trades." · S3 "no real money" in place of "not live money" (hero Paper definition, Real paper card, glossary) · S5 "Invalid settings are designed to stop instead of sending."
 - Also fixed: the glossary Confirm-gated entry is now "A step that doesn’t take effect until you confirm it yourself. For Live, Seduma won’t turn it on until every item is checked and LIVE is typed." The old "stays locked" wording had the same flaw as the disabled-button line.
@@ -403,7 +403,7 @@ Do **not** insert ™ inside the disclaimer.
 
 ## Addendum 2026-09-30b — Practice waitlist CTA (DIY marketplace)
 
-**Channel:** `mailto:v-nat@outlook.com?subject=Seduma%20waitlist` (opens the visitor’s email app). No form unless Chris picks one later.
+**Channel:** `mailto:[address removed]?subject=Seduma%20waitlist` (opens the visitor’s email app). No form unless Chris picks one later.
 
 **Placement**
 - `index.html`: new section **04 Waitlist**, after the “How we talk about it” facts band, before `</main>`.
@@ -413,7 +413,7 @@ Do **not** insert ™ inside the disclaimer.
 - H2: Join the Practice waitlist.
 - Lead: Get notified when Seduma™ is ready to try in Practice. No real money moves until you choose Live.
 - Button: Email the waitlist →
-- `href`: `mailto:v-nat@outlook.com?subject=Seduma%20waitlist`
+- `href`: `mailto:[address removed]?subject=Seduma%20waitlist`
 - Home-only index label: `04` / `Waitlist`
 
 **Ceiling:** no new product claims; named promise untouched; footer disclaimer untouched (still ends with Not investment advice.). Does not promise launch dates, results, or Live access.
@@ -454,11 +454,11 @@ Do **not** insert ™ inside the disclaimer.
 **Interim waitlist (both pages, after Get Seduma)**
 - H2: Interim Practice waitlist.
 - Lead: The Practice waitlist is still open. The address below opens your email app. No real money moves until you elect Live.
-- Visible address and link text: `v-nat@outlook.com`
-- `href`: `mailto:v-nat@outlook.com?subject=Seduma%20Practice%20waitlist`
+- Visible address and link text: `[address removed]`
+- `href`: `mailto:[address removed]?subject=Seduma%20Practice%20waitlist`
 - The mailto link and the visible address are in the HTML. They work with scripting off.
 - Button: Copy email. It is in the HTML with the `hidden` attribute until `site.js` binds a click handler, so a visit without scripting does not offer a control that cannot copy.
-- Status (`role="status"`, `aria-live="polite"`): Copied. `site.js` writes that word for about five seconds after a successful copy, then clears it. The copied text is the address `v-nat@outlook.com`.
+- Status (`role="status"`, `aria-live="polite"`): Copied. `site.js` writes that word for about five seconds after a successful copy, then clears it. The copied text is the address `[address removed]`.
 
 **Guard:** `scripts/site_guard.py` allows only this absolute URL: `https://payhip.com/b/K7UaW`. Every other `http`, `https`, protocol-relative, or root-relative reference still fails.
 
@@ -491,3 +491,40 @@ Do **not** insert ™ inside the disclaimer.
 **Copy email:** the button stays `hidden` until `site.js` removes that attribute. `site.css` keeps `[hidden] { display: none !important; }` so `.btn`’s `display` cannot show the control with scripting off. The temporary copy field sets a 16px font before focus, so iOS Safari does not zoom in on Copy email.
 
 **Ceiling:** named promise untouched. Footer disclaimer untouched. No personal name and no personal handle in the new page text. The waitlist block is unchanged.
+
+---
+
+## Addendum 2026-10-13 — SEO listing, no waitlist, no personal email
+
+**Supersedes** the live interim waitlist and the Contact email. Earlier deck text stays as history. The personal Outlook address is no longer published in markup, scripts, or styles.
+
+**Home and Seduma:** the interim Practice waitlist section is removed. The Get Seduma Trade Dojo band stays, with the Payhip button only (`https://payhip.com/b/K7UaW`).
+
+**Contact:** the mailto address, the “opens your email app” line, and the topic chips are removed. The page keeps the same Payhip button and the Practice-eval lead.
+
+**Titles and descriptions**
+- `index.html` title: Quantum Karate: Seduma Trade Dojo, Practice-First Trading Console
+- `index.html` description: Quantum Karate makes Seduma, a self-hosted console for practicing your own trading rules with simulated fills. Get the Seduma Trade Dojo, the $49 Practice eval.
+- `seduma.html` title: Seduma Trade Dojo: Practice Trading Simulator on Your Computer | Quantum Karate
+- `seduma.html` description: Practice your own trading rules with simulated fills on a self-hosted localhost console. No real money moves, and Live stays off until you choose it. Not a broker.
+
+**Every page:** a canonical link to `https://quantum-karate.github.io/website/` plus the page file (`index.html`, `seduma.html`, `facts.html`, `contact.html`). Open Graph and Twitter `summary_large_image` tags use the shared title “Seduma Trade Dojo: Practice Trading, Simulated Fills Only”, the shared description that all results are simulated and no real money moves, and `assets/og-seduma.png` (1200×630).
+
+**`seduma.html` only:** SoftwareApplication JSON-LD. Offer price 49 USD. Offer url `https://payhip.com/b/K7UaW`. No ratings.
+
+**`docs/sitemap.xml`:** the four page URLs. **`docs/robots.txt`:** allow all, with a Sitemap line.
+
+**Guard:** those four canonical URLs are allowed absolute references, along with the Payhip checkout. Every other absolute URL still fails.
+
+**Ceiling:** named promise untouched. Footer disclaimer untouched. Practice-first. Results stay labeled simulated. No profit claim. Neural Agency Engine stays spelled out.
+
+---
+
+## Addendum 2026-10-13b — Contact support line
+
+Chris approved a support line on Contact. The waitlist stays removed. Home and Seduma still have no email address.
+
+**Contact** (`contact.html`), after the Payhip band:
+- Visible sentence: Support: v-nat@outlook.com, replies within 2 business days.
+- The address is the only mailto link: `mailto:v-nat@outlook.com`
+- The Payhip button stays.
