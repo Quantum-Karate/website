@@ -32,4 +32,4 @@ Pages is switched on by the repository owner after review. Internal links are re
 
 ## Contact
 
-The public site does not publish a personal email address. Seduma Trade Dojo, the Practice eval, is listed at https://payhip.com/b/K7UaW.
+Support is on `contact.html`: v-nat@outlook.com, replies within 2 business days. Seduma Trade Dojo, the Practice eval, is listed at https://payhip.com/b/K7UaW.

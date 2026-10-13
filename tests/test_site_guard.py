@@ -223,13 +223,17 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
         assert "$49" in page
         assert "Practice fills are simulated" in page
         assert "until the buyer elects it." in page
-        assert "outlook.com" not in page.lower()
-        assert "mailto:" not in page.lower()
         assert "waitlist" not in page.lower()
         assert "Copy email" not in page
         assert "data-copy-email" not in page
         for banned in ("win rate", "worst drop", "balance curve", "NAE", "profit"):
             assert banned not in page
+    for page in (index, seduma):
+        assert "outlook.com" not in page.lower()
+        assert "mailto:" not in page.lower()
+    support = 'Support: <a class="support-address" href="mailto:v-nat@outlook.com">v-nat@outlook.com</a>, replies within 2 business days.'
+    assert support in contact
+    assert contact.lower().count("mailto:") == 1
     assert "data-copy-email" not in script
     assert "clipboard" not in script
     assert "waitlist" not in css

@@ -517,3 +517,14 @@ Do **not** insert ™ inside the disclaimer.
 **Guard:** those four canonical URLs are allowed absolute references, along with the Payhip checkout. Every other absolute URL still fails.
 
 **Ceiling:** named promise untouched. Footer disclaimer untouched. Practice-first. Results stay labeled simulated. No profit claim. Neural Agency Engine stays spelled out.
+
+---
+
+## Addendum 2026-10-13b — Contact support line
+
+Chris approved a support line on Contact. The waitlist stays removed. Home and Seduma still have no email address.
+
+**Contact** (`contact.html`), after the Payhip band:
+- Visible sentence: Support: v-nat@outlook.com, replies within 2 business days.
+- The address is the only mailto link: `mailto:v-nat@outlook.com`
+- The Payhip button stays.
