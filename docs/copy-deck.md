@@ -528,3 +528,57 @@ Chris approved a support line on Contact. The waitlist stays removed. Home and S
 - Visible sentence: Support: v-nat@outlook.com, replies within 2 business days.
 - The address is the only mailto link: `mailto:v-nat@outlook.com`
 - The Payhip button stays.
+
+---
+
+## Addendum 2026-10-22 — one-time Dojo, source, honest practice
+
+From the 2026-10-21 competitor brief, the short edge moves only. No competitor is named. New sentences use periods and commas. They do not add an em dash. Locked strings that already use an em dash stay, including the footer disclaimer, the simulated-fills line, and shipped console text. `You’re set — setup stays Paper` stays. The named promise stays on the Seduma page. Neural Agency Engine stays spelled out. The Payhip button stays the only purchase link. The Contact support line stays.
+
+**Price line (Home hero, Seduma hero, and the Get Seduma lead on Home, Seduma, and Contact):** $49 once, no subscription, nothing to cancel.
+
+**Home hero**
+- Eyebrow: Quantum Karate™ · Precision is Power
+- H1, three lines: $49 once, / no subscription, / nothing to cancel.
+- Sub stays: Master the smallest details. Create the biggest impact.
+- Note: Buyers get the source, including the Neural Agency Engine, and run it on their own computer. Simulated results only. No passive-income promise, and no profit promise.
+- Buttons stay: Meet Seduma · What Seduma is and isn’t
+
+**Seduma hero**
+- H1, three lines: $49 once, / no subscription, / nothing to cancel.
+- Sub: We don’t fake Practice. We don’t trade until you say so. Seduma opens the door. The Neural Agency Engine researches. In Practice, no real money moves until you choose Live.
+
+**01 Why a one-time Dojo** (`#why-dojo`)
+- Index: 01 Comparison
+- H2: Why a one-time Dojo
+- Columns: What we skip · What you get
+- Price: A subscription you have to cancel · $49 once, no subscription, nothing to cancel.
+- Software: A closed copy you do not run · Buyers get the source, including the Neural Agency Engine, and run it on their own computer.
+- Results: A passive-income pitch · Simulated results only. No passive-income promise, and no profit promise.
+- Control: Trading before you say so · Practice by default. We don’t trade until you say so.
+
+**02 Source** (`#source`)
+- H2: You get the source.
+- P1: Buyers get the source, including the Neural Agency Engine, and run it on their own computer.
+- P2: Every line of Seduma and the Neural Agency Engine is yours to read. The Neural Agency Engine does not pick or recommend trades, and it is not the Live switch. Seduma is the front door.
+
+**Renumber:** How it works is 03. Honest Practice is 04. Connections is 05. Research is 06. The Get Seduma band stays unnumbered.
+
+**Honest Practice note** (Seduma, before the P&L note): Honest Practice. Simulated results only. No passive-income promise, and no profit promise.
+
+**Get Seduma lead, added after the existing front-door sentence:** $49 once, no subscription, nothing to cancel. Buyers get the source, including the Neural Agency Engine, and run it on their own computer. Simulated results only. No passive-income promise, and no profit promise.
+
+**Facts**
+- Seduma™ is, added: **A one-time Dojo.** $49 once, no subscription, nothing to cancel. Buyers get the source, including the Neural Agency Engine, and run it on their own computer.
+- A promise of results, added: Simulated results only. No passive-income promise, and no profit promise.
+
+**Titles and descriptions**
+- Home title: Quantum Karate: Seduma Trade Dojo, $49 Once, No Subscription
+- Home description: Quantum Karate: $49 once, no subscription, nothing to cancel. The source includes the Neural Agency Engine, on your own computer. Simulated results only.
+- Seduma title: Seduma Trade Dojo: $49 Once, No Subscription | Quantum Karate
+- Seduma description, also the SoftwareApplication JSON-LD description: $49 once, no subscription, nothing to cancel. Source includes the Neural Agency Engine, on your own computer. Simulated results only. Not a broker.
+- Shared Open Graph and Twitter title: Seduma Trade Dojo: $49 Once, No Subscription
+- Shared Open Graph and Twitter description: $49 once, no subscription, nothing to cancel. Simulated results only. You run it on your own computer. Live stays off unless you choose it.
+- Offer price stays 49 USD. Offer url stays the Payhip listing. No ratings.
+
+**Left off:** competitor names, a port number, passive-income promises, profit promises, and any result metric.

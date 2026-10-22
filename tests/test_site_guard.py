@@ -226,11 +226,30 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
         assert "waitlist" not in page.lower()
         assert "Copy email" not in page
         assert "data-copy-email" not in page
+        assert "$49 once, no subscription, nothing to cancel" in page
+        assert "Buyers get the source, including the Neural Agency Engine, and run it on their own computer." in page
+        assert "Simulated results only. No passive-income promise, and no profit promise." in page
+        assert "finelo" not in page.lower()
+        assert "NAE" not in page
+        honest = "No passive-income promise, and no profit promise."
+        scrubbed = page.replace(honest, "")
         for banned in ("win rate", "worst drop", "balance curve", "NAE", "profit"):
-            assert banned not in page
+            assert banned not in scrubbed
     for page in (index, seduma):
         assert "outlook.com" not in page.lower()
         assert "mailto:" not in page.lower()
+    home_hero = index.split('id="hero-title"')[1].split("</h1>")[0]
+    seduma_hero = seduma.split('id="hero-title"')[1].split("</h1>")[0]
+    for hero in (home_hero, seduma_hero):
+        assert "$49 once," in hero
+        assert "no subscription," in hero
+        assert "nothing to cancel." in hero
+    assert "Why a one-time Dojo" in seduma
+    assert "You get the source." in seduma
+    assert "Honest Practice. Simulated results only. No passive-income promise, and no profit promise." in seduma
+    assert seduma.count('href="https://payhip.com/b/K7UaW"') == 1
+    assert index.count('href="https://payhip.com/b/K7UaW"') == 1
+    assert contact.count('href="https://payhip.com/b/K7UaW"') == 1
     support = 'Support: <a class="support-address" href="mailto:v-nat@outlook.com">v-nat@outlook.com</a>, replies within 2 business days.'
     assert support in contact
     assert contact.lower().count("mailto:") == 1
@@ -270,8 +289,8 @@ def test_seo_files_canonical_and_software_application():
         "contact.html": "https://quantum-karate.github.io/website/contact.html",
     }
     image = "https://quantum-karate.github.io/website/assets/og-seduma.png"
-    og_title = "Seduma Trade Dojo: Practice Trading, Simulated Fills Only"
-    og_description = "A self-hosted console for practicing your own trading rules. All results are simulated, and no real money moves. Live stays off unless you choose it."
+    og_title = "Seduma Trade Dojo: $49 Once, No Subscription"
+    og_description = "$49 once, no subscription, nothing to cancel. Simulated results only. You run it on your own computer. Live stays off unless you choose it."
     for name, canonical in pages.items():
         text = (site_guard.DOCS_DIR / name).read_text(encoding="utf-8")
         assert f'<link rel="canonical" href="{canonical}">' in text
@@ -285,15 +304,20 @@ def test_seo_files_canonical_and_software_application():
         assert "ratingValue" not in text
     index = (site_guard.DOCS_DIR / "index.html").read_text(encoding="utf-8")
     seduma = (site_guard.DOCS_DIR / "seduma.html").read_text(encoding="utf-8")
-    assert "<title>Quantum Karate: Seduma Trade Dojo, Practice-First Trading Console</title>" in index
-    assert 'content="Quantum Karate makes Seduma, a self-hosted console for practicing your own trading rules with simulated fills. Get the Seduma Trade Dojo, the $49 Practice eval."' in index
-    assert "<title>Seduma Trade Dojo: Practice Trading Simulator on Your Computer | Quantum Karate</title>" in seduma
-    assert 'content="Practice your own trading rules with simulated fills on a self-hosted localhost console. No real money moves, and Live stays off until you choose it. Not a broker."' in seduma
+    assert "<title>Quantum Karate: Seduma Trade Dojo, $49 Once, No Subscription</title>" in index
+    assert 'content="Quantum Karate: $49 once, no subscription, nothing to cancel. The source includes the Neural Agency Engine, on your own computer. Simulated results only."' in index
+    assert "<title>Seduma Trade Dojo: $49 Once, No Subscription | Quantum Karate</title>" in seduma
+    assert 'content="$49 once, no subscription, nothing to cancel. Source includes the Neural Agency Engine, on your own computer. Simulated results only. Not a broker."' in seduma
     assert '"@type": "SoftwareApplication"' in seduma
     assert '"price": "49"' in seduma
     assert '"priceCurrency": "USD"' in seduma
     assert '"url": "https://payhip.com/b/K7UaW"' in seduma
     assert "SoftwareApplication" not in index
+    facts = (site_guard.DOCS_DIR / "facts.html").read_text(encoding="utf-8")
+    assert "<strong>A one-time Dojo.</strong>" in facts
+    assert "No passive-income promise, and no profit promise." in facts
+    assert "profit" not in facts.replace("No passive-income promise, and no profit promise.", "")
+    assert "finelo" not in facts.lower()
     robots = (site_guard.DOCS_DIR / "robots.txt").read_text(encoding="utf-8")
     assert "Allow: /" in robots
     assert "Disallow:" not in robots
