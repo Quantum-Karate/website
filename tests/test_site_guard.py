@@ -238,7 +238,11 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
     for page in (index, seduma):
         assert "outlook.com" not in page.lower()
         assert "mailto:" not in page.lower()
-    home_hero = index.split('id="hero-title"')[1].split("</h1>")[0]
+    # Home leads with the Seduma Trade headline; the offer must sit in the
+    # hero right after the H1, before the hero actions.
+    home_section = index.split('id="hero-title"')[1].split("</section>")[0]
+    home_hero = home_section.split("</h1>", 1)[1].split('class="actions"')[0]
+    assert "Seduma Trade" in home_section.split("</h1>")[0]
     seduma_hero = seduma.split('id="hero-title"')[1].split("</h1>")[0]
     for hero in (home_hero, seduma_hero):
         assert "$49 once," in hero
