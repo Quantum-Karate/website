@@ -293,14 +293,28 @@ def test_seo_files_canonical_and_software_application():
         "contact.html": "https://quantum-karate.github.io/website/contact.html",
     }
     image = "https://quantum-karate.github.io/website/assets/og-seduma.png"
-    og_title = "Seduma Trade Dojo: $49 Once, No Subscription"
-    og_description = "$49 once, no subscription, nothing to cancel. Simulated results only. You run it on your own computer. Live stays off unless you choose it."
+    listing_title = "Seduma Trade Dojo: $49 Once, No Subscription"
+    listing_description = "$49 once, no subscription, nothing to cancel. Simulated results only. You run it on your own computer. Live stays off unless you choose it."
+    facts_title = "What Seduma is and isn\u2019t"
+    facts_description = "Plain facts: $49 once, no subscription. Simulated results only. Live stays off unless you choose it. Not a broker."
+    contact_title = "Contact Quantum Karate"
+    contact_description = "Product questions about Seduma Trade Dojo go through the Payhip listing. Simulated results only."
+    # Home and Seduma share the listing card. Facts and Contact carry their own.
+    social = {
+        "index.html": (listing_title, listing_description),
+        "seduma.html": (listing_title, listing_description),
+        "facts.html": (facts_title, facts_description),
+        "contact.html": (contact_title, contact_description),
+    }
     for name, canonical in pages.items():
         text = (site_guard.DOCS_DIR / name).read_text(encoding="utf-8")
+        og_title, og_description = social[name]
         assert f'<link rel="canonical" href="{canonical}">' in text
         assert f'<meta property="og:url" content="{canonical}">' in text
         assert f'<meta property="og:title" content="{og_title}">' in text
         assert f'<meta property="og:description" content="{og_description}">' in text
+        assert f'<meta name="twitter:title" content="{og_title}">' in text
+        assert f'<meta name="twitter:description" content="{og_description}">' in text
         assert f'<meta property="og:image" content="{image}">' in text
         assert '<meta name="twitter:card" content="summary_large_image">' in text
         assert f'<meta name="twitter:image" content="{image}">' in text
@@ -318,6 +332,11 @@ def test_seo_files_canonical_and_software_application():
     assert '"url": "https://payhip.com/b/K7UaW"' in seduma
     assert "SoftwareApplication" not in index
     facts = (site_guard.DOCS_DIR / "facts.html").read_text(encoding="utf-8")
+    contact = (site_guard.DOCS_DIR / "contact.html").read_text(encoding="utf-8")
+    assert f"<title>{facts_title} | Quantum Karate</title>" in facts
+    assert f'<meta name="description" content="{facts_description}">' in facts
+    assert "<title>Contact | Quantum Karate</title>" in contact
+    assert 'content="Product questions about Seduma Trade Dojo go through the Payhip listing. $49 once, no subscription, nothing to cancel. Simulated results only."' in contact
     assert "<strong>A one-time Dojo.</strong>" in facts
     assert "No passive-income promise, and no profit promise." in facts
     assert "profit" not in facts.replace("No passive-income promise, and no profit promise.", "")
