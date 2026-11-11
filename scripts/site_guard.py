@@ -10,6 +10,8 @@ import re
 import sys
 from pathlib import Path
 
+from i18n_data import LOCALES, PAGES as LOCALE_PAGES, allowed_urls, fill, load_strings, page_url
+
 ROOT = Path(__file__).resolve().parent.parent
 DOCS_DIR = ROOT / "docs"
 MANIFEST_PATH = ROOT / ".github" / "site-manifest.sha256"
@@ -59,7 +61,8 @@ _BOUNDED_PHRASE_RES = tuple(
     re.compile(r"(?<![A-Za-z0-9])" + re.escape(phrase) + r"(?![A-Za-z0-9])", re.IGNORECASE)
     for phrase in _BOUNDED_PHRASES
 )
-_ARR_RE = re.compile(r"(?<![A-Za-z0-9])ARR(?![A-Za-z0-9])", re.IGNORECASE)
+# Unicode letters keep this off words such as French "arrêt".
+_ARR_RE = re.compile(r"(?<!\w)ARR(?!\w)", re.IGNORECASE)
 _PERCENT_RETURN_RE = re.compile(
     r"\d+(?:\.\d+)?%\s*(?:return|gain|profit|apy|apr)\b",
     re.IGNORECASE,
@@ -177,15 +180,9 @@ def html_claim_texts(raw: str) -> list[str]:
     return texts
 
 
-# The Practice eval checkout, plus the four canonical page URLs.
-# Every other absolute URL stays blocked.
-_ALLOWED_EXTERNAL_REFS = frozenset({
-    "https://payhip.com/b/K7UaW",
-    "https://quantum-karate.github.io/website/index.html",
-    "https://quantum-karate.github.io/website/seduma.html",
-    "https://quantum-karate.github.io/website/facts.html",
-    "https://quantum-karate.github.io/website/contact.html",
-})
+# Payhip, plus each locale page. Every other absolute URL stays blocked.
+_ALLOWED_EXTERNAL_REFS = allowed_urls()
+_PAYHIP = "https://payhip.com/b/K7UaW"
 
 
 def reference_problem(value: str) -> str | None:
@@ -652,12 +649,114 @@ def llm_copy_findings(docs_dir: Path) -> list[str]:
     return findings
 
 
+def check_i18n(docs_dir: Path) -> list[str]:
+    """Lang, direction, hreflang, disclaimer, and the single Payhip CTA for every locale."""
+    findings: list[str] = []
+    try:
+        strings = load_strings()
+    except ValueError as exc:
+        return [str(exc)]
+    expected_links = len(LOCALES) + 1
+    for code, folder, direction, _name in LOCALES:
+        data = strings[code]
+        disclaimer = fill(data["disclaimer"], code, html_mode=True)
+        promise = fill(data["promise"], code, html_mode=True)
+        step_ready = fill(data["step_ready"], code, html_mode=True)
+        for page in LOCALE_PAGES:
+            rel = f"{folder}/{page}" if folder else page
+            path = docs_dir / rel
+            if not path.is_file():
+                findings.append(f"missing locale page: {rel}")
+                continue
+            text = path.read_text(encoding="utf-8")
+            if f'<html lang="{code}"' not in text:
+                findings.append(f"{rel}: html lang must be {code}")
+            if f'dir="{direction}"' not in text:
+                findings.append(f"{rel}: html dir must be {direction}")
+            if text.count('<link rel="alternate" hreflang="') != expected_links:
+                findings.append(f"{rel}: hreflang alternate count")
+            if 'hreflang="x-default"' not in text:
+                findings.append(f"{rel}: missing x-default")
+            for alt, alt_folder, _alt_dir, _alt_name in LOCALES:
+                href = page_url(alt_folder, page)
+                if f'hreflang="{alt}"' not in text or href not in text:
+                    findings.append(f"{rel}: missing hreflang {alt}")
+            if disclaimer not in text:
+                findings.append(f"{rel}: missing translated disclaimer")
+            if "Neural Agency Engine" not in text:
+                findings.append(f"{rel}: Neural Agency Engine must stay spelled out")
+            if "Seduma Trade Dojo" in text:
+                findings.append(f"{rel}: old product name")
+            if page == "seduma.html":
+                if promise not in text:
+                    findings.append(f"{rel}: missing translated promise")
+                if step_ready not in text:
+                    findings.append(f"{rel}: missing translated setup line")
+            payhip_count = text.count(f'href="{_PAYHIP}"')
+            if page == "facts.html":
+                if payhip_count != 0:
+                    findings.append(f"{rel}: facts page must not link to Payhip")
+            elif payhip_count != 1:
+                findings.append(f"{rel}: Payhip must be the only purchase link, once")
+            mails = text.lower().count("mailto:")
+            if page == "contact.html" and mails != 1:
+                findings.append(f"{rel}: contact must publish one support address")
+            if page != "contact.html" and mails != 0:
+                findings.append(f"{rel}: email must stay on the contact page")
+            if "waitlist" in text.lower():
+                findings.append(f"{rel}: waitlist is not allowed")
+    sitemap = docs_dir / "sitemap.xml"
+    if sitemap.is_file():
+        sm = sitemap.read_text(encoding="utf-8")
+        if "xmlns:xhtml" not in sm:
+            findings.append("sitemap.xml: missing xhtml namespace")
+        for page in LOCALE_PAGES:
+            for code, folder, _direction, _name in LOCALES:
+                loc = page_url(folder, page)
+                if f"<loc>{loc}</loc>" not in sm:
+                    findings.append(f"sitemap.xml: missing {loc}")
+                if f'hreflang="{code}"' not in sm or loc not in sm:
+                    findings.append(f"sitemap.xml: missing alternate {code} for {page}")
+        if 'hreflang="x-default"' not in sm:
+            findings.append("sitemap.xml: missing x-default")
+    else:
+        findings.append("missing sitemap.xml")
+    return findings
+
+
+_OLD_PRODUCT_NAME = "Seduma Trade Dojo"
+
+
+def old_product_name_findings(docs_dir: Path) -> list[str]:
+    """The product name is Seduma Trade. The old compound listing name must not appear."""
+    findings: list[str] = []
+    if not docs_dir.is_dir():
+        return [f"missing docs directory: {docs_dir}"]
+    for path in sorted(item for item in docs_dir.rglob("*") if item.is_file()):
+        if path.suffix.lower() not in {".html", ".txt", ".md", ".xml"} and path.name != "robots.txt":
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except UnicodeError:
+            findings.append(f"{path.name}: not valid utf-8")
+            continue
+        if _OLD_PRODUCT_NAME in text:
+            rel = path.relative_to(docs_dir).as_posix()
+            findings.append(f"{rel}: old product name")
+    readme = docs_dir.parent / "README.md"
+    if readme.is_file() and _OLD_PRODUCT_NAME in readme.read_text(encoding="utf-8"):
+        findings.append("README.md: old product name")
+    return findings
+
+
 def run_guard(docs_dir: Path = DOCS_DIR, manifest_path: Path = MANIFEST_PATH) -> list[str]:
     return (
         scan_docs(docs_dir)
         + check_required(docs_dir)
         + check_jsonld(docs_dir)
         + llm_copy_findings(docs_dir)
+        + check_i18n(docs_dir)
+        + old_product_name_findings(docs_dir)
         + check_manifest(docs_dir, manifest_path)
     )
 

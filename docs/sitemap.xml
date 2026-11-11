@@ -1,16 +1,889 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://quantum-karate.github.io/website/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
   </url>
   <url>
     <loc>https://quantum-karate.github.io/website/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
   </url>
   <url>
     <loc>https://quantum-karate.github.io/website/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
   </url>
   <url>
     <loc>https://quantum-karate.github.io/website/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/es/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/pt-BR/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/fr/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/de/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/it/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/zh-Hans/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ja/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ko/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/hi/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ar/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ru/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/id/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/index.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/es/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/pt-BR/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/fr/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/de/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/it/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/zh-Hans/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ja/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ko/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/hi/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ar/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ru/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/id/seduma.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/seduma.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/seduma.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/es/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/pt-BR/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/fr/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/de/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/it/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/zh-Hans/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ja/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ko/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/hi/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ar/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ru/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/id/facts.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/facts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/facts.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/es/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/pt-BR/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/fr/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/de/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/it/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/zh-Hans/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ja/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ko/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/hi/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ar/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/ru/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/id/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://quantum-karate.github.io/website/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://quantum-karate.github.io/website/es/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://quantum-karate.github.io/website/pt-BR/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://quantum-karate.github.io/website/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://quantum-karate.github.io/website/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://quantum-karate.github.io/website/it/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://quantum-karate.github.io/website/zh-Hans/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://quantum-karate.github.io/website/ja/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://quantum-karate.github.io/website/ko/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://quantum-karate.github.io/website/hi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://quantum-karate.github.io/website/ar/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://quantum-karate.github.io/website/ru/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://quantum-karate.github.io/website/id/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
   </url>
   <url>
     <loc>https://quantum-karate.github.io/website/llms.txt</loc>
