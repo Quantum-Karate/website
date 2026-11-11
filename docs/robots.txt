@@ -1,3 +1,22 @@
+# Quantum Karate allows AI crawlers.
+# Plain-language summary: https://quantum-karate.github.io/website/llms.txt
+# Longer summary: https://quantum-karate.github.io/website/llms-full.txt
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 User-agent: *
 Allow: /
 

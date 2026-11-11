@@ -1,0 +1,24 @@
+# Quantum Karate
+
+> Quantum Karate makes Seduma Trade, a Practice-first trading simulator for your own strategies: simulated fills, and it runs on your own computer. $49 once, no subscription, nothing to cancel.
+
+Seduma Trade is the Practice eval from Quantum Karate. You bring your own trading rules. Practice (also called Paper) is the default: fills are simulated, and no real money moves. Live stays off until the buyer elects it. Seduma does not pick, recommend, or generate trades. Seduma is not a broker or an investment adviser.
+
+Buyers get the source, including the Neural Agency Engine, and run it on their own computer. The Neural Agency Engine researches. It does not pick or recommend trades, and it is not the Live switch. Seduma is the front door. Simulated results only. No passive-income promise, and no profit promise.
+
+The only buy link is the Payhip listing. There is no waitlist and no other purchase link.
+
+## Pages
+
+- [Home](https://quantum-karate.github.io/website/index.html): Quantum Karate and Seduma Trade
+- [Seduma](https://quantum-karate.github.io/website/seduma.html): Seduma Trade, the Practice-first trading simulator
+- [Facts](https://quantum-karate.github.io/website/facts.html): What Seduma is and is not
+- [Contact](https://quantum-karate.github.io/website/contact.html): Product questions and support
+
+## Buy
+
+- [Get Seduma Trade on Payhip](https://payhip.com/b/K7UaW): $49 once, no subscription, nothing to cancel
+
+## Longer summary
+
+- [llms-full.txt](https://quantum-karate.github.io/website/llms-full.txt): The same facts, with the page-by-page detail already published on the site

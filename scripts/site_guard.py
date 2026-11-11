@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import html
+import json
 import re
 import sys
 from pathlib import Path
@@ -466,8 +467,199 @@ def check_manifest(docs_dir: Path, manifest_path: Path) -> list[str]:
     return findings
 
 
+_JSONLD_RE = re.compile(
+    r"""<script\b[^>]*type\s*=\s*["']application/ld\+json["'][^>]*>(.*?)</script>""",
+    re.IGNORECASE | re.DOTALL,
+)
+_JSONLD_CONTEXT = "https://schema.org"
+_SCHEMA_TYPES = frozenset({
+    "Organization",
+    "Product",
+    "SoftwareApplication",
+    "Offer",
+})
+_RATING_KEYS = frozenset({"aggregaterating", "review", "ratingvalue", "reviewcount"})
+_ORG_DESCRIPTION = (
+    "Quantum Karate\u2122 builds technology the way a martial artist trains: "
+    "with precision, discipline, and attention to the smallest detail."
+)
+_PRODUCT_DESCRIPTION = (
+    "$49 once, no subscription, nothing to cancel. Source includes the Neural Agency Engine, "
+    "on your own computer. Simulated results only. Not a broker."
+)
+_LLM_FILES = ("llms.txt", "llms-full.txt")
+
+
+def parse_jsonld(raw: str) -> list[object]:
+    """Parse every JSON-LD block. Raises json.JSONDecodeError if one does not parse."""
+    return [json.loads(match.group(1)) for match in _JSONLD_RE.finditer(raw)]
+
+
+def _type_set(node: object) -> set[str] | None:
+    if not isinstance(node, dict):
+        return None
+    raw_type = node.get("@type")
+    if isinstance(raw_type, str):
+        return {raw_type}
+    if isinstance(raw_type, list) and raw_type and all(isinstance(item, str) for item in raw_type):
+        return set(raw_type)
+    return set()
+
+
+def _rating_keys(node: object) -> list[str]:
+    found: list[str] = []
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if key.lower() in _RATING_KEYS:
+                found.append(key)
+            found.extend(_rating_keys(value))
+    elif isinstance(node, list):
+        for item in node:
+            found.extend(_rating_keys(item))
+    return found
+
+
+def _used_types(node: object) -> set[str]:
+    found: set[str] = set()
+    if isinstance(node, dict):
+        types = _type_set(node)
+        if types:
+            found.update(types)
+        for value in node.values():
+            found.update(_used_types(value))
+    elif isinstance(node, list):
+        for item in node:
+            found.update(_used_types(item))
+    return found
+
+
+def jsonld_findings(pages: dict[str, str]) -> list[str]:
+    """Organization on Home, Product and SoftwareApplication with an Offer on Seduma."""
+    findings: list[str] = []
+    parsed: dict[str, list[object]] = {}
+    for name in REQUIRED_PAGES:
+        try:
+            parsed[name] = parse_jsonld(pages.get(name, ""))
+        except json.JSONDecodeError:
+            findings.append(f"{name}: JSON-LD does not parse")
+            parsed[name] = []
+
+    for name in ("facts.html", "contact.html"):
+        if parsed[name]:
+            findings.append(f"{name}: unexpected JSON-LD")
+
+    home = parsed["index.html"]
+    if len(home) != 1 or not isinstance(home[0], dict):
+        findings.append("index.html: expected one Organization JSON-LD object")
+    else:
+        org = home[0]
+        if org.get("@context") != _JSONLD_CONTEXT:
+            findings.append("index.html: JSON-LD @context must be https://schema.org")
+        if _type_set(org) != {"Organization"}:
+            findings.append("index.html: JSON-LD @type must be Organization")
+        if org.get("name") != "Quantum Karate":
+            findings.append("index.html: Organization name must be Quantum Karate")
+        if org.get("url") != "https://quantum-karate.github.io/website/index.html":
+            findings.append("index.html: Organization url must be the Home page")
+        if org.get("slogan") != "Precision is Power":
+            findings.append("index.html: Organization slogan must be Precision is Power")
+        if org.get("description") != _ORG_DESCRIPTION:
+            findings.append("index.html: Organization description must match the Home page")
+        if org.get("logo") != "https://quantum-karate.github.io/website/assets/logo-horizontal-transparent.svg":
+            findings.append("index.html: Organization logo must be the site logo")
+        expected_keys = {"@context", "@type", "name", "url", "slogan", "description", "logo"}
+        if set(org) != expected_keys:
+            findings.append("index.html: Organization JSON-LD has unexpected fields")
+        if _rating_keys(org):
+            findings.append("index.html: JSON-LD must not include ratings or reviews")
+        unknown = _used_types(org) - _SCHEMA_TYPES
+        if unknown:
+            findings.append(f"index.html: JSON-LD uses unknown schema.org types: {', '.join(sorted(unknown))}")
+
+    product_blocks = parsed["seduma.html"]
+    if len(product_blocks) != 1 or not isinstance(product_blocks[0], dict):
+        findings.append("seduma.html: expected one Product JSON-LD object")
+    else:
+        product = product_blocks[0]
+        if product.get("@context") != _JSONLD_CONTEXT:
+            findings.append("seduma.html: JSON-LD @context must be https://schema.org")
+        if _type_set(product) != {"Product", "SoftwareApplication"}:
+            findings.append("seduma.html: JSON-LD @type must be Product and SoftwareApplication")
+        if product.get("name") != "Seduma Trade":
+            findings.append("seduma.html: product name must be Seduma Trade")
+        if product.get("operatingSystem") != "Self-hosted":
+            findings.append("seduma.html: operatingSystem must be Self-hosted")
+        if product.get("description") != _PRODUCT_DESCRIPTION:
+            findings.append("seduma.html: product description must match the page")
+        if product.get("url") != "https://quantum-karate.github.io/website/seduma.html":
+            findings.append("seduma.html: product url must be the Seduma page")
+        expected_keys = {"@context", "@type", "name", "operatingSystem", "description", "url", "offers"}
+        if set(product) != expected_keys:
+            findings.append("seduma.html: product JSON-LD has unexpected fields")
+        offer = product.get("offers")
+        offer_keys = {"@type", "price", "priceCurrency", "url", "availability"}
+        if not isinstance(offer, dict) or set(offer) != offer_keys:
+            findings.append("seduma.html: Offer must be one object with price, currency, url, and availability")
+        elif (
+            offer.get("@type") != "Offer"
+            or offer.get("price") != "49.00"
+            or offer.get("priceCurrency") != "USD"
+            or offer.get("url") != "https://payhip.com/b/K7UaW"
+            or offer.get("availability") != "https://schema.org/InStock"
+        ):
+            findings.append("seduma.html: Offer must be 49.00 USD, InStock, at the Payhip listing")
+        if _rating_keys(product):
+            findings.append("seduma.html: JSON-LD must not include ratings or reviews")
+        unknown = _used_types(product) - _SCHEMA_TYPES
+        if unknown:
+            findings.append(f"seduma.html: JSON-LD uses unknown schema.org types: {', '.join(sorted(unknown))}")
+    return findings
+
+
+def check_jsonld(docs_dir: Path) -> list[str]:
+    pages: dict[str, str] = {}
+    for name in REQUIRED_PAGES:
+        path = docs_dir / name
+        if path.is_file():
+            try:
+                pages[name] = path.read_text(encoding="utf-8")
+            except UnicodeError:
+                pages[name] = ""
+        else:
+            pages[name] = ""
+    return jsonld_findings(pages)
+
+
+def llm_copy_findings(docs_dir: Path) -> list[str]:
+    """The plain-language summaries stay inside the same claim rules as the pages."""
+    findings: list[str] = []
+    if not docs_dir.is_dir():
+        return [f"missing docs directory: {docs_dir}"]
+    for name in _LLM_FILES:
+        path = docs_dir / name
+        if not path.is_file():
+            findings.append(f"missing {name}")
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except UnicodeError:
+            findings.append(f"{name}: not valid utf-8")
+            continue
+        for item in findings_for_text(".txt", text):
+            findings.append(f"{name}: {item}")
+        if "Seduma Trade Dojo" in text:
+            findings.append(f"{name}: old product name")
+    return findings
+
+
 def run_guard(docs_dir: Path = DOCS_DIR, manifest_path: Path = MANIFEST_PATH) -> list[str]:
-    return scan_docs(docs_dir) + check_required(docs_dir) + check_manifest(docs_dir, manifest_path)
+    return (
+        scan_docs(docs_dir)
+        + check_required(docs_dir)
+        + check_jsonld(docs_dir)
+        + llm_copy_findings(docs_dir)
+        + check_manifest(docs_dir, manifest_path)
+    )
 
 
 def main(argv: list[str] | None = None) -> int:

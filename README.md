@@ -20,6 +20,8 @@ Live address: https://quantum-karate.github.io/website/
 
 Pages is switched on by the repository owner after review. Internal links are relative.
 
+`docs/llms.txt` is the short plain-language summary for AI tools (served at `/llms.txt`). `docs/llms-full.txt` is the longer version of the same facts. `docs/robots.txt` allows AI crawlers. `docs/sitemap.xml` lists the four pages and both summary files.
+
 ## Code owners
 
 `.github/CODEOWNERS` is reserved for a Quantum-Karate org team (add one when ready). Until then, org admins review site changes.
@@ -32,4 +34,4 @@ Pages is switched on by the repository owner after review. Internal links are re
 
 ## Contact
 
-Support is on `contact.html`: v-nat@outlook.com, replies within 2 business days. Seduma Trade Dojo, the Practice eval, is listed at https://payhip.com/b/K7UaW.
+Support is on `contact.html`: v-nat@outlook.com, replies within 2 business days. Seduma Trade, the Practice eval, is listed at https://payhip.com/b/K7UaW.
