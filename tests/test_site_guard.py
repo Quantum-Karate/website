@@ -87,6 +87,7 @@ def test_banned_phrases_are_case_insensitive_and_near_misses_pass():
 def test_new_banned_terms_and_near_misses():
     for phrase in ("autonomous", "This is not autonomous.", "hands-off", "hands   off", "ARR", "12% return", "3.5% APY", "10%profit", "return of", "returns of", "1,000+ customers", "12 users", "3 traders", "40 clients"):
         assert site_guard.findings_for_text(".html", f"<p>{phrase}</p>"), phrase
+    assert site_guard.findings_for_text(".html", "<p>Arrêt d’urgence. L’arrêt reste disponible.</p>") == []
     near = """
     <p>Auto-trading off. An auto-close.</p>
     <script>
@@ -365,14 +366,17 @@ def test_seo_files_canonical_and_software_application():
     root = ET.fromstring(sitemap)
     ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     locs = [node.text for node in root.findall("sm:url/sm:loc", ns)]
-    assert locs == [
+    assert locs[:4] == [
         "https://quantum-karate.github.io/website/index.html",
         "https://quantum-karate.github.io/website/seduma.html",
         "https://quantum-karate.github.io/website/facts.html",
         "https://quantum-karate.github.io/website/contact.html",
+    ]
+    assert locs[-2:] == [
         "https://quantum-karate.github.io/website/llms.txt",
         "https://quantum-karate.github.io/website/llms-full.txt",
     ]
+    assert len(locs) == 4 * 13 + 2
 
 
 def _jsonld_script(payload: dict) -> str:
@@ -473,6 +477,40 @@ def test_llms_files_and_product_name():
     readme = (site_guard.ROOT / "README.md").read_text(encoding="utf-8")
     assert "Seduma Trade Dojo" not in readme
     assert "https://payhip.com/b/K7UaW" in readme
+
+
+def test_old_product_name_fails_the_guard(tmp_path: Path):
+    docs = tmp_path / "docs"
+    docs.mkdir()
+    (docs / "index.html").write_text("<p>Seduma Trade Dojo</p>", encoding="utf-8")
+    assert any("old product name" in item for item in site_guard.old_product_name_findings(docs))
+    (docs / "index.html").write_text("<p>Seduma Trade</p><p>A one-time Dojo.</p>", encoding="utf-8")
+    assert site_guard.old_product_name_findings(docs) == []
+
+
+def test_a11y_polish_and_locale_switch():
+    if not site_guard.DOCS_DIR.is_dir():
+        pytest.skip("docs/ is not present")
+    css = (site_guard.DOCS_DIR / "site.css").read_text(encoding="utf-8")
+    assert ".js [data-reveal]:focus-within" in css
+    assert "scroll-margin-top: calc(var(--header-h) + 1.25rem)" in css
+    assert "transition: top" not in css
+    assert "text-decoration: underline" in css
+    assert ".chip--honest { color: hsl(var(--qk-fg)); font-size: 0.75rem; }" in css
+    index = (site_guard.DOCS_DIR / "index.html").read_text(encoding="utf-8")
+    assert '<ul role="list">' in index
+    assert 'aria-label="Language"' in index
+    assert "What it is and isn\u2019t" not in index
+    assert index.count("What Seduma is and isn\u2019t") >= 2
+    es = (site_guard.DOCS_DIR / "es" / "index.html").read_text(encoding="utf-8")
+    assert '<html lang="es" dir="ltr">' in es
+    assert "Qué es Seduma y qué no es" in es
+    assert es.count('<link rel="alternate" hreflang="') == 14
+    ar = (site_guard.DOCS_DIR / "ar" / "seduma.html").read_text(encoding="utf-8")
+    assert '<html lang="ar" dir="rtl">' in ar
+    assert 'href="https://payhip.com/b/K7UaW"' in ar
+    assert "Seduma Trade Dojo" not in ar
+    assert "Neural Agency Engine" in ar
 
 
 def test_delivered_docs_pass():
