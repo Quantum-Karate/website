@@ -466,21 +466,21 @@ Do **not** insert ™ inside the disclaimer.
 
 ---
 
-## Addendum 2026-10-12 — listing name Seduma Trade Dojo
+## Addendum 2026-10-12 — listing name Seduma Trade
 
 **Supersedes** the live **Get Seduma** strings in Addendum 2026-10-09 for `index.html` and `seduma.html`. The earlier deck text stays as history. The Payhip URL, price, Practice-first lead, and interim waitlist are unchanged.
 
-**Listing:** Seduma Trade Dojo at `https://payhip.com/b/K7UaW`. The Dojo is the Practice eval. It is not a new product name for Seduma itself.
+**Listing:** Seduma Trade at `https://payhip.com/b/K7UaW`. Seduma Trade is the $49 Practice eval.
 
-**Home** (`index.html`): section index `04` / `Seduma Trade Dojo`.
+**Home** (`index.html`): section index `04` / `Seduma Trade`.
 
 **Seduma** (`seduma.html`): the same unnumbered band. Research keeps index `04`.
 
 **Locked strings (both pages)**
-- H2: Get Seduma Trade Dojo.
-- Lead: Seduma Trade Dojo is the $49 Practice eval. Practice fills are simulated — they are not live fills. Practice (also called Paper) is the default. Live stays off until the buyer elects it. The Neural Agency Engine researches. Seduma is the front door.
+- H2: Get Seduma Trade.
+- Lead: Seduma Trade is the $49 Practice eval. Practice fills are simulated — they are not live fills. Practice (also called Paper) is the default. Live stays off until the buyer elects it. The Neural Agency Engine researches. Seduma is the front door.
 - In the HTML, Practice, Paper, and Live in that lead are `<strong>`.
-- Button: Get Seduma Trade Dojo on Payhip →
+- Button: Get Seduma Trade on Payhip →
 - `href`: `https://payhip.com/b/K7UaW`
 - `rel`: `noopener` (same tab; no `target`)
 
@@ -498,17 +498,17 @@ Do **not** insert ™ inside the disclaimer.
 
 **Supersedes** the live interim waitlist and the Contact email. Earlier deck text stays as history. The personal Outlook address is no longer published in markup, scripts, or styles.
 
-**Home and Seduma:** the interim Practice waitlist section is removed. The Get Seduma Trade Dojo band stays, with the Payhip button only (`https://payhip.com/b/K7UaW`).
+**Home and Seduma:** the interim Practice waitlist section is removed. The Get Seduma Trade band stays, with the Payhip button only (`https://payhip.com/b/K7UaW`).
 
 **Contact:** the mailto address, the “opens your email app” line, and the topic chips are removed. The page keeps the same Payhip button and the Practice-eval lead.
 
 **Titles and descriptions**
-- `index.html` title: Quantum Karate: Seduma Trade Dojo, Practice-First Trading Console
-- `index.html` description: Quantum Karate makes Seduma, a self-hosted console for practicing your own trading rules with simulated fills. Get the Seduma Trade Dojo, the $49 Practice eval.
-- `seduma.html` title: Seduma Trade Dojo: Practice Trading Simulator on Your Computer | Quantum Karate
+- `index.html` title: Quantum Karate: Seduma Trade, Practice-First Trading Console
+- `index.html` description: Quantum Karate makes Seduma, a self-hosted console for practicing your own trading rules with simulated fills. Get the Seduma Trade, the $49 Practice eval.
+- `seduma.html` title: Seduma Trade: Practice Trading Simulator on Your Computer | Quantum Karate
 - `seduma.html` description: Practice your own trading rules with simulated fills on a self-hosted localhost console. No real money moves, and Live stays off until you choose it. Not a broker.
 
-**Every page:** a canonical link to `https://quantum-karate.github.io/website/` plus the page file (`index.html`, `seduma.html`, `facts.html`, `contact.html`). Open Graph and Twitter `summary_large_image` tags use the shared title “Seduma Trade Dojo: Practice Trading, Simulated Fills Only”, the shared description that all results are simulated and no real money moves, and `assets/og-seduma.png` (1200×630).
+**Every page:** a canonical link to `https://quantum-karate.github.io/website/` plus the page file (`index.html`, `seduma.html`, `facts.html`, `contact.html`). Open Graph and Twitter `summary_large_image` tags use the shared title “Seduma Trade: Practice Trading, Simulated Fills Only”, the shared description that all results are simulated and no real money moves, and `assets/og-seduma.png` (1200×630).
 
 **`seduma.html` only:** SoftwareApplication JSON-LD. Offer price 49 USD. Offer url `https://payhip.com/b/K7UaW`. No ratings.
 
@@ -573,12 +573,47 @@ From the 2026-10-21 competitor brief, the short edge moves only. No competitor i
 - A promise of results, added: Simulated results only. No passive-income promise, and no profit promise.
 
 **Titles and descriptions**
-- Home title: Quantum Karate: Seduma Trade Dojo, $49 Once, No Subscription
+- Home title: Quantum Karate: Seduma Trade, $49 Once, No Subscription
 - Home description: Quantum Karate: $49 once, no subscription, nothing to cancel. The source includes the Neural Agency Engine, on your own computer. Simulated results only.
-- Seduma title: Seduma Trade Dojo: $49 Once, No Subscription | Quantum Karate
+- Seduma title: Seduma Trade: $49 Once, No Subscription | Quantum Karate
 - Seduma description, also the SoftwareApplication JSON-LD description: $49 once, no subscription, nothing to cancel. Source includes the Neural Agency Engine, on your own computer. Simulated results only. Not a broker.
-- Shared Open Graph and Twitter title: Seduma Trade Dojo: $49 Once, No Subscription
+- Shared Open Graph and Twitter title: Seduma Trade: $49 Once, No Subscription
 - Shared Open Graph and Twitter description: $49 once, no subscription, nothing to cancel. Simulated results only. You run it on your own computer. Live stays off unless you choose it.
 - Offer price stays 49 USD. Offer url stays the Payhip listing. No ratings.
 
 **Left off:** competitor names, a port number, passive-income promises, profit promises, and any result metric.
+
+---
+
+## Addendum 2026-11-11 — product name Seduma Trade, AI-readable files
+
+**Supersedes** the live product-name strings. Earlier deck text stays as history. The product name is Seduma Trade. The words "one-time Dojo" stay only where they already name the practice feature: "Why a one-time Dojo" and "A one-time Dojo."
+
+**Home** (`index.html`): section index `04` / `Seduma Trade`. Organization JSON-LD, name Quantum Karate, url the Home canonical, slogan "Precision is Power". No ratings and no reviews.
+
+**Seduma** (`seduma.html`): Product and SoftwareApplication JSON-LD. Name Seduma Trade. Offer price 49.00 USD, price currency USD, url `https://payhip.com/b/K7UaW`, availability `https://schema.org/InStock`. No ratings and no reviews.
+
+**Locked strings (Home, Seduma, and Contact)**
+- H2: Get Seduma Trade.
+- Lead: Seduma Trade is the $49 Practice eval. Practice fills are simulated — they are not live fills. Practice (also called Paper) is the default. Live stays off until the buyer elects it. The Neural Agency Engine researches. Seduma is the front door. $49 once, no subscription, nothing to cancel. Buyers get the source, including the Neural Agency Engine, and run it on their own computer. Simulated results only. No passive-income promise, and no profit promise.
+- Button: Get Seduma Trade on Payhip →
+- `href`: `https://payhip.com/b/K7UaW`
+- `rel`: `noopener` (same tab; no `target`)
+
+**Titles**
+- Home title: Quantum Karate: Seduma Trade, $49 Once, No Subscription
+- Seduma title: Seduma Trade: $49 Once, No Subscription | Quantum Karate
+- Shared Open Graph and Twitter title: Seduma Trade: $49 Once, No Subscription
+- Shared image alt: Seduma Trade. Practice mode · Live: Off. Simulated results, not live.
+- Contact description: Product questions about Seduma Trade go through the Payhip listing. $49 once, no subscription, nothing to cancel. Simulated results only.
+
+**AI-readable files**
+- `docs/llms.txt`: short plain-language summary. Practice-first trading simulator for your own strategies, simulated fills, runs on your own computer, price $49, only buy link `https://payhip.com/b/K7UaW`, and links to Home, Seduma, Facts, and Contact.
+- `docs/llms-full.txt`: the same facts at page length. No ratings, no results, no second purchase link.
+- Every HTML page links `llms.txt` with `<link rel="alternate" href="llms.txt" type="text/plain">`.
+- `docs/robots.txt`: Allow for GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot, Google-Extended, and `*`. No Disallow. Comment points at `llms.txt` and `llms-full.txt`. Sitemap line unchanged.
+- `docs/sitemap.xml`: the four pages plus `llms.txt` and `llms-full.txt`.
+
+**Social image:** `assets/og-seduma.png` reads Seduma Trade. Practice mode and Live: Off stay.
+
+**Ceiling:** named promise untouched. Footer disclaimer untouched. Practice-first. Results stay labeled simulated. No profit claim. Neural Agency Engine stays spelled out. No waitlist. The Payhip listing stays the only purchase link. Contact stays v-nat@outlook.com.

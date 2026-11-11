@@ -1,0 +1,96 @@
+# Quantum Karate
+
+> This file restates facts already published on the Quantum Karate site. It does not add offers, ratings, reviews, or results.
+
+Quantum Karate builds technology the way a martial artist trains: with precision, discipline, and attention to the smallest detail. The public tagline is "Precision is Power."
+
+Seduma Trade is Quantum Karate's product: a Practice-first trading simulator for your own strategies. Simulated fills. It runs on your own computer.
+
+Price: $49 once, no subscription, nothing to cancel.
+
+The only buy link is https://payhip.com/b/K7UaW. There is no waitlist and no other purchase link.
+
+Home says: "Your control. Your decisions. Your trades, in your hands." Then: "Amplified by AI assistance."
+
+## What Seduma Trade is
+
+- A Paper-first, strategy-free runtime. Software that runs trading rules you bring, starting in Practice.
+- Practice by default. Paper is the default start. Sending real orders is off by default.
+- Built around your own strategy. You bring the strategy — the rules that decide when to place an order.
+- Live only when you elect it, through a confirm-gated step. Completing setup does not turn on Live.
+- Equipped with an Emergency stop. It stays available in Practice and in Live. It does not close open positions or cancel orders already at your broker.
+- Seduma keeps an audit trail: a record written before it contacts any outside service.
+- You configure the risk limits.
+- Built-in connections are conveniences, not an exclusive list. You can bring another API you have access to.
+- Your first Practice run needs no Live or real broker keys.
+- A one-time Dojo: $49 once. Buyers get the source, including the Neural Agency Engine, and run it on their own computer.
+
+"Dojo" on the site names that practice feature (the one-time Dojo). The product name is Seduma Trade.
+
+## What Seduma Trade is not
+
+- Not a broker.
+- Not an investment adviser. It does not pick, recommend, or generate trades.
+- Not a source of strategies. It is not a strategy marketplace.
+- Not trading before you say so. Installing Seduma or completing setup does not place live orders.
+- Not a promise of results. Paper/Practice P&L is not a promise of live results. Practice fills are simulated — they are not live fills. Simulated results only. No passive-income promise, and no profit promise.
+- Connecting a broker or loading a connection does not unlock Live.
+- Emergency stop is not an auto-close.
+- Seduma is not the Neural Agency Engine. Seduma is the front door. The Neural Agency Engine is the research engine. It does not pick or recommend trades, and it is not the Live switch.
+
+## How a first run works
+
+1. Bring your rules. A strategy is the set of rules that decides when to place an order. You bring your own. Seduma does not pick, recommend, or generate trades.
+2. Start in Practice. Practice is the default start. Fills are simulated and no real money moves. Your first Practice run needs no Live or real broker keys.
+3. Know how to stop. Emergency stop makes Seduma refuse to send new orders until you release it. It does not close open positions or cancel orders already at your broker.
+4. Live, only if you choose. Live is optional and off by default. Finishing setup does not turn it on. To elect Live, you confirm it yourself by typing LIVE. It does not switch on by itself.
+
+First-run setup has four steps: Welcome to Paper Practice, Safety check, Try a practice run, and You're set — setup stays Paper. The Safety check records that you read the Paper disclosures. It does not turn on Live. Completing setup does not turn on Live — you choose later.
+
+If you ever elect Live, Seduma won't turn it on until every item is checked and LIVE is typed. Cancelling keeps you in Practice. Connecting a broker does not unlock Live.
+
+Words used on the site:
+
+- Practice: running your trading rules with simulated fills. No real money moves. It is the default.
+- Paper: another word for Practice. A broker's own paper account is called Real paper — still no real money.
+- Live: real orders with real money, through a connection you set up. Off until you elect it yourself.
+- Confirm-gated: a step that does not take effect until you confirm it yourself.
+- Fill: the moment an order completes. In Practice, fills are simulated.
+- P&L: the running gain or loss on trades. Paper/Practice P&L is not a promise of live results.
+- Strategy: the rules that decide when to place an order. You bring these. Seduma does not supply them.
+- Connection: a link from Seduma to a trading platform you have access to, labeled Real paper, Test sandbox, or Live-capable.
+- Emergency stop: a control that makes Seduma refuse to send new orders until you release it. It does not close open positions.
+- Audit trail: a record Seduma writes before it contacts any outside service. It is Seduma's own log, not an independent audit.
+
+Connection types published on the site: Practice stub (first run, no broker account or keys), Real paper (broker paper account, still no real money), Test sandbox (vendor/test sandbox, not the same as broker paper trading), and Live-capable (can send live orders only after you elect Live). Connecting does not unlock Live.
+
+## Price and source
+
+The Seduma page comparison is titled "Why a one-time Dojo". It contrasts:
+
+- Price: a subscription you have to cancel, versus $49 once, no subscription, nothing to cancel.
+- Software: a closed copy you do not run, versus the source, including the Neural Agency Engine, on your own computer.
+- Results: a passive-income pitch, versus simulated results only. No passive-income promise, and no profit promise.
+- Control: trading before you say so, versus Practice by default. We don't trade until you say so.
+
+Buyers get the source, including the Neural Agency Engine, and run it on their own computer. Every line of Seduma and the Neural Agency Engine is yours to read. The Neural Agency Engine does not pick or recommend trades, and it is not the Live switch. Seduma is the front door.
+
+Honest Practice, as published: Practice fills are simulated — they are not live fills. Paper/Practice P&L is not a promise of live results. Emergency stop stays available in Practice and in Live. It does not close open positions. Simulated results only. No passive-income promise, and no profit promise.
+
+## Contact
+
+Product questions about Seduma Trade go through the Payhip listing. $49 once, no subscription, nothing to cancel.
+
+Support: v-nat@outlook.com, replies within 2 business days.
+
+## Pages
+
+- [Home](https://quantum-karate.github.io/website/index.html): Quantum Karate and Seduma Trade
+- [Seduma](https://quantum-karate.github.io/website/seduma.html): Seduma Trade, the Practice-first trading simulator
+- [Facts](https://quantum-karate.github.io/website/facts.html): What Seduma is and is not
+- [Contact](https://quantum-karate.github.io/website/contact.html): Product questions and support
+- [Get Seduma Trade on Payhip](https://payhip.com/b/K7UaW): the only buy link, $49 once
+
+## Disclaimer
+
+Seduma is not a broker or an investment adviser. It does not pick, recommend, or generate trades. Practice fills are simulated — they are not live fills. Paper/Practice P&L is not a promise of live results. Not investment advice.

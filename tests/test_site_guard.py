@@ -1,8 +1,10 @@
 """In-memory cases for the site claim guard."""
 
 import hashlib
+import json
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import pytest
@@ -212,12 +214,13 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
     script = (site_guard.DOCS_DIR / "site.js").read_text(encoding="utf-8")
     css = (site_guard.DOCS_DIR / "site.css").read_text(encoding="utf-8")
     for page in (index, seduma, contact):
-        assert "Get Seduma Trade Dojo." in page
-        assert "Seduma Trade Dojo is the $49 Practice eval." in page
+        assert "Get Seduma Trade." in page
+        assert "Seduma Trade is the $49 Practice eval." in page
+        assert "Seduma Trade Dojo" not in page
         assert "The Neural Agency Engine researches. Seduma is the front door." in page
         assert 'href="https://payhip.com/b/K7UaW"' in page
         assert 'rel="noopener"' in page
-        assert "Get Seduma Trade Dojo on Payhip" in page
+        assert "Get Seduma Trade on Payhip" in page
         assert "Get the Practice eval." not in page
         assert "Get it on Payhip" not in page
         assert "$49" in page
@@ -261,7 +264,8 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
     assert "clipboard" not in script
     assert "waitlist" not in css
     assert "outlook.com" not in css.lower()
-    assert "Seduma Trade Dojo" in index.split('index__num">04')[1].split("</section>")[0]
+    assert "Seduma Trade" in index.split('index__num">04')[1].split("</section>")[0]
+    assert "Seduma Trade Dojo" not in index.split('index__num">04')[1].split("</section>")[0]
 
 
 def test_hidden_copy_button_is_not_shown_by_btn_display():
@@ -293,12 +297,12 @@ def test_seo_files_canonical_and_software_application():
         "contact.html": "https://quantum-karate.github.io/website/contact.html",
     }
     image = "https://quantum-karate.github.io/website/assets/og-seduma.png"
-    listing_title = "Seduma Trade Dojo: $49 Once, No Subscription"
+    listing_title = "Seduma Trade: $49 Once, No Subscription"
     listing_description = "$49 once, no subscription, nothing to cancel. Simulated results only. You run it on your own computer. Live stays off unless you choose it."
     facts_title = "What Seduma is and isn\u2019t"
     facts_description = "Plain facts: $49 once, no subscription. Simulated results only. Live stays off unless you choose it. Not a broker."
     contact_title = "Contact Quantum Karate"
-    contact_description = "Product questions about Seduma Trade Dojo go through the Payhip listing. Simulated results only."
+    contact_description = "Product questions about Seduma Trade go through the Payhip listing. Simulated results only."
     # Home and Seduma share the listing card. Facts and Contact carry their own.
     social = {
         "index.html": (listing_title, listing_description),
@@ -310,6 +314,7 @@ def test_seo_files_canonical_and_software_application():
         text = (site_guard.DOCS_DIR / name).read_text(encoding="utf-8")
         og_title, og_description = social[name]
         assert f'<link rel="canonical" href="{canonical}">' in text
+        assert '<link rel="alternate" href="llms.txt" type="text/plain" title="Plain-language summary for AI tools">' in text
         assert f'<meta property="og:url" content="{canonical}">' in text
         assert f'<meta property="og:title" content="{og_title}">' in text
         assert f'<meta property="og:description" content="{og_description}">' in text
@@ -322,21 +327,25 @@ def test_seo_files_canonical_and_software_application():
         assert "ratingValue" not in text
     index = (site_guard.DOCS_DIR / "index.html").read_text(encoding="utf-8")
     seduma = (site_guard.DOCS_DIR / "seduma.html").read_text(encoding="utf-8")
-    assert "<title>Quantum Karate: Seduma Trade Dojo, $49 Once, No Subscription</title>" in index
+    assert "<title>Quantum Karate: Seduma Trade, $49 Once, No Subscription</title>" in index
     assert 'content="Quantum Karate: $49 once, no subscription, nothing to cancel. The source includes the Neural Agency Engine, on your own computer. Simulated results only."' in index
-    assert "<title>Seduma Trade Dojo: $49 Once, No Subscription | Quantum Karate</title>" in seduma
+    assert "<title>Seduma Trade: $49 Once, No Subscription | Quantum Karate</title>" in seduma
     assert 'content="$49 once, no subscription, nothing to cancel. Source includes the Neural Agency Engine, on your own computer. Simulated results only. Not a broker."' in seduma
-    assert '"@type": "SoftwareApplication"' in seduma
-    assert '"price": "49"' in seduma
-    assert '"priceCurrency": "USD"' in seduma
-    assert '"url": "https://payhip.com/b/K7UaW"' in seduma
     assert "SoftwareApplication" not in index
+    assert '"@type": "Organization"' in index
+    product = site_guard.parse_jsonld(seduma)
+    assert len(product) == 1
+    assert set(product[0]["@type"]) == {"Product", "SoftwareApplication"}
+    assert product[0]["offers"]["price"] == "49.00"
+    assert product[0]["offers"]["priceCurrency"] == "USD"
+    assert product[0]["offers"]["url"] == "https://payhip.com/b/K7UaW"
+    assert product[0]["offers"]["availability"] == "https://schema.org/InStock"
     facts = (site_guard.DOCS_DIR / "facts.html").read_text(encoding="utf-8")
     contact = (site_guard.DOCS_DIR / "contact.html").read_text(encoding="utf-8")
     assert f"<title>{facts_title} | Quantum Karate</title>" in facts
     assert f'<meta name="description" content="{facts_description}">' in facts
     assert "<title>Contact | Quantum Karate</title>" in contact
-    assert 'content="Product questions about Seduma Trade Dojo go through the Payhip listing. $49 once, no subscription, nothing to cancel. Simulated results only."' in contact
+    assert 'content="Product questions about Seduma Trade go through the Payhip listing. $49 once, no subscription, nothing to cancel. Simulated results only."' in contact
     assert "<strong>A one-time Dojo.</strong>" in facts
     assert "No passive-income promise, and no profit promise." in facts
     assert "profit" not in facts.replace("No passive-income promise, and no profit promise.", "")
@@ -345,9 +354,125 @@ def test_seo_files_canonical_and_software_application():
     assert "Allow: /" in robots
     assert "Disallow:" not in robots
     assert "Sitemap: https://quantum-karate.github.io/website/sitemap.xml" in robots
+    for bot in ("GPTBot", "OAI-SearchBot", "PerplexityBot", "ClaudeBot", "Google-Extended", "*"):
+        assert f"User-agent: {bot}\nAllow: /" in robots
+    assert "https://quantum-karate.github.io/website/llms.txt" in robots
     sitemap = (site_guard.DOCS_DIR / "sitemap.xml").read_text(encoding="utf-8")
     for loc in pages.values():
         assert f"<loc>{loc}</loc>" in sitemap
+    assert "<loc>https://quantum-karate.github.io/website/llms.txt</loc>" in sitemap
+    assert "<loc>https://quantum-karate.github.io/website/llms-full.txt</loc>" in sitemap
+    root = ET.fromstring(sitemap)
+    ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    locs = [node.text for node in root.findall("sm:url/sm:loc", ns)]
+    assert locs == [
+        "https://quantum-karate.github.io/website/index.html",
+        "https://quantum-karate.github.io/website/seduma.html",
+        "https://quantum-karate.github.io/website/facts.html",
+        "https://quantum-karate.github.io/website/contact.html",
+        "https://quantum-karate.github.io/website/llms.txt",
+        "https://quantum-karate.github.io/website/llms-full.txt",
+    ]
+
+
+def _jsonld_script(payload: dict) -> str:
+    return '<script type="application/ld+json">\n' + json.dumps(payload) + "\n</script>"
+
+
+def test_jsonld_accepts_published_shape_and_rejects_ratings():
+    org = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Quantum Karate",
+        "url": "https://quantum-karate.github.io/website/index.html",
+        "slogan": "Precision is Power",
+        "description": site_guard._ORG_DESCRIPTION,
+        "logo": "https://quantum-karate.github.io/website/assets/logo-horizontal-transparent.svg",
+    }
+    product = {
+        "@context": "https://schema.org",
+        "@type": ["Product", "SoftwareApplication"],
+        "name": "Seduma Trade",
+        "operatingSystem": "Self-hosted",
+        "description": site_guard._PRODUCT_DESCRIPTION,
+        "url": "https://quantum-karate.github.io/website/seduma.html",
+        "offers": {
+            "@type": "Offer",
+            "price": "49.00",
+            "priceCurrency": "USD",
+            "url": "https://payhip.com/b/K7UaW",
+            "availability": "https://schema.org/InStock",
+        },
+    }
+    pages = {
+        "index.html": _jsonld_script(org),
+        "seduma.html": _jsonld_script(product),
+        "facts.html": "<p>Facts</p>",
+        "contact.html": "<p>Contact</p>",
+    }
+    assert site_guard.jsonld_findings(pages) == []
+
+    rated = dict(pages)
+    rated["seduma.html"] = pages["seduma.html"].replace(
+        '"name": "Seduma Trade"',
+        '"name": "Seduma Trade", "review": {"@type": "Review", "reviewBody": "Great"}',
+    )
+    assert any("ratings or reviews" in item for item in site_guard.jsonld_findings(rated))
+
+    wrong_price = dict(pages)
+    wrong_price["seduma.html"] = pages["seduma.html"].replace('"price": "49.00"', '"price": "49"')
+    assert any("49.00 USD" in item for item in site_guard.jsonld_findings(wrong_price))
+
+    broken = dict(pages)
+    broken["index.html"] = '<script type="application/ld+json">{</script>'
+    assert any("does not parse" in item for item in site_guard.jsonld_findings(broken))
+
+    extra = dict(pages)
+    extra["facts.html"] = pages["index.html"]
+    assert any(item.startswith("facts.html: unexpected JSON-LD") for item in site_guard.jsonld_findings(extra))
+
+
+def test_llms_files_and_product_name():
+    if not site_guard.DOCS_DIR.is_dir():
+        pytest.skip("docs/ is not present")
+    pages = (
+        "https://quantum-karate.github.io/website/index.html",
+        "https://quantum-karate.github.io/website/seduma.html",
+        "https://quantum-karate.github.io/website/facts.html",
+        "https://quantum-karate.github.io/website/contact.html",
+    )
+    honest = "No passive-income promise, and no profit promise."
+    for name in ("llms.txt", "llms-full.txt"):
+        text = (site_guard.DOCS_DIR / name).read_text(encoding="utf-8")
+        assert text.startswith("# Quantum Karate\n")
+        assert "Seduma Trade Dojo" not in text
+        assert "Practice-first trading simulator for your own strategies" in text
+        assert "simulated fills" in text.lower() or "Simulated fills" in text or "fills are simulated" in text
+        assert "your own computer" in text
+        assert "$49" in text
+        assert "https://payhip.com/b/K7UaW" in text
+        assert "payhip.com/" not in text.replace("https://payhip.com/b/K7UaW", "")
+        assert "Neural Agency Engine" in text
+        assert "NAE" not in text
+        assert "Thoth" not in text
+        assert "Phisher" not in text
+        assert "no waitlist" in text.lower()
+        assert honest in text
+        assert "profit" not in text.replace(honest, "")
+        assert "aggregateRating" not in text
+        assert "ratingValue" not in text
+        for loc in pages:
+            assert loc in text
+        assert site_guard.findings_for_text(".txt", text) == []
+    for path in site_guard.DOCS_DIR.rglob("*"):
+        if not path.is_file():
+            continue
+        if path.suffix.lower() not in {".html", ".txt", ".md", ".xml"} and path.name != "robots.txt":
+            continue
+        assert "Seduma Trade Dojo" not in path.read_text(encoding="utf-8"), path.name
+    readme = (site_guard.ROOT / "README.md").read_text(encoding="utf-8")
+    assert "Seduma Trade Dojo" not in readme
+    assert "https://payhip.com/b/K7UaW" in readme
 
 
 def test_delivered_docs_pass():
