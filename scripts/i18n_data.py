@@ -53,11 +53,31 @@ def page_url(folder: str, page: str) -> str:
     return f"{ORIGIN}{page}"
 
 
+def utm_content(folder: str, page: str) -> str:
+    """Button id: the page on English, and locale plus page on a translation."""
+    stem = page[:-5] if page.endswith(".html") else page
+    if folder:
+        return f"{folder}-{stem}"
+    return stem
+
+
+def payhip_button_url(folder: str, page: str) -> str:
+    """Tracked buy button. JSON-LD and prose links stay on the bare listing URL."""
+    return (
+        f"{PAYHIP}?utm_source=quantumkarate_site"
+        f"&utm_medium=referral"
+        f"&utm_campaign=seduma_trade"
+        f"&utm_content={utm_content(folder, page)}"
+    )
+
+
 def allowed_urls() -> frozenset[str]:
     urls = {PAYHIP}
     for _code, folder, _direction, _name in LOCALES:
         for page in PAGES:
             urls.add(page_url(folder, page))
+            if page != "facts.html":
+                urls.add(payhip_button_url(folder, page))
     return frozenset(urls)
 
 

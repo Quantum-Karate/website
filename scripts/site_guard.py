@@ -10,7 +10,15 @@ import re
 import sys
 from pathlib import Path
 
-from i18n_data import LOCALES, PAGES as LOCALE_PAGES, allowed_urls, fill, load_strings, page_url
+from i18n_data import (
+    LOCALES,
+    PAGES as LOCALE_PAGES,
+    allowed_urls,
+    fill,
+    load_strings,
+    page_url,
+    payhip_button_url,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS_DIR = ROOT / "docs"
@@ -481,9 +489,10 @@ _ORG_DESCRIPTION = (
     "with precision, discipline, and attention to the smallest detail."
 )
 _PRODUCT_DESCRIPTION = (
-    "$49 once, no subscription, nothing to cancel. Source includes the Neural Agency Engine, "
-    "on your own computer. Simulated results only. Not a broker."
+    "Practice your own trading rules in a paper trading simulator on your own computer. "
+    "$49 once, no subscription. Simulated results only. Not a broker."
 )
+_OPERATING_SYSTEM = "Windows, macOS, Linux"
 _LLM_FILES = ("llms.txt", "llms-full.txt")
 
 
@@ -584,8 +593,8 @@ def jsonld_findings(pages: dict[str, str]) -> list[str]:
             findings.append("seduma.html: JSON-LD @type must be Product and SoftwareApplication")
         if product.get("name") != "Seduma Trade":
             findings.append("seduma.html: product name must be Seduma Trade")
-        if product.get("operatingSystem") != "Self-hosted":
-            findings.append("seduma.html: operatingSystem must be Self-hosted")
+        if product.get("operatingSystem") != _OPERATING_SYSTEM:
+            findings.append("seduma.html: operatingSystem must be Windows, macOS, Linux")
         if product.get("description") != _PRODUCT_DESCRIPTION:
             findings.append("seduma.html: product description must match the page")
         if product.get("url") != "https://quantum-karate.github.io/website/seduma.html":
@@ -692,12 +701,24 @@ def check_i18n(docs_dir: Path) -> list[str]:
                     findings.append(f"{rel}: missing translated promise")
                 if step_ready not in text:
                     findings.append(f"{rel}: missing translated setup line")
-            payhip_count = text.count(f'href="{_PAYHIP}"')
+            button = payhip_button_url(folder, page)
+            button_count = text.count(f'href="{button}"')
+            bare_count = text.count(f'href="{_PAYHIP}"')
             if page == "facts.html":
-                if payhip_count != 0:
+                if button_count or bare_count:
                     findings.append(f"{rel}: facts page must not link to Payhip")
-            elif payhip_count != 1:
-                findings.append(f"{rel}: Payhip must be the only purchase link, once")
+            elif button_count != 1 or bare_count:
+                findings.append(f"{rel}: Payhip button must be the tracked listing link, once")
+            title = re.search(r"<title>([^<]*)</title>", text)
+            og_title = re.search(r'<meta property="og:title" content="([^"]*)"', text)
+            for kind, match in (("title", title), ("og:title", og_title)):
+                if match and "Dojo" in match.group(1):
+                    findings.append(f"{rel}: {kind} still names the product as a Dojo")
+            if page == "seduma.html":
+                if not title or not title.group(1).startswith("Seduma Trade"):
+                    findings.append(f"{rel}: title must use the Seduma Trade: form")
+                if f'"operatingSystem": "{_OPERATING_SYSTEM}"' not in text:
+                    findings.append(f"{rel}: operatingSystem must be {_OPERATING_SYSTEM}")
             mails = text.lower().count("mailto:")
             if page == "contact.html" and mails != 1:
                 findings.append(f"{rel}: contact must publish one support address")

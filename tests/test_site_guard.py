@@ -12,6 +12,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 import site_guard
+from i18n_data import payhip_button_url
 
 
 def test_spelled_out_engine_name_is_allowed():
@@ -204,6 +205,12 @@ def test_payhip_practice_eval_link_is_the_only_external_exception():
     assert site_guard.findings_for_text(".html", '<a href="https://payhip.com/">x</a>')
     assert site_guard.findings_for_text(".html", '<a href="https://example.com">x</a>')
     assert site_guard.findings_for_text(".html", '<a href="//payhip.com/b/K7UaW">x</a>')
+    assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("", "seduma.html")}">x</a>') == []
+    assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("de", "index.html")}">x</a>') == []
+    assert site_guard.findings_for_text(
+        ".html",
+        '<a href="https://payhip.com/b/K7UaW?utm_source=other">x</a>',
+    )
 
 
 def test_get_seduma_payhip_markup_and_no_waitlist():
@@ -219,7 +226,7 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
         assert "Seduma Trade is the $49 Practice eval." in page
         assert "Seduma Trade Dojo" not in page
         assert "The Neural Agency Engine researches. Seduma is the front door." in page
-        assert 'href="https://payhip.com/b/K7UaW"' in page
+        assert 'href="https://payhip.com/b/K7UaW"' not in page
         assert 'rel="noopener"' in page
         assert "Get Seduma Trade on Payhip" in page
         assert "Get the Practice eval." not in page
@@ -255,9 +262,9 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
     assert "Why a one-time Dojo" in seduma
     assert "You get the source." in seduma
     assert "Honest Practice. Simulated results only. No passive-income promise, and no profit promise." in seduma
-    assert seduma.count('href="https://payhip.com/b/K7UaW"') == 1
-    assert index.count('href="https://payhip.com/b/K7UaW"') == 1
-    assert contact.count('href="https://payhip.com/b/K7UaW"') == 1
+    assert seduma.count(f'href="{payhip_button_url("", "seduma.html")}"') == 1
+    assert index.count(f'href="{payhip_button_url("", "index.html")}"') == 1
+    assert contact.count(f'href="{payhip_button_url("", "contact.html")}"') == 1
     support = 'Support: <a class="support-address" href="mailto:v-nat@outlook.com">v-nat@outlook.com</a>, replies within 2 business days.'
     assert support in contact
     assert contact.lower().count("mailto:") == 1
@@ -298,16 +305,18 @@ def test_seo_files_canonical_and_software_application():
         "contact.html": "https://quantum-karate.github.io/website/contact.html",
     }
     image = "https://quantum-karate.github.io/website/assets/og-seduma.png"
-    listing_title = "Seduma Trade: $49 Once, No Subscription"
-    listing_description = "$49 once, no subscription, nothing to cancel. Simulated results only. You run it on your own computer. Live stays off unless you choose it."
+    home_title = "Quantum Karate: Seduma Trade Practice Trading Simulator, $49 Once"
+    home_description = "Quantum Karate: $49 once, no subscription, nothing to cancel. The source includes the Neural Agency Engine, on your own computer. Simulated results only."
+    seduma_social_title = "Seduma Trade: Practice Trading Simulator, $49 Once"
+    seduma_description = "Practice your own trading rules in a paper trading simulator on your own computer. $49 once, no subscription. Simulated results only. Not a broker."
     facts_title = "What Seduma is and isn\u2019t"
     facts_description = "Plain facts: $49 once, no subscription. Simulated results only. Live stays off unless you choose it. Not a broker."
     contact_title = "Contact Quantum Karate"
     contact_description = "Product questions about Seduma Trade go through the Payhip listing. Simulated results only."
-    # Home and Seduma share the listing card. Facts and Contact carry their own.
+    # Home social tags match the Home title and description. Seduma social tags match the product title and description.
     social = {
-        "index.html": (listing_title, listing_description),
-        "seduma.html": (listing_title, listing_description),
+        "index.html": (home_title, home_description),
+        "seduma.html": (seduma_social_title, seduma_description),
         "facts.html": (facts_title, facts_description),
         "contact.html": (contact_title, contact_description),
     }
@@ -328,10 +337,10 @@ def test_seo_files_canonical_and_software_application():
         assert "ratingValue" not in text
     index = (site_guard.DOCS_DIR / "index.html").read_text(encoding="utf-8")
     seduma = (site_guard.DOCS_DIR / "seduma.html").read_text(encoding="utf-8")
-    assert "<title>Quantum Karate: Seduma Trade, $49 Once, No Subscription</title>" in index
-    assert 'content="Quantum Karate: $49 once, no subscription, nothing to cancel. The source includes the Neural Agency Engine, on your own computer. Simulated results only."' in index
-    assert "<title>Seduma Trade: $49 Once, No Subscription | Quantum Karate</title>" in seduma
-    assert 'content="$49 once, no subscription, nothing to cancel. Source includes the Neural Agency Engine, on your own computer. Simulated results only. Not a broker."' in seduma
+    assert f"<title>{home_title}</title>" in index
+    assert f'content="{home_description}"' in index
+    assert f"<title>{seduma_social_title} | Quantum Karate</title>" in seduma
+    assert f'content="{seduma_description}"' in seduma
     assert "SoftwareApplication" not in index
     assert '"@type": "Organization"' in index
     product = site_guard.parse_jsonld(seduma)
@@ -397,7 +406,7 @@ def test_jsonld_accepts_published_shape_and_rejects_ratings():
         "@context": "https://schema.org",
         "@type": ["Product", "SoftwareApplication"],
         "name": "Seduma Trade",
-        "operatingSystem": "Self-hosted",
+        "operatingSystem": "Windows, macOS, Linux",
         "description": site_guard._PRODUCT_DESCRIPTION,
         "url": "https://quantum-karate.github.io/website/seduma.html",
         "offers": {
@@ -508,9 +517,57 @@ def test_a11y_polish_and_locale_switch():
     assert es.count('<link rel="alternate" hreflang="') == 14
     ar = (site_guard.DOCS_DIR / "ar" / "seduma.html").read_text(encoding="utf-8")
     assert '<html lang="ar" dir="rtl">' in ar
-    assert 'href="https://payhip.com/b/K7UaW"' in ar
+    assert f'href="{payhip_button_url("ar", "seduma.html")}"' in ar
     assert "Seduma Trade Dojo" not in ar
     assert "Neural Agency Engine" in ar
+
+
+def test_locale_titles_platforms_and_payhip_tags():
+    if not site_guard.DOCS_DIR.is_dir():
+        pytest.skip("docs/ is not present")
+    seduma_titles = {
+        "es": "Seduma Trade: simulador de trading de práctica, $49 una sola vez | Quantum Karate",
+        "pt-BR": "Seduma Trade: simulador de trading de prática, $49 uma única vez | Quantum Karate",
+        "fr": "Seduma Trade : simulateur de trading en pratique, $49 une seule fois | Quantum Karate",
+        "de": "Seduma Trade: Übungs-Trading-Simulator, $49 einmal | Quantum Karate",
+        "it": "Seduma Trade: simulatore di trading di pratica, $49 una sola volta | Quantum Karate",
+        "zh-Hans": "Seduma Trade：练习交易模拟器，$49 一次 | Quantum Karate",
+        "ja": "Seduma Trade: 練習トレードシミュレーター、$49 一度きり | Quantum Karate",
+        "ko": "Seduma Trade: 연습 트레이딩 시뮬레이터, $49 한 번 | Quantum Karate",
+        "hi": "Seduma Trade: अभ्यास ट्रेडिंग सिम्युलेटर, $49 एक बार | Quantum Karate",
+        "ar": "Seduma Trade: محاكي تداول للتدريب، $49 مرة واحدة | Quantum Karate",
+        "ru": "Seduma Trade: тренажёр для практики торговли, $49 один раз | Quantum Karate",
+        "id": "Seduma Trade: simulator trading untuk latihan, $49 satu kali | Quantum Karate",
+    }
+    home_titles = {
+        "es": "Quantum Karate: Seduma Trade, simulador de trading de práctica, $49 una sola vez",
+        "pt-BR": "Quantum Karate: Seduma Trade, simulador de trading de prática, $49 uma única vez",
+        "fr": "Quantum Karate : Seduma Trade, simulateur de trading en pratique, $49 une seule fois",
+        "de": "Quantum Karate: Seduma Trade, Übungs-Trading-Simulator, $49 einmal",
+        "it": "Quantum Karate: Seduma Trade, simulatore di trading di pratica, $49 una sola volta",
+        "zh-Hans": "Quantum Karate：Seduma Trade 练习交易模拟器，$49 一次",
+        "ja": "Quantum Karate: Seduma Trade 練習トレードシミュレーター、$49 一度きり",
+        "ko": "Quantum Karate: Seduma Trade 연습 트레이딩 시뮬레이터, $49 한 번",
+        "hi": "Quantum Karate: Seduma Trade अभ्यास ट्रेडिंग सिम्युलेटर, $49 एक बार",
+        "ar": "Quantum Karate: Seduma Trade، محاكي تداول للتدريب، $49 مرة واحدة",
+        "ru": "Quantum Karate: Seduma Trade, тренажёр для практики торговли, $49 один раз",
+        "id": "Quantum Karate: Seduma Trade, simulator trading untuk latihan, $49 satu kali",
+    }
+    for folder, title in seduma_titles.items():
+        text = (site_guard.DOCS_DIR / folder / "seduma.html").read_text(encoding="utf-8")
+        social = title.split(" | Quantum Karate")[0]
+        assert f"<title>{title}</title>" in text
+        assert f'<meta property="og:title" content="{social}">' in text
+        assert f'<meta name="twitter:title" content="{social}">' in text
+        assert '"operatingSystem": "Windows, macOS, Linux"' in text
+        assert f'href="{payhip_button_url(folder, "seduma.html")}"' in text
+        assert "Dojo" not in text.split("</title>", 1)[0]
+    for folder, title in home_titles.items():
+        text = (site_guard.DOCS_DIR / folder / "index.html").read_text(encoding="utf-8")
+        assert f"<title>{title}</title>" in text
+        assert f'<meta property="og:title" content="{title}">' in text
+        assert f'<meta name="twitter:title" content="{title}">' in text
+        assert f'href="{payhip_button_url(folder, "index.html")}"' in text
 
 
 def test_delivered_docs_pass():
