@@ -617,3 +617,30 @@ From the 2026-10-21 competitor brief, the short edge moves only. No competitor i
 **Social image:** `assets/og-seduma.png` reads Seduma Trade. Practice mode and Live: Off stay.
 
 **Ceiling:** named promise untouched. Footer disclaimer untouched. Practice-first. Results stay labeled simulated. No profit claim. Neural Agency Engine stays spelled out. No waitlist. The Payhip listing stays the only purchase link. Contact stays v-nat@outlook.com.
+
+---
+
+## Addendum 2026-11-12 — titles, platforms, and Payhip tags
+
+**Supersedes** the live title strings, the SoftwareApplication `operatingSystem`, and the Payhip button `href`. Earlier deck text stays as history. The product name is Seduma Trade. Dojo still names only the practice feature ("Why a one-time Dojo", "A one-time Dojo").
+
+**English titles and descriptions**
+- Home title, Home Open Graph title, and Home Twitter title: Quantum Karate: Seduma Trade Practice Trading Simulator, $49 Once
+- Home description, Home Open Graph description, and Home Twitter description: Quantum Karate: $49 once, no subscription, nothing to cancel. The source includes the Neural Agency Engine, on your own computer. Simulated results only.
+- Seduma title: Seduma Trade: Practice Trading Simulator, $49 Once | Quantum Karate
+- Seduma Open Graph title and Twitter title: Seduma Trade: Practice Trading Simulator, $49 Once
+- Seduma description, Seduma Open Graph description, Twitter description, and SoftwareApplication JSON-LD description: Practice your own trading rules in a paper trading simulator on your own computer. $49 once, no subscription. Simulated results only. Not a broker.
+
+**Localized titles**
+- Every Seduma title uses the Seduma Trade: form, translated, and ends with `| Quantum Karate`. The Open Graph and Twitter title is that line without the brand suffix.
+- Every Home title uses the Quantum Karate: Seduma Trade form, translated. Its Open Graph and Twitter title matches that Home title.
+- None of those titles name the product as a Dojo.
+
+**Platform**
+- `operatingSystem` on every Seduma page: Windows, macOS, Linux
+
+**Payhip buttons**
+- `href`: `https://payhip.com/b/K7UaW?utm_source=quantumkarate_site&utm_medium=referral&utm_campaign=seduma_trade&utm_content=<page-or-locale>`
+- English `utm_content`: `index`, `seduma`, `contact`
+- Translated `utm_content`: locale, a hyphen, then the page, such as `de-seduma`, `es-index`, `pt-BR-contact`, `zh-Hans-seduma`
+- The Offer url in JSON-LD, and the buy link in `llms.txt` and `llms-full.txt`, stay the bare listing `https://payhip.com/b/K7UaW`

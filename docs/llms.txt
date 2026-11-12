@@ -10,8 +10,8 @@ The only buy link is the Payhip listing. There is no waitlist and no other purch
 
 ## Pages
 
-- [Home](https://quantum-karate.github.io/website/index.html): Quantum Karate and Seduma Trade
-- [Seduma](https://quantum-karate.github.io/website/seduma.html): Seduma Trade, the Practice-first trading simulator
+- [Home](https://quantum-karate.github.io/website/index.html): Quantum Karate: Seduma Trade Practice Trading Simulator, $49 Once
+- [Seduma](https://quantum-karate.github.io/website/seduma.html): Seduma Trade: Practice Trading Simulator, $49 Once
 - [Facts](https://quantum-karate.github.io/website/facts.html): What Seduma is and is not
 - [Contact](https://quantum-karate.github.io/website/contact.html): Product questions and support
 

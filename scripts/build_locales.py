@@ -10,7 +10,17 @@ import re
 import sys
 from pathlib import Path
 
-from i18n_data import LOCALES, ORIGIN, PAYHIP, PAGES, Copy, fill, load_strings, page_url
+from i18n_data import (
+    LOCALES,
+    ORIGIN,
+    PAYHIP,
+    PAGES,
+    Copy,
+    fill,
+    load_strings,
+    page_url,
+    payhip_button_url,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
@@ -60,9 +70,10 @@ def delay(index: int) -> str:
     return f' style="--d:{index}"' if index else ""
 
 
-def payhip(label: str) -> str:
+def payhip(folder: str, page: str, label: str) -> str:
+    href = payhip_button_url(folder, page)
     return (
-        f'<a class="btn btn--primary" href="{PAYHIP}" rel="noopener">{label} {ARROW}</a>'
+        f'<a class="btn btn--primary" href="{href}" rel="noopener">{label} {ARROW}</a>'
     )
 
 
@@ -213,7 +224,7 @@ def document(L: Copy, folder: str, page: str, main: str, head_html: str, theme: 
 """
 
 
-def get_band(L: Copy, indexed: bool) -> str:
+def get_band(L: Copy, folder: str, page: str, indexed: bool) -> str:
     index = ""
     if indexed:
         index = (
@@ -228,7 +239,7 @@ def get_band(L: Copy, indexed: bool) -> str:
           <h2 id="get-seduma-title" class="h2">{L.html("get_h")}</h2>
           <p class="lead" style="margin-top:var(--s-4)">{L.html("get_lead")}</p>
         </div>
-        {payhip(L.html("get_btn"))}
+        {payhip(folder, page, L.html("get_btn"))}
       </div>
     </div>
   </section>"""
@@ -327,7 +338,7 @@ def render_home(L: Copy, folder: str, reticle: str) -> str:
       </div>
     </div>
   </section>
-  {get_band(L, indexed=True)}
+  {get_band(L, folder, "index.html", indexed=True)}
 """
     head_html = head(
         L,
@@ -335,8 +346,8 @@ def render_home(L: Copy, folder: str, reticle: str) -> str:
         "index.html",
         "home_title",
         "home_desc",
-        "listing_og_title",
-        "listing_og_desc",
+        "home_title",
+        "home_desc" if L.locale == "en" else "listing_og_desc",
         organization_schema(L, folder),
     )
     return document(L, folder, "index.html", main, head_html)
@@ -362,7 +373,7 @@ def schema_block(L: Copy, folder: str) -> str:
         "@context": "https://schema.org",
         "@type": ["Product", "SoftwareApplication"],
         "name": "Seduma Trade",
-        "operatingSystem": "Self-hosted" if L.locale == "en" else L.raw("os_name"),
+        "operatingSystem": L.raw("os_name"),
         "description": L.raw("se_desc"),
         "url": page_url(folder, "seduma.html"),
         "offers": {
@@ -627,7 +638,7 @@ def render_seduma(L: Copy, folder: str) -> str:
       </div>
     </div>
   </section>
-  {get_band(L, indexed=False)}
+  {get_band(L, folder, "seduma.html", indexed=False)}
 """
     head_html = head(
         L,
@@ -696,7 +707,7 @@ def render_contact(L: Copy, folder: str) -> str:
       <p class="hero__sub">{L.html("contact_sub")}</p>
     </div>
   </section>
-  {get_band(L, indexed=False)}
+  {get_band(L, folder, "contact.html", indexed=False)}
   <section class="section section--tight" aria-label="{L.text("support_label")}">
     <div class="container">
       <p class="lead" data-reveal>{L.html("support")}</p>
@@ -794,12 +805,25 @@ def verify(locale: str, page: str, content: str) -> None:
     direction = INFO[locale][1]
     if f'dir="{direction}"' not in content:
         raise SystemExit(f"{locale}/{page} dir attribute missing")
-    payhip_count = content.count(f'href="{PAYHIP}"')
+    folder = INFO[locale][0]
+    button = payhip_button_url(folder, page)
+    button_count = content.count(f'href="{button}"')
+    bare_count = content.count(f'href="{PAYHIP}"')
     if page == "facts.html":
-        if payhip_count != 0:
+        if button_count or bare_count:
             raise SystemExit(f"{locale}/{page} should not link to Payhip")
-    elif payhip_count != 1:
-        raise SystemExit(f"{locale}/{page} should link to Payhip once")
+    elif button_count != 1 or bare_count:
+        raise SystemExit(f"{locale}/{page} should link to the tracked Payhip button once")
+    title = re.search(r"<title>([^<]*)</title>", content)
+    og_title = re.search(r'<meta property="og:title" content="([^"]*)"', content)
+    for kind, match in (("title", title), ("og:title", og_title)):
+        if match and "Dojo" in match.group(1):
+            raise SystemExit(f"{locale}/{page} {kind} still names the product as a Dojo")
+    if page == "seduma.html":
+        if not title or not title.group(1).startswith("Seduma Trade"):
+            raise SystemExit(f"{locale}/{page} title must use the Seduma Trade: form")
+        if '"operatingSystem": "Windows, macOS, Linux"' not in content:
+            raise SystemExit(f"{locale}/{page} operatingSystem must be Windows, macOS, Linux")
     mails = lowered.count("mailto:")
     if page == "contact.html" and mails != 1:
         raise SystemExit(f"{locale}/{page} should have one mailto")
@@ -814,7 +838,7 @@ def verify(locale: str, page: str, content: str) -> None:
 def verify_english(page: str, content: str) -> None:
     required = {
         "index.html": [
-            "<title>Quantum Karate: Seduma Trade, $49 Once, No Subscription</title>",
+            "<title>Quantum Karate: Seduma Trade Practice Trading Simulator, $49 Once</title>",
             'content="Quantum Karate: $49 once, no subscription, nothing to cancel. The source includes the Neural Agency Engine, on your own computer. Simulated results only."',
             "Get Seduma Trade.",
             "Seduma Trade is the $49 Practice eval.",
@@ -826,8 +850,8 @@ def verify_english(page: str, content: str) -> None:
             "What Seduma is and isn\u2019t",
         ],
         "seduma.html": [
-            "<title>Seduma Trade: $49 Once, No Subscription | Quantum Karate</title>",
-            'content="$49 once, no subscription, nothing to cancel. Source includes the Neural Agency Engine, on your own computer. Simulated results only. Not a broker."',
+            "<title>Seduma Trade: Practice Trading Simulator, $49 Once | Quantum Karate</title>",
+            'content="Practice your own trading rules in a paper trading simulator on your own computer. $49 once, no subscription. Simulated results only. Not a broker."',
             '"SoftwareApplication"',
             '"price": "49.00"',
             '"priceCurrency": "USD"',
