@@ -12,7 +12,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 import site_guard
-from i18n_data import LOCALES, payhip_button_url, utm_content
+from i18n_data import LOCALES, PAYHIP_FOUNDER_PRODUCT, payhip_button_url, payhip_placements, utm_content
 
 
 def test_spelled_out_engine_name_is_allowed():
@@ -251,10 +251,12 @@ def test_payhip_practice_eval_link_is_the_only_external_exception():
     assert site_guard.findings_for_text(".html", '<a href="https://payhip.com/">x</a>')
     assert site_guard.findings_for_text(".html", '<a href="https://example.com">x</a>')
     assert site_guard.findings_for_text(".html", '<a href="//payhip.com/b/K7UaW">x</a>')
-    assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("", "seduma.html")}">x</a>') == []
+    assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("", "seduma.html", "edition-standard")}">x</a>') == []
     assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("", "seduma.html", "hero")}">x</a>') == []
     assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("", "facts.html")}">x</a>') == []
-    assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("de", "index.html")}">x</a>') == []
+    assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("", "index.html", "edition-standard")}">x</a>') == []
+    assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("", "seduma.html", "edition-founder", PAYHIP_FOUNDER_PRODUCT)}">x</a>') == []
+    assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("de", "index.html", "edition-standard")}">x</a>') == []
     assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("es", "facts.html")}">x</a>') == []
     assert site_guard.findings_for_text(".html", '<script type="text/javascript" src="https://payhip.com/payhip.js"></script>') == []
     assert site_guard.findings_for_text(".html", '<script src="https://payhip.com/js/payhip.js"></script>')
@@ -278,8 +280,8 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
         assert "Seduma Trade Dojo" not in page
         assert "The Neural Agency Engine researches. Seduma is the front door." in page
         assert 'href="https://payhip.com/b/K7UaW"' not in page
+        assert 'href="https://payhip.com/b/a7GkH"' not in page
         assert 'rel="noopener"' in page
-        assert "Get Seduma Trade on Payhip" in page
         assert "Get the Practice eval." not in page
         assert "Get it on Payhip" not in page
         assert "$49" in page
@@ -314,19 +316,23 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
     assert "Why a one-time Dojo" in seduma
     assert "You get the source." in seduma
     assert "Honest Practice. Simulated results only. No passive-income promise, and no profit promise." in seduma
-    assert seduma.count(f'href="{payhip_button_url("", "seduma.html")}"') == 1
-    assert seduma.count(f'href="{payhip_button_url("", "seduma.html", "hero")}"') == 1
-    assert index.count(f'href="{payhip_button_url("", "index.html")}"') == 1
+    assert "Get Seduma Trade on Payhip" in contact
+    assert "Get Seduma Trade on Payhip" not in index
+    assert "Get Seduma Trade on Payhip" not in seduma
+    assert "Seduma Trade Founder Edition" in index
+    assert "Seduma Trade Founder Edition" in seduma
+    assert "The founder program is capped at 50 purchases." in index
+    assert "The founder program is capped at 50 purchases." in seduma
     assert contact.count(f'href="{payhip_button_url("", "contact.html")}"') == 1
     script = '<script type="text/javascript" src="https://payhip.com/payhip.js"></script>'
-    for page in (index, seduma, contact):
+    for page, name in ((index, "index.html"), (seduma, "seduma.html"), (contact, "contact.html")):
         assert page.count(script) == 1
-        assert 'class="btn btn--primary payhip-buy-button"' in page
-        assert 'data-product="K7UaW"' in page
-        assert 'data-theme="none"' in page
-    assert seduma.count('class="btn btn--primary payhip-buy-button"') == 2
-    assert seduma.count('data-product="K7UaW"') == 2
-    assert seduma.count('data-theme="none"') == 2
+        placements = payhip_placements("", name)
+        assert page.count('class="btn btn--primary payhip-buy-button"') == len(placements)
+        assert page.count('data-theme="none"') == len(placements)
+        for href, product in placements:
+            assert page.count(f'href="{href}"') == 1
+            assert f'data-product="{product}"' in page
     support = 'Support: <a class="support-address" href="mailto:v-nat@outlook.com">v-nat@outlook.com</a>, replies within 2 business days.'
     assert support in contact
     assert contact.lower().count("mailto:") == 1
@@ -600,7 +606,8 @@ def test_a11y_polish_and_locale_switch():
     assert es.count('<link rel="alternate" hreflang="') == 14
     ar = (site_guard.DOCS_DIR / "ar" / "seduma.html").read_text(encoding="utf-8")
     assert '<html lang="ar" dir="rtl">' in ar
-    assert f'href="{payhip_button_url("ar", "seduma.html")}"' in ar
+    assert f'href="{payhip_button_url("ar", "seduma.html", "edition-standard")}"' in ar
+    assert f'href="{payhip_button_url("ar", "seduma.html", "edition-founder", PAYHIP_FOUNDER_PRODUCT)}"' in ar
     assert f'href="{payhip_button_url("ar", "seduma.html", "hero")}"' in ar
     assert "Seduma Trade Dojo" not in ar
     assert "Neural Agency Engine" in ar
@@ -644,7 +651,8 @@ def test_locale_titles_platforms_and_payhip_tags():
         assert f'<meta property="og:title" content="{social}">' in text
         assert f'<meta name="twitter:title" content="{social}">' in text
         assert '"operatingSystem": "Windows, macOS, Linux"' in text
-        assert f'href="{payhip_button_url(folder, "seduma.html")}"' in text
+        assert f'href="{payhip_button_url(folder, "seduma.html", "edition-standard")}"' in text
+        assert f'href="{payhip_button_url(folder, "seduma.html", "edition-founder", PAYHIP_FOUNDER_PRODUCT)}"' in text
         assert f'href="{payhip_button_url(folder, "seduma.html", "hero")}"' in text
         assert "Dojo" not in text.split("</title>", 1)[0]
         facts = (site_guard.DOCS_DIR / folder / "facts.html").read_text(encoding="utf-8")
@@ -655,7 +663,8 @@ def test_locale_titles_platforms_and_payhip_tags():
         assert f"<title>{title}</title>" in text
         assert f'<meta property="og:title" content="{title}">' in text
         assert f'<meta name="twitter:title" content="{title}">' in text
-        assert f'href="{payhip_button_url(folder, "index.html")}"' in text
+        assert f'href="{payhip_button_url(folder, "index.html", "edition-standard")}"' in text
+        assert f'href="{payhip_button_url(folder, "index.html", "edition-founder", PAYHIP_FOUNDER_PRODUCT)}"' in text
 
 
 def test_delivered_docs_pass():
