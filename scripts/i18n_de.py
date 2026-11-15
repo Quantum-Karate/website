@@ -74,6 +74,7 @@ DATA = {
     "h1_3": "nichts zu kündigen.",
     "se_sub": "{promise} {seduma} öffnet die Tür. {nae} forscht. <strong>In {practice} bewegt sich kein echtes Geld, bis Sie {live} wählen.</strong>",
     "btn_how": "So funktioniert es",
+    "btn_buy_now": "Jetzt kaufen",
     "defs": [
         ("{practice}", "Ihre Trading-Regeln mit simulierten Ausführungen laufen lassen. Es bewegt sich kein echtes Geld. Das ist die Vorgabe."),
         ("{paper}", "Ein anderes Wort für {practice}. Das eigene Paper-Konto eines Brokers heißt Real paper \u2014 immer noch kein echtes Geld."),

@@ -66,13 +66,16 @@ def utm_content(folder: str, page: str) -> str:
     return stem
 
 
-def payhip_button_url(folder: str, page: str) -> str:
+def payhip_button_url(folder: str, page: str, variant: str = "") -> str:
     """Tracked buy button. JSON-LD and prose links stay on the bare listing URL."""
+    tag = utm_content(folder, page)
+    if variant:
+        tag = f"{tag}-{variant}"
     return (
         f"{PAYHIP}?utm_source=quantumkarate_site"
         f"&utm_medium=referral"
         f"&utm_campaign=seduma_trade"
-        f"&utm_content={utm_content(folder, page)}"
+        f"&utm_content={tag}"
     )
 
 
@@ -81,12 +84,13 @@ def allowed_urls() -> frozenset[str]:
     for _code, folder, _direction, _name in LOCALES:
         for page in PAGES:
             urls.add(page_url(folder, page))
-            if page != "facts.html":
-                urls.add(payhip_button_url(folder, page))
+            urls.add(payhip_button_url(folder, page))
+            if page == "seduma.html":
+                urls.add(payhip_button_url(folder, page, "hero"))
     for page in EXTRA_PAGES:
         urls.add(page_url("", page))
         urls.add(payhip_button_url("", page))
-        urls.add(payhip_button_url("", page).replace(f"utm_content={utm_content('', page)}", f"utm_content={utm_content('', page)}-top"))
+        urls.add(payhip_button_url("", page, "top"))
     return frozenset(urls)
 
 

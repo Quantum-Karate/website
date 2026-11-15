@@ -73,8 +73,8 @@ def delay(index: int) -> str:
     return f' style="--d:{index}"' if index else ""
 
 
-def payhip(folder: str, page: str, label: str) -> str:
-    href = payhip_button_url(folder, page)
+def payhip(folder: str, page: str, label: str, variant: str = "") -> str:
+    href = payhip_button_url(folder, page, variant)
     return (
         f'<a class="btn btn--primary payhip-buy-button" href="{href}" rel="noopener" '
         f'data-product="{PAYHIP_PRODUCT}" data-theme="none">{label} {ARROW}</a>'
@@ -112,9 +112,7 @@ def head(L: Copy, folder: str, page: str, title_key: str, desc_key: str, og_titl
         f'<link rel="alternate" href="{asset(folder, "llms.txt")}" type="text/plain" title="Plain-language summary for AI tools">'
     )
     schema_block = f'<script type="application/ld+json">\n{schema}\n</script>\n' if schema else ""
-    payhip_script = (
-        f'<script type="text/javascript" src="{PAYHIP_JS}"></script>\n' if page != "facts.html" else ""
-    )
+    payhip_script = f'<script type="text/javascript" src="{PAYHIP_JS}"></script>\n'
     return f"""<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -496,6 +494,7 @@ def render_seduma(L: Copy, folder: str) -> str:
       <div class="actions">
         <a class="btn btn--primary" href="#how">{L.html("btn_how")} <span class="arrow" aria-hidden="true">\u2193</span></a>
         <a class="btn btn--ghost" href="facts.html">{L.html("btn_what")}</a>
+        {payhip(folder, "seduma.html", L.html("btn_buy_now"), "hero")}
       </div>
       <dl class="defs">{defs}</dl>
       <figure class="shot" data-reveal>
@@ -710,7 +709,10 @@ def render_facts(L: Copy, folder: str) -> str:
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="container hero__inner">
       <div class="hero__eyebrow"><span class="label">{L.html("facts_eyebrow")}</span></div>
-      <h1 id="hero-title" class="h1">{L.html("facts_h")}</h1>
+      <div class="heading-cta">
+        <h1 id="hero-title" class="h1">{L.html("facts_h")}</h1>
+        {payhip(folder, "facts.html", L.html("btn_buy_now"))}
+      </div>
       <p class="hero__sub">{L.html("facts_sub")}</p>
     </div>
   </section>
@@ -858,22 +860,20 @@ def verify(locale: str, page: str, content: str, refunds: str) -> None:
     folder = INFO[locale][0]
     button = payhip_button_url(folder, page)
     button_count = content.count(f'href="{button}"')
+    hero = payhip_button_url(folder, page, "hero") if page == "seduma.html" else ""
+    hero_count = content.count(f'href="{hero}"') if hero else 0
     bare_count = content.count(f'href="{PAYHIP}"')
     if refunds not in content:
         raise SystemExit(f"{locale}/{page} missing refunds line")
     script = f'<script type="text/javascript" src="{PAYHIP_JS}"></script>'
-    if page == "facts.html":
-        if button_count or bare_count:
-            raise SystemExit(f"{locale}/{page} should not link to Payhip")
-        if script in content or "payhip-buy-button" in content or f'data-product="{PAYHIP_PRODUCT}"' in content:
-            raise SystemExit(f"{locale}/{page} should not include the Payhip embed")
-    elif button_count != 1 or bare_count:
-        raise SystemExit(f"{locale}/{page} should link to the tracked Payhip button once")
+    expected_buttons = 2 if page == "seduma.html" else 1
+    if button_count != 1 or bare_count or hero_count != (1 if hero else 0):
+        raise SystemExit(f"{locale}/{page} should link to the tracked Payhip button once per placement")
     elif content.count(script) != 1:
         raise SystemExit(f"{locale}/{page} should include the Payhip embed script once")
-    elif 'class="btn btn--primary payhip-buy-button"' not in content:
+    elif content.count('class="btn btn--primary payhip-buy-button"') != expected_buttons:
         raise SystemExit(f"{locale}/{page} Payhip button is missing the embed class")
-    elif content.count(f'data-product="{PAYHIP_PRODUCT}"') != 1 or content.count('data-theme="none"') != 1:
+    elif content.count(f'data-product="{PAYHIP_PRODUCT}"') != expected_buttons or content.count('data-theme="none"') != expected_buttons:
         raise SystemExit(f"{locale}/{page} Payhip button is missing embed attributes")
     title = re.search(r"<title>([^<]*)</title>", content)
     og_title = re.search(r'<meta property="og:title" content="([^"]*)"', content)

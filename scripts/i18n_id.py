@@ -74,6 +74,7 @@ DATA = {
     "h1_3": "tidak ada yang perlu dibatalkan.",
     "se_sub": "{promise} {seduma} membuka pintu. {nae} melakukan riset. <strong>Di {practice}, uang sungguhan tidak bergerak sampai Anda memilih {live}.</strong>",
     "btn_how": "Cara kerjanya",
+    "btn_buy_now": "Beli sekarang",
     "defs": [
         ("{practice}", "Menjalankan aturan trading Anda dengan eksekusi simulasi. Uang sungguhan tidak bergerak. Ini adalah bawaan."),
         ("{paper}", "Kata lain untuk {practice}. Akun paper milik pialang disebut Real paper — tetap tanpa uang sungguhan."),

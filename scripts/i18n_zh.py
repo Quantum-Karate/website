@@ -74,6 +74,7 @@ DATA = {
     "h1_3": "没有需要取消的内容。",
     "se_sub": "{promise} {seduma} 打开这扇门。{nae} 做研究。<strong>在 {practice} 中，在你选择 {live} 之前，没有真实资金移动。</strong>",
     "btn_how": "如何运作",
+    "btn_buy_now": "立即购买",
     "defs": [
         ("{practice}", "用模拟成交运行你的交易规则。没有真实资金移动。这是默认状态。"),
         ("{paper}", "{practice} 的另一个说法。经纪商自己的模拟账户称为 Real paper——仍然没有真实资金。"),

@@ -74,6 +74,7 @@ DATA = {
     "h1_3": "nothing to cancel.",
     "se_sub": "{promise} {seduma} opens the door. The {nae} researches. <strong>In {practice}, no real money moves until you choose {live}.</strong>",
     "btn_how": "How it works",
+    "btn_buy_now": "Buy now",
     "defs": [
         ("{practice}", "Running your trading rules with simulated fills. No real money moves. It is the default."),
         ("{paper}", "Another word for {practice}. A broker\u2019s own paper account is called Real paper \u2014 still no real money."),

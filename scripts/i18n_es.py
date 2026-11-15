@@ -74,6 +74,7 @@ DATA = {
     "h1_3": "nada que cancelar.",
     "se_sub": "{promise} {seduma} abre la puerta. {nae} investiga. <strong>En {practice}, no se mueve dinero real hasta que tú eliges {live}.</strong>",
     "btn_how": "Cómo funciona",
+    "btn_buy_now": "Comprar ahora",
     "defs": [
         ("{practice}", "Ejecutar tus reglas de trading con ejecuciones simuladas. No se mueve dinero real. Es el modo predeterminado."),
         ("{paper}", "Otra palabra para {practice}. La cuenta paper de un bróker se llama Real paper \u2014 sigue sin haber dinero real."),
