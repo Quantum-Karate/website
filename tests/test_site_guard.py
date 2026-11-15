@@ -12,7 +12,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 import site_guard
-from i18n_data import payhip_button_url
+from i18n_data import LOCALES, payhip_button_url, utm_content
 
 
 def test_spelled_out_engine_name_is_allowed():
@@ -54,6 +54,48 @@ def test_attribute_values_are_scanned():
         "<title>NAE</title>",
     ):
         assert site_guard.findings_for_text(".html", snippet)
+
+
+def test_code_text_is_exempt_from_the_nae_word_check_only():
+    # Code identifiers, paths and env vars may keep their real names.
+    for ok in (
+        "<p>Open <code>NAE-Model-A</code> and read the Neural Agency Engine notes.</p>",
+        "<p>Keep <code>NAE_ENVIRONMENT=paper</code> in <code>.env</code>.</p>",
+        "<pre><code>cd Seduma_Trade/seduma/nae-integration\nNAE_ENVIRONMENT=paper</code></pre>",
+        '<pre class="code" aria-label="Docker install"><code>cd nae-integration</code></pre>',
+    ):
+        assert site_guard.findings_for_text(".html", ok) == [], ok
+    # Prose still fails, including next to a code span.
+    for bad in (
+        "<p>The NAE researches.</p>",
+        "<p>Run <code>NAE-Model-A</code>, the NAE toolkit.</p>",
+        "<p>See N.A.E. and <code>nae-integration</code>.</p>",
+        '<p title="NAE">Hello <code>nae-integration</code></p>',
+        '<code title="NAE">x</code>',
+        '<pre aria-label="The NAE"><code>x</code></pre>',
+        '<meta name="description" content="NAE"><code>NAE-Model-A</code>',
+    ):
+        assert site_guard.findings_for_text(".html", bad), bad
+    # A code span glued to letters would read as the word in prose.
+    assert site_guard.findings_for_text(".html", "<p>N<code>A</code>E</p>")
+    assert site_guard.findings_for_text(".html", "<p><code>NA</code>E</p>")
+    # Comments are still ignored; non-HTML text stays fully guarded.
+    assert site_guard.findings_for_text(".html", "<!-- NAE -->\n<p>Hello <code>NAE-Model-A</code></p>") == []
+    assert site_guard.findings_for_text(".txt", "Open NAE-Model-A")
+    assert site_guard.findings_for_text(".css", "body { content: 'NAE'; }")
+
+
+def test_every_other_banned_term_is_still_checked_inside_code():
+    for snippet in (
+        "<code>set-and-forget</code>",
+        "<pre><code>autonomous</code></pre>",
+        "<code>trades for you</code>",
+        "<code>autopilot</code>",
+        "<code>Quantum Karate LLC</code>",
+        "<pre>12% return</pre>",
+        '<pre><a href="https://example.com/x">x</a></pre>',
+    ):
+        assert site_guard.findings_for_text(".html", snippet), snippet
 
 
 def test_inline_tags_entities_and_whitespace_are_normalised():
@@ -385,7 +427,11 @@ def test_seo_files_canonical_and_software_application():
         "https://quantum-karate.github.io/website/llms.txt",
         "https://quantum-karate.github.io/website/llms-full.txt",
     ]
-    assert len(locs) == 4 * 13 + 2
+    assert locs[-4:-2] == [
+        "https://quantum-karate.github.io/website/features.html",
+        "https://quantum-karate.github.io/website/how-to-use.html",
+    ]
+    assert len(locs) == 4 * 13 + 2 + 2
 
 
 def _jsonld_script(payload: dict) -> str:
@@ -451,6 +497,8 @@ def test_llms_files_and_product_name():
     pages = (
         "https://quantum-karate.github.io/website/index.html",
         "https://quantum-karate.github.io/website/seduma.html",
+        "https://quantum-karate.github.io/website/features.html",
+        "https://quantum-karate.github.io/website/how-to-use.html",
         "https://quantum-karate.github.io/website/facts.html",
         "https://quantum-karate.github.io/website/contact.html",
     )
@@ -574,3 +622,94 @@ def test_delivered_docs_pass():
     if not site_guard.DOCS_DIR.is_dir():
         pytest.skip("docs/ is not present")
     assert site_guard.run_guard() == []
+
+
+def _payhip_top(page: str) -> str:
+    url = payhip_button_url("", page)
+    tag = utm_content("", page)
+    return url.replace(f"utm_content={tag}", f"utm_content={tag}-top")
+
+
+def test_features_and_guide_pages():
+    if not site_guard.DOCS_DIR.is_dir():
+        pytest.skip("docs/ is not present")
+    image = "https://quantum-karate.github.io/website/assets/og-seduma.png"
+    expected = {
+        "features.html": {
+            "title": "Seduma Trade Features: Practice Trading on Your Own Computer | Quantum Karate",
+            "og": "Seduma Trade Features: Practice Trading on Your Own Computer",
+            "desc": "Practice trading with simulated fills, a 7-day Dojo, and strategy research, all on your own computer. Live is optional and off by default. $49 once.",
+            "canonical": "https://quantum-karate.github.io/website/features.html",
+        },
+        "how-to-use.html": {
+            "title": "How to Use Seduma Trade: Install, Practice, and Read Your Results | Quantum Karate",
+            "og": "How to Use Seduma Trade: Install, Practice, and Read Your Results",
+            "desc": "Install Seduma Trade on Windows, Mac, Linux, or Docker, start Practice, run the 60-second demo, follow the 7-day Dojo, and read simulated results.",
+            "canonical": "https://quantum-karate.github.io/website/how-to-use.html",
+        },
+    }
+    for name, meta in expected.items():
+        text = (site_guard.DOCS_DIR / name).read_text(encoding="utf-8")
+        assert f"<title>{meta['title']}</title>" in text
+        assert f'<meta property="og:title" content="{meta["og"]}">' in text
+        assert f'<meta name="twitter:title" content="{meta["og"]}">' in text
+        assert f'<meta name="description" content="{meta["desc"]}">' in text
+        assert f'<link rel="canonical" href="{meta["canonical"]}">' in text
+        assert f'<meta property="og:url" content="{meta["canonical"]}">' in text
+        assert f'<meta property="og:image" content="{image}">' in text
+        assert '<link rel="alternate" href="llms.txt" type="text/plain" title="Plain-language summary for AI tools">' in text
+        assert "application/ld+json" not in text
+        assert "hreflang=" not in text
+        assert "lang-switch" not in text
+        assert "mailto:" not in text
+        assert "Dojo" not in text.split("</title>", 1)[0]
+        assert f'<meta property="og:title" content="{meta["og"]}">' in text and "Dojo" not in meta["og"]
+        assert text.count(f'href="{payhip_button_url("", name)}"') == 1
+        assert text.count(f'href="{_payhip_top(name)}"') == 1
+        assert 'href="https://payhip.com/b/K7UaW"' not in text
+        assert "set-and-forget" not in text
+        assert "License update pending" not in text
+        assert "mock-strip" not in text
+        assert "mock-note" not in text
+        assert "Neural Agency Engine" in text
+        assert "Thoth" not in text
+        assert "Phisher" not in text
+        hero = text.split('<section class="hero', 1)[1].split("</section>", 1)[0]
+        assert 'class="btn btn--primary"' in hero
+        assert 'Live' not in hero.split('<ul class="toc"', 1)[0] or name != 'features.html'
+        if name == "features.html":
+            assert "Live" not in hero
+        # Guide may mention the later section only in the on-page TOC, not in the heading or buy button.
+        if name == "how-to-use.html":
+            heading_and_cta = hero.split('<ul class="toc"', 1)[0]
+            assert "Live" not in heading_and_cta
+        # Payhip bands must not mention Live.
+        for href in (payhip_button_url("", name), _payhip_top(name)):
+            # Check the surrounding band/actions block roughly by ensuring the button itself has no Live label
+            assert "Live" not in href
+
+
+def test_nav_includes_features_and_guide():
+    if not site_guard.DOCS_DIR.is_dir():
+        pytest.skip("docs/ is not present")
+    originals = ("index.html", "seduma.html", "facts.html", "contact.html")
+    for name in originals:
+        text = (site_guard.DOCS_DIR / name).read_text(encoding="utf-8")
+        assert 'href="features.html">Features</a>' in text
+        assert 'href="how-to-use.html">Guide</a>' in text
+        assert text.count('href="features.html"') >= 2  # nav + footer
+        assert text.count('href="how-to-use.html"') >= 2
+    for _code, folder, _direction, _name in LOCALES:
+        if not folder:
+            continue
+        for name in originals:
+            text = (site_guard.DOCS_DIR / folder / name).read_text(encoding="utf-8")
+            assert 'href="../features.html">Features</a>' in text
+            assert 'href="../how-to-use.html">Guide</a>' in text
+            assert text.count('href="../features.html"') >= 2
+            assert text.count('href="../how-to-use.html"') >= 2
+    seduma = (site_guard.DOCS_DIR / "seduma.html").read_text(encoding="utf-8")
+    assert 'id="more-title"' in seduma
+    assert "Look closer, or set it up." in seduma
+    assert 'href="features.html">Seduma Trade features' in seduma
+    assert 'href="how-to-use.html">How to use Seduma Trade' in seduma

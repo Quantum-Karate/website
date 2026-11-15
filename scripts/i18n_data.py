@@ -22,6 +22,9 @@ LOCALES = (
 )
 
 PAGES = ("index.html", "seduma.html", "facts.html", "contact.html")
+# English-only pages (no locale copies yet). Each gets its canonical URL and two tracked Payhip buttons
+# (utm_content "<page>-top" for the hero button and "<page>" for the closing button).
+EXTRA_PAGES = ("features.html", "how-to-use.html")
 ORIGIN = "https://quantum-karate.github.io/website/"
 PAYHIP = "https://payhip.com/b/K7UaW"
 
@@ -78,6 +81,10 @@ def allowed_urls() -> frozenset[str]:
             urls.add(page_url(folder, page))
             if page != "facts.html":
                 urls.add(payhip_button_url(folder, page))
+    for page in EXTRA_PAGES:
+        urls.add(page_url("", page))
+        urls.add(payhip_button_url("", page))
+        urls.add(payhip_button_url("", page).replace(f"utm_content={utm_content('', page)}", f"utm_content={utm_content('', page)}-top"))
     return frozenset(urls)
 
 

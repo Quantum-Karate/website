@@ -11,6 +11,7 @@ import sys
 from pathlib import Path
 
 from i18n_data import (
+    EXTRA_PAGES,
     LOCALES,
     ORIGIN,
     PAYHIP,
@@ -132,19 +133,28 @@ def head(L: Copy, folder: str, page: str, title_key: str, desc_key: str, og_titl
 </head>"""
 
 
+def nav_items(L: Copy, folder: str, page: str) -> str:
+    """Header and footer links. Features and Guide are English-only, so locale pages go up one level."""
+    links = [
+        ("index.html", L.html("nav_home"), False),
+        ("seduma.html", latin(L.locale, "Seduma\u2122"), False),
+        ("features.html", L.html("nav_features"), True),
+        ("how-to-use.html", L.html("nav_guide"), True),
+        ("facts.html", L.html("nav_facts"), False),
+        ("contact.html", L.html("nav_contact"), False),
+    ]
+    items = []
+    for target, label, english_only in links:
+        href = rel_page(folder, "", target) if english_only else target
+        current = ' aria-current="page"' if target == page else ""
+        items.append(f'<li><a href="{href}"{current}>{label}</a></li>')
+    return "".join(items)
+
+
 def header(L: Copy, folder: str, page: str) -> str:
     nav_label = L.text("nav_label")
     lang_label = L.text("lang_label")
-    links = [
-        ("index.html", L.html("nav_home")),
-        ("seduma.html", latin(L.locale, "Seduma\u2122")),
-        ("facts.html", L.html("nav_facts")),
-        ("contact.html", L.html("nav_contact")),
-    ]
-    items = []
-    for href, label in links:
-        current = ' aria-current="page"' if href == page else ""
-        items.append(f'<li><a href="{href}"{current}>{label}</a></li>')
+    items = nav_items(L, folder, page)
     lang_items = []
     for code, to_folder, _direction, native in LOCALES:
         href = rel_page(folder, to_folder, page)
@@ -169,18 +179,9 @@ def header(L: Copy, folder: str, page: str) -> str:
 </header>"""
 
 
-def footer(L: Copy, page: str) -> str:
+def footer(L: Copy, folder: str, page: str) -> str:
     brand = latin(L.locale, "Quantum Karate\u2122")
-    links = [
-        ("index.html", L.html("nav_home")),
-        ("seduma.html", latin(L.locale, "Seduma\u2122")),
-        ("facts.html", L.html("nav_facts")),
-        ("contact.html", L.html("nav_contact")),
-    ]
-    items = []
-    for href, label in links:
-        current = ' aria-current="page"' if href == page else ""
-        items.append(f'<li><a href="{href}"{current}>{label}</a></li>')
+    items = nav_items(L, folder, page)
     return f"""<footer class="site-footer">
   <div class="container">
     <div class="site-footer__grid">
@@ -217,7 +218,7 @@ def document(L: Copy, folder: str, page: str, main: str, head_html: str, theme: 
 <main id="main" tabindex="-1">
 {main}
 </main>
-{footer(L, page)}
+{footer(L, folder, page)}
 <script data-goatcounter="https://quantumkarate.goatcounter.com/count" async src="{prefix}assets/count.js"></script>
 </body>
 </html>
@@ -243,6 +244,26 @@ def get_band(L: Copy, folder: str, page: str, indexed: bool) -> str:
       </div>
     </div>
   </section>"""
+
+
+def more_band(L: Copy, folder: str) -> str:
+    features = rel_page(folder, "", "features.html")
+    guide = rel_page(folder, "", "how-to-use.html")
+    return f"""  <section class="section section--tight" aria-labelledby="more-title">
+    <div class="container">
+      <div class="band" data-reveal>
+        <div>
+          <h2 id="more-title" class="h2">{L.html("more_title")}</h2>
+          <p class="lead" style="margin-top:var(--s-4)">{L.html("more_lead")}</p>
+        </div>
+        <div class="band__links">
+          <a class="link-arrow" href="{features}">{L.html("more_features")} {ARROW}</a>
+          <a class="link-arrow" href="{guide}">{L.html("more_howto")} {ARROW}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+"""
 
 
 def render_home(L: Copy, folder: str, reticle: str) -> str:
@@ -627,6 +648,7 @@ def render_seduma(L: Copy, folder: str) -> str:
       </div>
     </div>
   </section>
+  {more_band(L, folder)}
   <section class="section section--tight" aria-labelledby="facts-cta">
     <div class="container">
       <div class="band" data-reveal>
@@ -753,6 +775,10 @@ def sitemap() -> str:
         for _code, folder, _direction, _name in LOCALES:
             if folder:
                 emit(page, folder)
+    for page in EXTRA_PAGES:
+        lines.append("  <url>")
+        lines.append(f"    <loc>{page_url('', page)}</loc>")
+        lines.append("  </url>")
     for name in ("llms.txt", "llms-full.txt"):
         lines.append("  <url>")
         lines.append(f"    <loc>{ORIGIN}{name}</loc>")
@@ -786,6 +812,10 @@ def render_pages(strings: dict[str, dict], reticle: str) -> dict[str, str]:
             verify(code, page, content)
             rel = f"{folder}/{page}" if folder else page
             pages[rel] = content
+    for name in EXTRA_PAGES:
+        content = (DOCS / name).read_text(encoding="utf-8")
+        verify_static_en(name, content)
+        pages[name] = content
     pages["sitemap.xml"] = sitemap()
     return pages
 
@@ -884,7 +914,79 @@ def verify_english(page: str, content: str) -> None:
         raise SystemExit("English home must not include SoftwareApplication")
 
 
+def verify_static_en(page: str, content: str) -> None:
+    """Checks for the English-only Features and Guide pages (no locales, no language switcher)."""
+    from i18n_data import utm_content
+
+    if page not in EXTRA_PAGES:
+        raise SystemExit(f"{page} is not an English-only extra page")
+    if "Seduma Trade Dojo" in content:
+        raise SystemExit(f"{page} contains Seduma Trade Dojo")
+    lowered = content.lower()
+    if "waitlist" in lowered or "thoth" in lowered or "phisher" in lowered:
+        raise SystemExit(f"{page} contains a banned name")
+    if "Neural Agency Engine" not in content:
+        raise SystemExit(f"{page} does not spell Neural Agency Engine")
+    if "hreflang=" in content:
+        raise SystemExit(f"{page} should not have hreflang alternates")
+    if "lang-switch" in content:
+        raise SystemExit(f"{page} should omit the language switcher")
+    if "mock-strip" in content or "mock-note" in content or "License update pending" in content:
+        raise SystemExit(f"{page} still has mock-only ship notes")
+    if "application/ld+json" in content:
+        raise SystemExit(f"{page} should not include JSON-LD")
+    if lowered.count("mailto:"):
+        raise SystemExit(f"{page} should not publish email")
+    if f'href="{PAYHIP}"' in content:
+        raise SystemExit(f"{page} has a bare Payhip link")
+    button = payhip_button_url("", page)
+    top = button.replace(
+        f"utm_content={utm_content('', page)}",
+        f"utm_content={utm_content('', page)}-top",
+    )
+    if content.count(f'href="{button}"') != 1 or content.count(f'href="{top}"') != 1:
+        raise SystemExit(f"{page} should have the tracked Payhip button and the -top variant once each")
+    title = re.search(r"<title>([^<]*)</title>", content)
+    og_title = re.search(r'<meta property="og:title" content="([^"]*)"', content)
+    for kind, match in (("title", title), ("og:title", og_title)):
+        if not match:
+            raise SystemExit(f"{page} missing {kind}")
+        if "Dojo" in match.group(1):
+            raise SystemExit(f"{page} {kind} still names the product as a Dojo")
+    if page == "features.html":
+        expected_title = "Seduma Trade Features: Practice Trading on Your Own Computer | Quantum Karate"
+        expected_og = "Seduma Trade Features: Practice Trading on Your Own Computer"
+        expected_desc = (
+            "Practice trading with simulated fills, a 7-day Dojo, and strategy research, "
+            "all on your own computer. Live is optional and off by default. $49 once."
+        )
+    else:
+        expected_title = "How to Use Seduma Trade: Install, Practice, and Read Your Results | Quantum Karate"
+        expected_og = "How to Use Seduma Trade: Install, Practice, and Read Your Results"
+        expected_desc = (
+            "Install Seduma Trade on Windows, Mac, Linux, or Docker, start Practice, "
+            "run the 60-second demo, follow the 7-day Dojo, and read simulated results."
+        )
+    if not title or title.group(1) != expected_title:
+        raise SystemExit(f"{page} title mismatch")
+    if not og_title or og_title.group(1) != expected_og:
+        raise SystemExit(f"{page} og:title mismatch")
+    if f'<meta name="description" content="{expected_desc}">' not in content:
+        raise SystemExit(f"{page} description mismatch")
+    if f'<link rel="canonical" href="{page_url("", page)}">' not in content:
+        raise SystemExit(f"{page} canonical mismatch")
+    if f'<meta property="og:url" content="{page_url("", page)}">' not in content:
+        raise SystemExit(f"{page} og:url mismatch")
+    if f'<meta property="og:image" content="{OG_IMAGE}">' not in content:
+        raise SystemExit(f"{page} og:image mismatch")
+    if 'href="features.html"' not in content or 'href="how-to-use.html"' not in content:
+        raise SystemExit(f"{page} missing Features or Guide nav links")
+    if "set-and-forget" in lowered:
+        raise SystemExit(f"{page} contains set-and-forget")
+
+
 def write_outputs(pages: dict[str, str]) -> None:
+
     for rel, content in pages.items():
         path = DOCS / rel
         path.parent.mkdir(parents=True, exist_ok=True)
