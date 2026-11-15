@@ -886,6 +886,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://quantum-karate.github.io/website/contact.html"/>
   </url>
   <url>
+    <loc>https://quantum-karate.github.io/website/features.html</loc>
+  </url>
+  <url>
+    <loc>https://quantum-karate.github.io/website/how-to-use.html</loc>
+  </url>
+  <url>
     <loc>https://quantum-karate.github.io/website/llms.txt</loc>
   </url>
   <url>

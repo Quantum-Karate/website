@@ -87,6 +87,8 @@ Support: v-nat@outlook.com, replies within 2 business days.
 
 - [Home](https://quantum-karate.github.io/website/index.html): Quantum Karate: Seduma Trade Practice Trading Simulator, $49 Once
 - [Seduma](https://quantum-karate.github.io/website/seduma.html): Seduma Trade: Practice Trading Simulator, $49 Once
+- [Features](https://quantum-karate.github.io/website/features.html): Seduma Trade Features: Practice Trading on Your Own Computer
+- [Guide](https://quantum-karate.github.io/website/how-to-use.html): How to Use Seduma Trade: Install, Practice, and Read Your Results
 - [Facts](https://quantum-karate.github.io/website/facts.html): What Seduma is and is not
 - [Contact](https://quantum-karate.github.io/website/contact.html): Product questions and support
 - [Get Seduma Trade on Payhip](https://payhip.com/b/K7UaW): the only buy link, $49 once

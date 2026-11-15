@@ -92,6 +92,12 @@ _TAG_RE = re.compile(r"<[^>]*>", re.DOTALL)
 _SCRIPT_BLOCK_RE = re.compile(r"<script\b[^>]*>(.*?)</script>", re.IGNORECASE | re.DOTALL)
 _STYLE_BLOCK_RE = re.compile(r"<style\b[^>]*>(.*?)</style>", re.IGNORECASE | re.DOTALL)
 _WS_RE = re.compile(r"\s+")
+# Code spans and blocks. Their text is exempt from the NAE-word check ONLY, so file names, paths and
+# env vars stay real in code. Every other check still reads code text. Opening tags (and their
+# attributes) are kept, so title/alt/aria-label values on a code or pre tag are still checked.
+_CODE_BLOCK_RE = re.compile(r"(<(code|pre)\b[^>]*>).*?</\2\s*>", re.IGNORECASE | re.DOTALL)
+# A code span glued to letters, such as N<code>A</code>E, would read as the word in prose.
+_CODE_GLUED_RE = re.compile(r"[A-Za-z0-9]<(?:code|pre)\b|</(?:code|pre)\s*>[A-Za-z0-9]", re.IGNORECASE)
 
 _CLAIM_ATTRS = {"content", "title", "aria-label", "alt", "placeholder"}
 _ATTR_RE = re.compile(
@@ -295,9 +301,9 @@ def _sentence_allowed(text: str, start: int, end: int) -> bool:
     return sentence in _SENTENCE_ALLOWLIST
 
 
-def phrase_findings(text: str) -> list[str]:
+def phrase_findings(text: str, *, check_nae: bool = True) -> list[str]:
     findings: list[str] = []
-    for match in _NAE_RE.finditer(text):
+    for match in (_NAE_RE.finditer(text) if check_nae else ()):
         if not _sentence_allowed(text, match.start(), match.end()):
             findings.append(f"standalone abbreviation: {match.group(0)}")
     for match in _ENTITY_RE.finditer(text):
@@ -340,8 +346,15 @@ def findings_for_text(suffix: str, content: str) -> list[str]:
         raw = strip_html_comments(content)
         findings.extend(html_reference_findings(raw))
         findings.extend(embedded_reference_findings(raw))
+        if _CODE_GLUED_RE.search(raw):
+            findings.append("code span glued to letters")
+        # Every check except the NAE word reads everything, code text included.
         for text in html_claim_texts(raw):
-            findings.extend(phrase_findings(text))
+            findings.extend(phrase_findings(text, check_nae=False))
+        # The NAE word is checked on prose, attributes and meta; text inside code/pre is exempt.
+        prose = _CODE_BLOCK_RE.sub(r"\1", raw)
+        for text in html_claim_texts(prose):
+            findings.extend(item for item in phrase_findings(text) if item.startswith("standalone abbreviation"))
     elif suffix == ".css":
         raw = strip_css_comments(content)
         findings.extend(css_reference_findings(raw))
