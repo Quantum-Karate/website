@@ -26,6 +26,7 @@ DATA = {
     "tagline": "당신의 통제. 당신의 결정. 당신의 거래는 당신의 손에.",
     "amp": "AI 지원으로 증폭됩니다.",
     "offer": "{price}, 한 번만, 구독 없음, 취소할 것이 없습니다.",
+    "refunds": "\ubaa8\ub4e0 \ud310\ub9e4\ub294 \ucd5c\uc885\uc801\uc785\ub2c8\ub2e4. \uad00\ub828 \ubc95\ub839\uc774 \ub2ec\ub9ac \uc694\uad6c\ud558\ub294 \uacbd\uc6b0\ub97c \uc81c\uc678\ud558\uace0, {trade}\ub294 \ud604\uc7ac \ud658\ubd88\uc744 \uc81c\uacf5\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
     "note": "구매자는 {nae}가 포함된 소스를 받아 자신의 컴퓨터에서 실행합니다. 결과는 시뮬레이션뿐입니다. 불로소득을 약속하지 않고 이익도 약속하지 않습니다.",
     "sub": "가장 작은 세부까지 다스리십시오. <strong>가장 큰 영향을 만드십시오.</strong>",
     "btn_meet": "{seduma} 만나기",

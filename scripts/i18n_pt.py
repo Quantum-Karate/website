@@ -26,6 +26,7 @@ DATA = {
     "tagline": "Seu controle. Suas decisões. Suas operações, nas suas mãos.",
     "amp": "Ampliado por assistência de IA.",
     "offer": "{price} uma única vez, sem assinatura e nada para cancelar.",
+    "refunds": "Todas as vendas s\u00e3o finais. {trade} n\u00e3o oferece reembolsos neste momento, exceto quando a lei aplic\u00e1vel o exigir.",
     "note": "Quem compra recebe o código-fonte, inclusive {nae}, e o executa no próprio computador. Apenas resultados simulados. Sem promessa de renda passiva e sem promessa de lucro.",
     "sub": "Domine os menores detalhes. <strong>Crie o maior impacto.</strong>",
     "btn_meet": "Conheça {seduma}",

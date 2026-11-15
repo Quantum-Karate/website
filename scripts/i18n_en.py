@@ -26,6 +26,7 @@ DATA = {
     "tagline": "Your control. Your decisions. Your trades, in your hands.",
     "amp": "Amplified by AI assistance.",
     "offer": "{price} once, no subscription, nothing to cancel.",
+    "refunds": "All sales are final. {trade} has no refunds at this time, except where applicable law requires otherwise.",
     "note": "Buyers get the source, including the {nae}, and run it on their own computer. Simulated results only. No passive-income promise, and no profit promise.",
     "sub": "Master the smallest details. <strong>Create the biggest impact.</strong>",
     "btn_meet": "Meet {seduma}",

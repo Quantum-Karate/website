@@ -13,6 +13,8 @@ from pathlib import Path
 from i18n_data import (
     LOCALES,
     PAGES as LOCALE_PAGES,
+    PAYHIP_JS,
+    PAYHIP_PRODUCT,
     allowed_urls,
     fill,
     load_strings,
@@ -37,6 +39,10 @@ MANIFEST_ALLOWLIST = {
 STEP_TITLE = "You\u2019re set \u2014 setup stays Paper"
 PROMISE = "We don\u2019t fake Practice. We don\u2019t trade until you say so."
 DISCLAIMER = "Seduma is not a broker or an investment adviser."
+REFUNDS = (
+    "All sales are final. Seduma Trade has no refunds at this time, "
+    "except where applicable law requires otherwise."
+)
 REQUIRED_PAGES = ("index.html", "seduma.html", "facts.html", "contact.html")
 
 # The delivered pages do not use "autonomous" at all, so there is no
@@ -393,6 +399,8 @@ def required_findings(pages: dict[str, str]) -> list[str]:
     for name in REQUIRED_PAGES:
         if DISCLAIMER not in pages.get(name, ""):
             findings.append(f"{name}: missing required text: {DISCLAIMER}")
+        if REFUNDS not in pages.get(name, ""):
+            findings.append(f"{name}: missing required text: {REFUNDS}")
     return findings
 
 
@@ -717,11 +725,24 @@ def check_i18n(docs_dir: Path) -> list[str]:
             button = payhip_button_url(folder, page)
             button_count = text.count(f'href="{button}"')
             bare_count = text.count(f'href="{_PAYHIP}"')
+            refunds = fill(data["refunds"], code, html_mode=True)
+            if refunds not in text:
+                findings.append(f"{rel}: missing translated refunds line")
+            script = f'<script type="text/javascript" src="{PAYHIP_JS}"></script>'
             if page == "facts.html":
                 if button_count or bare_count:
                     findings.append(f"{rel}: facts page must not link to Payhip")
+                if script in text or "payhip-buy-button" in text or f'data-product="{PAYHIP_PRODUCT}"' in text:
+                    findings.append(f"{rel}: facts page must not include the Payhip embed")
             elif button_count != 1 or bare_count:
                 findings.append(f"{rel}: Payhip button must be the tracked listing link, once")
+            else:
+                if text.count(script) != 1:
+                    findings.append(f"{rel}: Payhip embed script must appear once")
+                if 'class="btn btn--primary payhip-buy-button"' not in text:
+                    findings.append(f"{rel}: Payhip button must use the embed class")
+                if text.count(f'data-product="{PAYHIP_PRODUCT}"') != 1 or text.count('data-theme="none"') != 1:
+                    findings.append(f"{rel}: Payhip button must carry embed attributes")
             title = re.search(r"<title>([^<]*)</title>", text)
             og_title = re.search(r'<meta property="og:title" content="([^"]*)"', text)
             for kind, match in (("title", title), ("og:title", og_title)):

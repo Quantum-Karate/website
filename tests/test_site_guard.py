@@ -185,26 +185,30 @@ def test_references_beyond_href_and_src():
 
 def test_required_sentences():
     good = {
-        "index.html": f"<p>{site_guard.DISCLAIMER}</p>",
-        "facts.html": f"<p>{site_guard.DISCLAIMER}</p>",
-        "contact.html": f"<p>{site_guard.DISCLAIMER}</p>",
-        "seduma.html": f"<h3>{site_guard.STEP_TITLE}</h3><strong>{site_guard.PROMISE}</strong><p>{site_guard.DISCLAIMER}</p>",
+        "index.html": f"<p>{site_guard.DISCLAIMER}</p><p>{site_guard.REFUNDS}</p>",
+        "facts.html": f"<p>{site_guard.DISCLAIMER}</p><p>{site_guard.REFUNDS}</p>",
+        "contact.html": f"<p>{site_guard.DISCLAIMER}</p><p>{site_guard.REFUNDS}</p>",
+        "seduma.html": f"<h3>{site_guard.STEP_TITLE}</h3><strong>{site_guard.PROMISE}</strong><p>{site_guard.DISCLAIMER}</p><p>{site_guard.REFUNDS}</p>",
     }
     assert "\u2019" in site_guard.STEP_TITLE and "\u2014" in site_guard.STEP_TITLE
     assert "\u2019" in site_guard.PROMISE
     assert site_guard.required_findings(good) == []
 
     missing_title = dict(good)
-    missing_title["seduma.html"] = f"<strong>{site_guard.PROMISE}</strong><p>{site_guard.DISCLAIMER}</p>"
+    missing_title["seduma.html"] = f"<strong>{site_guard.PROMISE}</strong><p>{site_guard.DISCLAIMER}</p><p>{site_guard.REFUNDS}</p>"
     assert any("seduma.html" in item and site_guard.STEP_TITLE in item for item in site_guard.required_findings(missing_title))
 
     missing_promise = dict(good)
-    missing_promise["seduma.html"] = f"<h3>{site_guard.STEP_TITLE}</h3><p>{site_guard.DISCLAIMER}</p>"
+    missing_promise["seduma.html"] = f"<h3>{site_guard.STEP_TITLE}</h3><p>{site_guard.DISCLAIMER}</p><p>{site_guard.REFUNDS}</p>"
     assert any(site_guard.PROMISE in item for item in site_guard.required_findings(missing_promise))
 
     missing_disclaimer = dict(good)
     missing_disclaimer["facts.html"] = "<p>Hello</p>"
     assert any(item.startswith("facts.html") and site_guard.DISCLAIMER in item for item in site_guard.required_findings(missing_disclaimer))
+
+    missing_refunds = dict(good)
+    missing_refunds["contact.html"] = f"<p>{site_guard.DISCLAIMER}</p>"
+    assert any(item.startswith("contact.html") and site_guard.REFUNDS in item for item in site_guard.required_findings(missing_refunds))
 
 
 def test_cname_must_be_one_hostname():
@@ -249,6 +253,8 @@ def test_payhip_practice_eval_link_is_the_only_external_exception():
     assert site_guard.findings_for_text(".html", '<a href="//payhip.com/b/K7UaW">x</a>')
     assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("", "seduma.html")}">x</a>') == []
     assert site_guard.findings_for_text(".html", f'<a href="{payhip_button_url("de", "index.html")}">x</a>') == []
+    assert site_guard.findings_for_text(".html", '<script type="text/javascript" src="https://payhip.com/payhip.js"></script>') == []
+    assert site_guard.findings_for_text(".html", '<script src="https://payhip.com/js/payhip.js"></script>')
     assert site_guard.findings_for_text(
         ".html",
         '<a href="https://payhip.com/b/K7UaW?utm_source=other">x</a>',
@@ -280,6 +286,7 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
         assert "Copy email" not in page
         assert "data-copy-email" not in page
         assert "$49 once, no subscription, nothing to cancel" in page
+        assert site_guard.REFUNDS in page
         assert "Buyers get the source, including the Neural Agency Engine, and run it on their own computer." in page
         assert "Simulated results only. No passive-income promise, and no profit promise." in page
         assert "finelo" not in page.lower()
@@ -307,6 +314,12 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
     assert seduma.count(f'href="{payhip_button_url("", "seduma.html")}"') == 1
     assert index.count(f'href="{payhip_button_url("", "index.html")}"') == 1
     assert contact.count(f'href="{payhip_button_url("", "contact.html")}"') == 1
+    script = '<script type="text/javascript" src="https://payhip.com/payhip.js"></script>'
+    for page in (index, seduma, contact):
+        assert page.count(script) == 1
+        assert 'class="btn btn--primary payhip-buy-button"' in page
+        assert 'data-product="K7UaW"' in page
+        assert 'data-theme="none"' in page
     support = 'Support: <a class="support-address" href="mailto:v-nat@outlook.com">v-nat@outlook.com</a>, replies within 2 business days.'
     assert support in contact
     assert contact.lower().count("mailto:") == 1
@@ -400,6 +413,8 @@ def test_seo_files_canonical_and_software_application():
     assert 'content="Product questions about Seduma Trade go through the Payhip listing. $49 once, no subscription, nothing to cancel. Simulated results only."' in contact
     assert "<strong>A one-time Dojo.</strong>" in facts
     assert "No passive-income promise, and no profit promise." in facts
+    assert site_guard.REFUNDS in facts
+    assert 'src="https://payhip.com/payhip.js"' not in facts
     assert "profit" not in facts.replace("No passive-income promise, and no profit promise.", "")
     assert "finelo" not in facts.lower()
     robots = (site_guard.DOCS_DIR / "robots.txt").read_text(encoding="utf-8")
@@ -511,6 +526,7 @@ def test_llms_files_and_product_name():
         assert "simulated fills" in text.lower() or "Simulated fills" in text or "fills are simulated" in text
         assert "your own computer" in text
         assert "$49" in text
+        assert site_guard.REFUNDS in text
         assert "https://payhip.com/b/K7UaW" in text
         assert "payhip.com/" not in text.replace("https://payhip.com/b/K7UaW", "")
         assert "Neural Agency Engine" in text
@@ -675,7 +691,12 @@ def test_features_and_guide_pages():
         assert "Thoth" not in text
         assert "Phisher" not in text
         hero = text.split('<section class="hero', 1)[1].split("</section>", 1)[0]
-        assert 'class="btn btn--primary"' in hero
+        assert 'class="btn btn--primary payhip-buy-button"' in hero
+        assert 'data-product="K7UaW"' in hero
+        assert 'data-theme="none"' in hero
+        assert text.count('<script type="text/javascript" src="https://payhip.com/payhip.js"></script>') == 1
+        assert text.count('class="btn btn--primary payhip-buy-button"') == 2
+        assert text.count('data-product="K7UaW"') == 2
         assert 'Live' not in hero.split('<ul class="toc"', 1)[0] or name != 'features.html'
         if name == "features.html":
             assert "Live" not in hero
