@@ -29,6 +29,8 @@ ORIGIN = "https://quantum-karate.github.io/website/"
 PAYHIP = "https://payhip.com/b/K7UaW"
 PAYHIP_JS = "https://payhip.com/payhip.js"
 PAYHIP_PRODUCT = "K7UaW"
+PAYHIP_FOUNDER_PRODUCT = "a7GkH"
+PAYHIP_FOUNDER = "https://payhip.com/b/a7GkH"
 
 _TOKENS = {
     "seduma_tm": "Seduma\u2122",
@@ -66,27 +68,39 @@ def utm_content(folder: str, page: str) -> str:
     return stem
 
 
-def payhip_button_url(folder: str, page: str, variant: str = "") -> str:
+def payhip_button_url(folder: str, page: str, variant: str = "", product: str = PAYHIP_PRODUCT) -> str:
     """Tracked buy button. JSON-LD and prose links stay on the bare listing URL."""
     tag = utm_content(folder, page)
     if variant:
         tag = f"{tag}-{variant}"
     return (
-        f"{PAYHIP}?utm_source=quantumkarate_site"
+        f"https://payhip.com/b/{product}?utm_source=quantumkarate_site"
         f"&utm_medium=referral"
         f"&utm_campaign=seduma_trade"
         f"&utm_content={tag}"
     )
 
 
+def payhip_placements(folder: str, page: str) -> list[tuple[str, str]]:
+    """Expected (href, product id) pairs for each buy button on a locale page."""
+    if page in ("index.html", "seduma.html"):
+        items = [
+            (payhip_button_url(folder, page, "edition-standard"), PAYHIP_PRODUCT),
+            (payhip_button_url(folder, page, "edition-founder", PAYHIP_FOUNDER_PRODUCT), PAYHIP_FOUNDER_PRODUCT),
+        ]
+        if page == "seduma.html":
+            items.append((payhip_button_url(folder, page, "hero"), PAYHIP_PRODUCT))
+        return items
+    return [(payhip_button_url(folder, page), PAYHIP_PRODUCT)]
+
+
 def allowed_urls() -> frozenset[str]:
-    urls = {PAYHIP, PAYHIP_JS}
+    urls = {PAYHIP, PAYHIP_FOUNDER, PAYHIP_JS}
     for _code, folder, _direction, _name in LOCALES:
         for page in PAGES:
             urls.add(page_url(folder, page))
-            urls.add(payhip_button_url(folder, page))
-            if page == "seduma.html":
-                urls.add(payhip_button_url(folder, page, "hero"))
+            for href, _product in payhip_placements(folder, page):
+                urls.add(href)
     for page in EXTRA_PAGES:
         urls.add(page_url("", page))
         urls.add(payhip_button_url("", page))

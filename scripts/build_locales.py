@@ -15,6 +15,8 @@ from i18n_data import (
     LOCALES,
     ORIGIN,
     PAYHIP,
+    PAYHIP_FOUNDER,
+    PAYHIP_FOUNDER_PRODUCT,
     PAYHIP_JS,
     PAYHIP_PRODUCT,
     PAGES,
@@ -23,6 +25,7 @@ from i18n_data import (
     load_strings,
     page_url,
     payhip_button_url,
+    payhip_placements,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -73,11 +76,11 @@ def delay(index: int) -> str:
     return f' style="--d:{index}"' if index else ""
 
 
-def payhip(folder: str, page: str, label: str, variant: str = "") -> str:
-    href = payhip_button_url(folder, page, variant)
+def payhip(folder: str, page: str, label: str, variant: str = "", product: str = PAYHIP_PRODUCT) -> str:
+    href = payhip_button_url(folder, page, variant, product)
     return (
         f'<a class="btn btn--primary payhip-buy-button" href="{href}" rel="noopener" '
-        f'data-product="{PAYHIP_PRODUCT}" data-theme="none">{label} {ARROW}</a>'
+        f'data-product="{product}" data-theme="none">{label} {ARROW}</a>'
     )
 
 
@@ -257,6 +260,41 @@ def get_band(L: Copy, folder: str, page: str, indexed: bool) -> str:
   </section>"""
 
 
+def edition_picker(L: Copy, folder: str, page: str, indexed: bool) -> str:
+    index = ""
+    if indexed:
+        index = (
+            '<p class="index label" data-reveal><span class="index__num">04</span>'
+            f'<span>{L.html("get_label")}</span></p>'
+        )
+    standard = payhip(folder, page, L.html("btn_buy_now"), "edition-standard")
+    founder = payhip(folder, page, L.html("btn_buy_now"), "edition-founder", PAYHIP_FOUNDER_PRODUCT)
+    return f"""<section class="section section--tight" aria-labelledby="get-seduma-title">
+    <div class="container">
+      {index}
+      <div class="section__head" data-reveal>
+        <h2 id="get-seduma-title" class="h2">{L.html("get_h")}</h2>
+        <p class="lead">{L.html("editions_lead")}</p>
+      </div>
+      <div class="editions" data-reveal>
+        <article class="card edition">
+          <h3 class="h3">{L.html("edition_standard_h")}</h3>
+          <p class="edition__price">{L.html("edition_standard_price")}</p>
+          <p class="edition__body">{L.html("edition_standard_body")}</p>
+          {standard}
+        </article>
+        <article class="card edition">
+          <h3 class="h3">{L.html("edition_founder_h")}</h3>
+          <p class="edition__price">{L.html("edition_founder_price")}</p>
+          <p class="edition__body">{L.html("edition_founder_body")}</p>
+          {founder}
+        </article>
+      </div>
+      <p class="edition__refunds" data-reveal>{L.html("refunds")}</p>
+    </div>
+  </section>"""
+
+
 def more_band(L: Copy, folder: str) -> str:
     features = rel_page(folder, "", "features.html")
     guide = rel_page(folder, "", "how-to-use.html")
@@ -370,7 +408,7 @@ def render_home(L: Copy, folder: str, reticle: str) -> str:
       </div>
     </div>
   </section>
-  {get_band(L, folder, "index.html", indexed=True)}
+  {edition_picker(L, folder, "index.html", indexed=True)}
 """
     head_html = head(
         L,
@@ -676,7 +714,7 @@ def render_seduma(L: Copy, folder: str) -> str:
       </div>
     </div>
   </section>
-  {get_band(L, folder, "seduma.html", indexed=False)}
+  {edition_picker(L, folder, "seduma.html", indexed=False)}
 """
     head_html = head(
         L,
@@ -858,22 +896,24 @@ def verify(locale: str, page: str, content: str, refunds: str) -> None:
     if f'dir="{direction}"' not in content:
         raise SystemExit(f"{locale}/{page} dir attribute missing")
     folder = INFO[locale][0]
-    button = payhip_button_url(folder, page)
-    button_count = content.count(f'href="{button}"')
-    hero = payhip_button_url(folder, page, "hero") if page == "seduma.html" else ""
-    hero_count = content.count(f'href="{hero}"') if hero else 0
-    bare_count = content.count(f'href="{PAYHIP}"')
     if refunds not in content:
         raise SystemExit(f"{locale}/{page} missing refunds line")
     script = f'<script type="text/javascript" src="{PAYHIP_JS}"></script>'
-    expected_buttons = 2 if page == "seduma.html" else 1
-    if button_count != 1 or bare_count or hero_count != (1 if hero else 0):
+    placements = payhip_placements(folder, page)
+    expected_buttons = len(placements)
+    bare_count = content.count(f'href="{PAYHIP}"') + content.count(f'href="{PAYHIP_FOUNDER}"')
+    href_ok = all(content.count(f'href="{href}"') == 1 for href, _product in placements)
+    product_ok = all(
+        content.count(f'data-product="{product}"') == sum(1 for _href, item in placements if item == product)
+        for product in {item for _href, item in placements}
+    )
+    if bare_count or not href_ok:
         raise SystemExit(f"{locale}/{page} should link to the tracked Payhip button once per placement")
     elif content.count(script) != 1:
         raise SystemExit(f"{locale}/{page} should include the Payhip embed script once")
     elif content.count('class="btn btn--primary payhip-buy-button"') != expected_buttons:
         raise SystemExit(f"{locale}/{page} Payhip button is missing the embed class")
-    elif content.count(f'data-product="{PAYHIP_PRODUCT}"') != expected_buttons or content.count('data-theme="none"') != expected_buttons:
+    elif not product_ok or content.count('data-theme="none"') != expected_buttons:
         raise SystemExit(f"{locale}/{page} Payhip button is missing embed attributes")
     title = re.search(r"<title>([^<]*)</title>", content)
     og_title = re.search(r'<meta property="og:title" content="([^"]*)"', content)
@@ -904,7 +944,8 @@ def verify_english(page: str, content: str) -> None:
             "Get Seduma Trade.",
             "Seduma Trade is the $49 Practice eval.",
             "The Neural Agency Engine researches. Seduma is the front door.",
-            "Get Seduma Trade on Payhip",
+            "Seduma Trade Founder Edition",
+            "The founder program is capped at 50 purchases.",
             "Buyers get the source, including the Neural Agency Engine, and run it on their own computer.",
             "Simulated results only. No passive-income promise, and no profit promise.",
             "$49 once, no subscription, nothing to cancel",
@@ -924,6 +965,8 @@ def verify_english(page: str, content: str) -> None:
             "Honest Practice. Simulated results only. No passive-income promise, and no profit promise.",
             "We don\u2019t fake Practice. We don\u2019t trade until you say so.",
             "You\u2019re set \u2014 setup stays Paper",
+            "Seduma Trade Founder Edition",
+            "The founder program is capped at 50 purchases.",
             "All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.",
         ],
         "facts.html": [
@@ -937,6 +980,7 @@ def verify_english(page: str, content: str) -> None:
             "<title>Contact | Quantum Karate</title>",
             'content="Product questions about Seduma Trade go through the Payhip listing. $49 once, no subscription, nothing to cancel. Simulated results only."',
             'Support: <a class="support-address" href="mailto:v-nat@outlook.com">v-nat@outlook.com</a>, replies within 2 business days.',
+            "Get Seduma Trade on Payhip",
             "All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.",
         ],
     }

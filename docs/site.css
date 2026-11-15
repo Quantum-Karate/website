@@ -378,6 +378,41 @@ a { color: inherit; text-decoration: none; }
 .band { display: grid; gap: var(--s-5); align-items: end; }
 @media (min-width: 768px) { .band { grid-template-columns: minmax(0, 1fr) auto; } }
 
+/* Edition picker */
+.editions {
+  display: grid;
+  gap: var(--s-5);
+  margin-top: var(--s-2);
+}
+@media (min-width: 768px) {
+  .editions { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
+}
+.edition {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.edition .h3 { margin: 0; }
+.edition__price {
+  margin: 0;
+  font-size: var(--fs-h3, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.edition__body {
+  margin: 0;
+  color: hsl(var(--qk-fg-muted));
+  max-width: 40rem;
+}
+.edition .btn { margin-top: auto; align-self: start; }
+.edition__refunds {
+  margin-top: var(--s-6);
+  color: hsl(var(--qk-fg-muted));
+  font-size: var(--fs-sm);
+  max-width: 46rem;
+  text-wrap: pretty;
+}
+
 /* ---------- 9. Chips (Lockframe posture badges) ---------- */
 .chip {
   display: inline-flex; align-items: center; gap: 0.45rem;

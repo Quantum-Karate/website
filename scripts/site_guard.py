@@ -13,6 +13,8 @@ from pathlib import Path
 from i18n_data import (
     LOCALES,
     PAGES as LOCALE_PAGES,
+    PAYHIP,
+    PAYHIP_FOUNDER,
     PAYHIP_JS,
     PAYHIP_PRODUCT,
     allowed_urls,
@@ -20,6 +22,7 @@ from i18n_data import (
     load_strings,
     page_url,
     payhip_button_url,
+    payhip_placements,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -722,24 +725,26 @@ def check_i18n(docs_dir: Path) -> list[str]:
                     findings.append(f"{rel}: missing translated promise")
                 if step_ready not in text:
                     findings.append(f"{rel}: missing translated setup line")
-            button = payhip_button_url(folder, page)
-            button_count = text.count(f'href="{button}"')
-            hero = payhip_button_url(folder, page, "hero") if page == "seduma.html" else ""
-            hero_count = text.count(f'href="{hero}"') if hero else 0
-            bare_count = text.count(f'href="{_PAYHIP}"')
             refunds = fill(data["refunds"], code, html_mode=True)
             if refunds not in text:
                 findings.append(f"{rel}: missing translated refunds line")
             script = f'<script type="text/javascript" src="{PAYHIP_JS}"></script>'
-            expected_buttons = 2 if page == "seduma.html" else 1
-            if button_count != 1 or bare_count or hero_count != (1 if hero else 0):
+            placements = payhip_placements(folder, page)
+            expected_buttons = len(placements)
+            bare_count = text.count(f'href="{PAYHIP}"') + text.count(f'href="{PAYHIP_FOUNDER}"')
+            href_ok = all(text.count(f'href="{href}"') == 1 for href, _product in placements)
+            product_ok = all(
+                text.count(f'data-product="{product}"') == sum(1 for _href, item in placements if item == product)
+                for product in {item for _href, item in placements}
+            )
+            if bare_count or not href_ok:
                 findings.append(f"{rel}: Payhip button must be the tracked listing link, once per placement")
             else:
                 if text.count(script) != 1:
                     findings.append(f"{rel}: Payhip embed script must appear once")
                 if text.count('class="btn btn--primary payhip-buy-button"') != expected_buttons:
                     findings.append(f"{rel}: Payhip button must use the embed class")
-                if text.count(f'data-product="{PAYHIP_PRODUCT}"') != expected_buttons or text.count('data-theme="none"') != expected_buttons:
+                if not product_ok or text.count('data-theme="none"') != expected_buttons:
                     findings.append(f"{rel}: Payhip button must carry embed attributes")
             title = re.search(r"<title>([^<]*)</title>", text)
             og_title = re.search(r'<meta property="og:title" content="([^"]*)"', text)
