@@ -15,6 +15,8 @@ from i18n_data import (
     LOCALES,
     ORIGIN,
     PAYHIP,
+    PAYHIP_JS,
+    PAYHIP_PRODUCT,
     PAGES,
     Copy,
     fill,
@@ -74,8 +76,16 @@ def delay(index: int) -> str:
 def payhip(folder: str, page: str, label: str) -> str:
     href = payhip_button_url(folder, page)
     return (
-        f'<a class="btn btn--primary" href="{href}" rel="noopener">{label} {ARROW}</a>'
+        f'<a class="btn btn--primary payhip-buy-button" href="{href}" rel="noopener" '
+        f'data-product="{PAYHIP_PRODUCT}" data-theme="none">{label} {ARROW}</a>'
     )
+
+
+def with_refunds(L: Copy, text: str) -> str:
+    refunds = L.html("refunds")
+    if refunds in text:
+        return text
+    return f"{text} {refunds}"
 
 
 def lights() -> str:
@@ -102,6 +112,9 @@ def head(L: Copy, folder: str, page: str, title_key: str, desc_key: str, og_titl
         f'<link rel="alternate" href="{asset(folder, "llms.txt")}" type="text/plain" title="Plain-language summary for AI tools">'
     )
     schema_block = f'<script type="application/ld+json">\n{schema}\n</script>\n' if schema else ""
+    payhip_script = (
+        f'<script type="text/javascript" src="{PAYHIP_JS}"></script>\n' if page != "facts.html" else ""
+    )
     return f"""<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -130,7 +143,7 @@ def head(L: Copy, folder: str, page: str, title_key: str, desc_key: str, og_titl
 <link rel="preload" href="{asset(folder, "fonts/Geist-Variable.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{asset(folder, "site.css")}">
 <script src="{asset(folder, "site.js")}" defer></script>
-</head>"""
+{payhip_script}</head>"""
 
 
 def nav_items(L: Copy, folder: str, page: str) -> str:
@@ -238,7 +251,7 @@ def get_band(L: Copy, folder: str, page: str, indexed: bool) -> str:
       <div class="band" data-reveal>
         <div>
           <h2 id="get-seduma-title" class="h2">{L.html("get_h")}</h2>
-          <p class="lead" style="margin-top:var(--s-4)">{L.html("get_lead")}</p>
+          <p class="lead" style="margin-top:var(--s-4)">{with_refunds(L, L.html("get_lead"))}</p>
         </div>
         {payhip(folder, page, L.html("get_btn"))}
       </div>
@@ -286,7 +299,7 @@ def render_home(L: Copy, folder: str, reticle: str) -> str:
       <p class="hero__amp">{L.html("amp")}</p>
       <div class="hero__grid">
         <div>
-          <p class="hero__offer"><strong>{L.html("offer")}</strong></p>
+          <p class="hero__offer"><strong>{L.html("offer")}</strong> {L.html("refunds")}</p>
           <p class="hero__note">{L.html("note")}</p>
           <p class="hero__sub">{L.html("sub")}</p>
           <div class="actions">
@@ -420,7 +433,10 @@ def render_seduma(L: Copy, folder: str) -> str:
     compare_rows = []
     skip_label = L.text("col_skip")
     get_label = L.text("col_get")
+    offer = L.html("offer")
     for header, skipped, got in L.rows("compare"):
+        if offer in got:
+            got = with_refunds(L, got)
         compare_rows.append(
             "<tr>"
             f'<th scope="row">{header}</th>'
@@ -475,6 +491,7 @@ def render_seduma(L: Copy, folder: str) -> str:
     <div class="container hero__inner">
       <div class="hero__eyebrow"><span class="label">{L.html("se_eyebrow")}</span>{honest}</div>
       <h1 id="hero-title" class="h1"><span class="line">{L.html("h1_1")}</span> <span class="line">{L.html("h1_2")}</span> <span class="line">{L.html("h1_3")}</span></h1>
+      <p class="hero__note">{L.html("refunds")}</p>
       <p class="hero__sub">{L.html("se_sub")}</p>
       <div class="actions">
         <a class="btn btn--primary" href="#how">{L.html("btn_how")} <span class="arrow" aria-hidden="true">\u2193</span></a>
@@ -677,10 +694,13 @@ def render_seduma(L: Copy, folder: str) -> str:
 
 def render_facts(L: Copy, folder: str) -> str:
     def facts(pairs):
-        return "".join(
-            f"<li><div><strong>{strong}</strong><span>{detail}</span></div></li>"
-            for strong, detail in pairs
-        )
+        offer = L.html("offer")
+        items = []
+        for strong, detail in pairs:
+            if offer in detail:
+                detail = with_refunds(L, detail)
+            items.append(f"<li><div><strong>{strong}</strong><span>{detail}</span></div></li>")
+        return "".join(items)
 
     glossary = "".join(
         f"<div data-reveal><dt>{term}</dt><dd>{definition}</dd></div>"
@@ -726,7 +746,7 @@ def render_contact(L: Copy, folder: str) -> str:
     <div class="container hero__inner">
       <div class="hero__eyebrow"><span class="label">{L.html("contact_eyebrow")}</span></div>
       <h1 id="hero-title" class="h1">{L.html("contact_h")}</h1>
-      <p class="hero__sub">{L.html("contact_sub")}</p>
+      <p class="hero__sub">{with_refunds(L, L.html("contact_sub"))}</p>
     </div>
   </section>
   {get_band(L, folder, "contact.html", indexed=False)}
@@ -809,7 +829,7 @@ def render_pages(strings: dict[str, dict], reticle: str) -> dict[str, str]:
             "contact.html": render_contact(L, folder),
         }
         for page, content in rendered.items():
-            verify(code, page, content)
+            verify(code, page, content, L.html("refunds"))
             rel = f"{folder}/{page}" if folder else page
             pages[rel] = content
     for name in EXTRA_PAGES:
@@ -820,7 +840,7 @@ def render_pages(strings: dict[str, dict], reticle: str) -> dict[str, str]:
     return pages
 
 
-def verify(locale: str, page: str, content: str) -> None:
+def verify(locale: str, page: str, content: str, refunds: str) -> None:
     if "Seduma Trade Dojo" in content:
         raise SystemExit(f"{locale}/{page} contains Seduma Trade Dojo")
     lowered = content.lower()
@@ -839,11 +859,22 @@ def verify(locale: str, page: str, content: str) -> None:
     button = payhip_button_url(folder, page)
     button_count = content.count(f'href="{button}"')
     bare_count = content.count(f'href="{PAYHIP}"')
+    if refunds not in content:
+        raise SystemExit(f"{locale}/{page} missing refunds line")
+    script = f'<script type="text/javascript" src="{PAYHIP_JS}"></script>'
     if page == "facts.html":
         if button_count or bare_count:
             raise SystemExit(f"{locale}/{page} should not link to Payhip")
+        if script in content or "payhip-buy-button" in content or f'data-product="{PAYHIP_PRODUCT}"' in content:
+            raise SystemExit(f"{locale}/{page} should not include the Payhip embed")
     elif button_count != 1 or bare_count:
         raise SystemExit(f"{locale}/{page} should link to the tracked Payhip button once")
+    elif content.count(script) != 1:
+        raise SystemExit(f"{locale}/{page} should include the Payhip embed script once")
+    elif 'class="btn btn--primary payhip-buy-button"' not in content:
+        raise SystemExit(f"{locale}/{page} Payhip button is missing the embed class")
+    elif content.count(f'data-product="{PAYHIP_PRODUCT}"') != 1 or content.count('data-theme="none"') != 1:
+        raise SystemExit(f"{locale}/{page} Payhip button is missing embed attributes")
     title = re.search(r"<title>([^<]*)</title>", content)
     og_title = re.search(r'<meta property="og:title" content="([^"]*)"', content)
     for kind, match in (("title", title), ("og:title", og_title)):
@@ -878,6 +909,7 @@ def verify_english(page: str, content: str) -> None:
             "Simulated results only. No passive-income promise, and no profit promise.",
             "$49 once, no subscription, nothing to cancel",
             "What Seduma is and isn\u2019t",
+            "All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.",
         ],
         "seduma.html": [
             "<title>Seduma Trade: Practice Trading Simulator, $49 Once | Quantum Karate</title>",
@@ -892,17 +924,20 @@ def verify_english(page: str, content: str) -> None:
             "Honest Practice. Simulated results only. No passive-income promise, and no profit promise.",
             "We don\u2019t fake Practice. We don\u2019t trade until you say so.",
             "You\u2019re set \u2014 setup stays Paper",
+            "All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.",
         ],
         "facts.html": [
             "<title>What Seduma is and isn\u2019t | Quantum Karate</title>",
             'content="Plain facts: $49 once, no subscription. Simulated results only. Live stays off unless you choose it. Not a broker."',
             "<strong>A one-time Dojo.</strong>",
             "No passive-income promise, and no profit promise.",
+            "All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.",
         ],
         "contact.html": [
             "<title>Contact | Quantum Karate</title>",
             'content="Product questions about Seduma Trade go through the Payhip listing. $49 once, no subscription, nothing to cancel. Simulated results only."',
             'Support: <a class="support-address" href="mailto:v-nat@outlook.com">v-nat@outlook.com</a>, replies within 2 business days.',
+            "All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.",
         ],
     }
     for snippet in required[page]:
@@ -946,6 +981,13 @@ def verify_static_en(page: str, content: str) -> None:
     )
     if content.count(f'href="{button}"') != 1 or content.count(f'href="{top}"') != 1:
         raise SystemExit(f"{page} should have the tracked Payhip button and the -top variant once each")
+    script = f'<script type="text/javascript" src="{PAYHIP_JS}"></script>'
+    if content.count(script) != 1:
+        raise SystemExit(f"{page} should include the Payhip embed script once")
+    if content.count('class="btn btn--primary payhip-buy-button"') != 2:
+        raise SystemExit(f"{page} Payhip buttons are missing the embed class")
+    if content.count(f'data-product="{PAYHIP_PRODUCT}"') != 2 or content.count('data-theme="none"') != 2:
+        raise SystemExit(f"{page} Payhip buttons are missing embed attributes")
     title = re.search(r"<title>([^<]*)</title>", content)
     og_title = re.search(r'<meta property="og:title" content="([^"]*)"', content)
     for kind, match in (("title", title), ("og:title", og_title)):

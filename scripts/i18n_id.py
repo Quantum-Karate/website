@@ -26,6 +26,7 @@ DATA = {
     "tagline": "Kendali Anda. Keputusan Anda. Transaksi Anda, di tangan Anda.",
     "amp": "Diperkuat oleh bantuan AI.",
     "offer": "{price} satu kali, tanpa langganan, tidak ada yang perlu dibatalkan.",
+    "refunds": "Semua penjualan bersifat final. {trade} saat ini tidak memberikan pengembalian dana, kecuali jika hukum yang berlaku mensyaratkannya.",
     "note": "Pembeli mendapat kode sumber, termasuk {nae}, dan menjalankannya di komputer mereka sendiri. Hanya hasil simulasi. Tidak ada janji penghasilan pasif, dan tidak ada janji laba.",
     "sub": "Kuasai detail terkecil. <strong>Ciptakan dampak terbesar.</strong>",
     "btn_meet": "Temui {seduma}",

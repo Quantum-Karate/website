@@ -6,7 +6,7 @@ Quantum Karate builds technology the way a martial artist trains: with precision
 
 Seduma Trade is Quantum Karate's product: a Practice-first trading simulator for your own strategies. Simulated fills. It runs on your own computer.
 
-Price: $49 once, no subscription, nothing to cancel.
+Price: $49 once, no subscription, nothing to cancel. All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.
 
 The only buy link is https://payhip.com/b/K7UaW. There is no waitlist and no other purchase link.
 
@@ -23,7 +23,7 @@ Home says: "Your control. Your decisions. Your trades, in your hands." Then: "Am
 - You configure the risk limits.
 - Built-in connections are conveniences, not an exclusive list. You can bring another API you have access to.
 - Your first Practice run needs no Live or real broker keys.
-- A one-time Dojo: $49 once. Buyers get the source, including the Neural Agency Engine, and run it on their own computer.
+- A one-time Dojo: $49 once, no subscription, nothing to cancel. All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise. Buyers get the source, including the Neural Agency Engine, and run it on their own computer.
 
 "Dojo" on the site names that practice feature (the one-time Dojo). The product name is Seduma Trade.
 
@@ -68,7 +68,7 @@ Connection types published on the site: Practice stub (first run, no broker acco
 
 The Seduma page comparison is titled "Why a one-time Dojo". It contrasts:
 
-- Price: a subscription you have to cancel, versus $49 once, no subscription, nothing to cancel.
+- Price: a subscription you have to cancel, versus $49 once, no subscription, nothing to cancel. All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.
 - Software: a closed copy you do not run, versus the source, including the Neural Agency Engine, on your own computer.
 - Results: a passive-income pitch, versus simulated results only. No passive-income promise, and no profit promise.
 - Control: trading before you say so, versus Practice by default. We don't trade until you say so.
@@ -79,7 +79,7 @@ Honest Practice, as published: Practice fills are simulated — they are not liv
 
 ## Contact
 
-Product questions about Seduma Trade go through the Payhip listing. $49 once, no subscription, nothing to cancel.
+Product questions about Seduma Trade go through the Payhip listing. $49 once, no subscription, nothing to cancel. All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.
 
 Support: v-nat@outlook.com, replies within 2 business days.
 

@@ -27,6 +27,8 @@ PAGES = ("index.html", "seduma.html", "facts.html", "contact.html")
 EXTRA_PAGES = ("features.html", "how-to-use.html")
 ORIGIN = "https://quantum-karate.github.io/website/"
 PAYHIP = "https://payhip.com/b/K7UaW"
+PAYHIP_JS = "https://payhip.com/payhip.js"
+PAYHIP_PRODUCT = "K7UaW"
 
 _TOKENS = {
     "seduma_tm": "Seduma\u2122",
@@ -75,7 +77,7 @@ def payhip_button_url(folder: str, page: str) -> str:
 
 
 def allowed_urls() -> frozenset[str]:
-    urls = {PAYHIP}
+    urls = {PAYHIP, PAYHIP_JS}
     for _code, folder, _direction, _name in LOCALES:
         for page in PAGES:
             urls.add(page_url(folder, page))

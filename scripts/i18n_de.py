@@ -26,6 +26,7 @@ DATA = {
     "tagline": "Ihre Kontrolle. Ihre Entscheidungen. Ihre Trades, in Ihren Händen.",
     "amp": "Verstärkt durch KI-Unterstützung.",
     "offer": "{price} einmal, kein Abonnement, nichts zu kündigen.",
+    "refunds": "Alle Verk\u00e4ufe sind endg\u00fcltig. {trade} bietet derzeit keine R\u00fcckerstattungen an, au\u00dfer soweit das geltende Recht dies verlangt.",
     "note": "Käufer erhalten den Quelltext, einschließlich {nae}, und führen ihn auf dem eigenen Computer aus. Nur simulierte Ergebnisse. Kein Versprechen passiven Einkommens und kein Gewinnversprechen.",
     "sub": "Beherrschen Sie die kleinsten Details. <strong>Schaffen Sie die größte Wirkung.</strong>",
     "btn_meet": "{seduma} kennenlernen",

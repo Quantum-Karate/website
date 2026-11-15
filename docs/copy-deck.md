@@ -644,3 +644,23 @@ From the 2026-10-21 competitor brief, the short edge moves only. No competitor i
 - English `utm_content`: `index`, `seduma`, `contact`
 - Translated `utm_content`: locale, a hyphen, then the page, such as `de-seduma`, `es-index`, `pt-BR-contact`, `zh-Hans-seduma`
 - The Offer url in JSON-LD, and the buy link in `llms.txt` and `llms-full.txt`, stay the bare listing `https://payhip.com/b/K7UaW`
+
+---
+
+## Addendum 2026-11-15 — no refunds line and Payhip overlay checkout
+
+**Supersedes** only the visible price-adjacent refund wording on Home, Seduma, Facts, and Contact, and the Payhip button markup. Earlier deck text stays as history. Product copy is otherwise unchanged.
+
+**Refunds line (English, locked):** All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.
+
+- Place it next to the $49 once, no subscription, nothing to cancel copy on Home (hero offer and Get Seduma lead), Seduma (under the price H1, the price comparison cell, and the Get Seduma lead), Facts (the one-time Dojo item), and Contact (hero sub and the Get Seduma lead).
+- Do not add it to titles or meta descriptions.
+- Locale pages use an accurate translation of that line, or the English line if a translation would be risky.
+- The same English line is restated in `llms.txt` and `llms-full.txt` next to the published price wording.
+
+**Payhip overlay checkout**
+
+- Buy buttons keep their existing tracked `href` (`https://payhip.com/b/K7UaW` plus the current UTM tags) and `rel="noopener"` as the no-JavaScript fallback.
+- Each buy button also uses `class="btn btn--primary payhip-buy-button"`, `data-product="K7UaW"`, and `data-theme="none"` so Payhip's overlay opens without replacing the site's button style.
+- Pages with a buy button load Payhip's documented embed script: `<script type="text/javascript" src="https://payhip.com/payhip.js"></script>`.
+- Facts has no buy button and does not load the script.
