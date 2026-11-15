@@ -249,7 +249,7 @@ def get_band(L: Copy, folder: str, page: str, indexed: bool) -> str:
 def more_band(L: Copy, folder: str) -> str:
     features = rel_page(folder, "", "features.html")
     guide = rel_page(folder, "", "how-to-use.html")
-    return f"""  <section class="section section--tight" aria-labelledby="more-title">
+    return f"""  <section class="section section--tight" lang="en" dir="ltr" aria-labelledby="more-title">
     <div class="container">
       <div class="band" data-reveal>
         <div>
