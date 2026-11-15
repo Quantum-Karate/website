@@ -74,6 +74,7 @@ DATA = {
     "h1_3": "rien à annuler.",
     "se_sub": "{promise} {seduma} ouvre la porte. {nae} fait la recherche. <strong>En {practice}, aucun argent réel ne bouge tant que vous ne choisissez pas {live}.</strong>",
     "btn_how": "Comment ça marche",
+    "btn_buy_now": "Acheter maintenant",
     "defs": [
         ("{practice}", "Exécuter vos règles de trading avec des exécutions simulées. Aucun argent réel ne bouge. C\u2019est le réglage par défaut."),
         ("{paper}", "Un autre mot pour {practice}. Le compte paper du courtier s\u2019appelle Real paper \u2014 toujours sans argent réel."),
