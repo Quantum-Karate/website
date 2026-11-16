@@ -509,8 +509,8 @@ _SCHEMA_TYPES = frozenset({
 })
 _RATING_KEYS = frozenset({"aggregaterating", "review", "ratingvalue", "reviewcount"})
 _ORG_DESCRIPTION = (
-    "Quantum Karate\u2122 builds technology the way a martial artist trains: "
-    "with precision, discipline, and attention to the smallest detail."
+    "Quantum Karate\u2122 builds software the way a martial artist trains: "
+    "precision, discipline, and attention to small details."
 )
 _PRODUCT_DESCRIPTION = (
     "Practice your own trading rules in a paper trading simulator on your own computer. "

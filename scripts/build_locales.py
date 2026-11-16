@@ -12,6 +12,7 @@ from pathlib import Path
 
 from i18n_data import (
     EXTRA_PAGES,
+    PAYHIP_EXTRA_PAGES,
     LOCALES,
     ORIGIN,
     PAYHIP,
@@ -154,6 +155,7 @@ def nav_items(L: Copy, folder: str, page: str) -> str:
         ("seduma.html", latin(L.locale, "Seduma\u2122"), False),
         ("features.html", L.html("nav_features"), True),
         ("how-to-use.html", L.html("nav_guide"), True),
+        ("advanced-setup.html", L.html("nav_advanced"), True),
         ("facts.html", L.html("nav_facts"), False),
         ("contact.html", L.html("nav_contact"), False),
     ]
@@ -210,6 +212,7 @@ def footer(L: Copy, folder: str, page: str) -> str:
       <div>
         <p class="label">{L.html("footer_disclaimer_label")}</p>
         <p class="disclaimer">{L.html("disclaimer")}</p>
+        <p class="disclaimer">{L.html("risk")}</p>
       </div>
     </div>
     <div class="site-footer__base">
@@ -264,7 +267,7 @@ def edition_picker(L: Copy, folder: str, page: str, indexed: bool) -> str:
     index = ""
     if indexed:
         index = (
-            '<p class="index label" data-reveal><span class="index__num">04</span>'
+            '<p class="index label" data-reveal><span class="index__num">03</span>'
             f'<span>{L.html("get_label")}</span></p>'
         )
     standard = payhip(folder, page, L.html("btn_buy_now"), "edition-standard")
@@ -318,12 +321,7 @@ def more_band(L: Copy, folder: str) -> str:
 def render_home(L: Copy, folder: str, reticle: str) -> str:
     trade = fill("{trade}", L.locale, html_mode=True)
     qk = fill("{qk}", L.locale, html_mode=True)
-    pillars = []
-    for index, (title, paragraph) in enumerate(L.rows("pillars")):
-        pillars.append(
-            f'<article class="pillar" data-reveal{delay(index)}><span class="label">{index + 1:02d}</span>'
-            f"<h3 class=\"h3\">{title}</h3><p>{paragraph}</p></article>"
-        )
+    bullets = "".join(f"<li>{item}</li>" for item in L.rows("hero_bullets"))
     practice = chip("practice", L.html("chip_practice"))
     live_off = chip("off", L.html("chip_live_off"))
     main = f"""<section class="hero hero--home" aria-labelledby="hero-title">
@@ -332,37 +330,26 @@ def render_home(L: Copy, folder: str, reticle: str) -> str:
       <div class="hero__eyebrow"><span class="label">{qk}</span><span class="label">{L.html("eyebrow_tag")}</span></div>
       <h1 id="hero-title" class="display"><span class="line">{trade}</span></h1>
       <p class="hero__tagline">{L.html("tagline")}</p>
-      <p class="hero__amp">{L.html("amp")}</p>
       <div class="hero__grid">
         <div>
+          <p class="hero__plain">{L.html("hero_plain")}</p>
+          <p class="hero__explainer">{L.html("hero_explainer")}</p>
+          <ul class="hero__bullets" role="list">{bullets}</ul>
+          <div class="actions">
+            {payhip(folder, "index.html", L.html("btn_get_once"), "hero")}
+            <a class="btn btn--ghost" href="seduma.html#how">{L.html("btn_see_how")}</a>
+          </div>
           <p class="hero__offer"><strong>{L.html("offer")}</strong> {L.html("refunds")}</p>
           <p class="hero__note">{L.html("note")}</p>
-          <p class="hero__sub">{L.html("sub")}</p>
-          <div class="actions">
-            <a class="btn btn--primary" href="seduma.html">{L.html("btn_meet")} {ARROW}</a>
-            <a class="btn btn--ghost" href="facts.html">{L.html("btn_what")}</a>
-          </div>
         </div>
         {reticle}
       </div>
     </div>
     <div class="ruler" aria-hidden="true"></div>
   </section>
-  <section class="section" aria-labelledby="philosophy-title">
-    <div class="container">
-      <p class="index label" data-reveal><span class="index__num">01</span><span>{L.html("phil_label")}</span></p>
-      <div class="section__head section__head--split">
-        <h2 id="philosophy-title" class="h2" data-reveal>{L.html("phil_h")}</h2>
-        <p class="lead" data-reveal style="--d:1">{L.html("phil_lead")}</p>
-      </div>
-      <div class="pillars">
-        {"".join(pillars)}
-      </div>
-    </div>
-  </section>
   <section class="section feature--seduma" aria-labelledby="seduma-title">
     <div class="container">
-      <p class="index label" data-reveal><span class="index__num">02</span><span>{L.html("prod_label")}</span></p>
+      <p class="index label" data-reveal><span class="index__num">01</span><span>{L.html("prod_label")}</span></p>
       <div class="feature">
         <div data-reveal>
           <div class="hero__eyebrow" style="margin:0"><span class="label">{latin(L.locale, "Seduma\u2122")}</span><span class="chip chip--honest">{L.html("chip_honest")}</span></div>
@@ -398,7 +385,7 @@ def render_home(L: Copy, folder: str, reticle: str) -> str:
   </section>
   <section class="section section--tight" aria-labelledby="band-title">
     <div class="container">
-      <p class="index label" data-reveal><span class="index__num">03</span><span>{L.html("talk_label")}</span></p>
+      <p class="index label" data-reveal><span class="index__num">02</span><span>{L.html("talk_label")}</span></p>
       <div class="band" data-reveal>
         <div>
           <h2 id="band-title" class="h2">{L.html("talk_h")}</h2>
@@ -409,6 +396,16 @@ def render_home(L: Copy, folder: str, reticle: str) -> str:
     </div>
   </section>
   {edition_picker(L, folder, "index.html", indexed=True)}
+  <section class="section" aria-labelledby="philosophy-title">
+    <div class="container">
+      <p class="index label" data-reveal><span class="index__num">04</span><span>{L.html("phil_label")}</span></p>
+      <div class="section__head">
+        <h2 id="philosophy-title" class="h2" data-reveal>{L.html("phil_h")}</h2>
+        <p class="lead" data-reveal style="--d:1">{L.html("phil_lead")}</p>
+        <p class="lead" data-reveal style="--d:2">{L.html("phil_close")}</p>
+      </div>
+    </div>
+  </section>
 """
     head_html = head(
         L,
@@ -942,6 +939,10 @@ def verify_english(page: str, content: str) -> None:
             "<title>Quantum Karate: Seduma Trade Practice Trading Simulator, $49 Once</title>",
             'content="Quantum Karate: $49 once, no subscription, nothing to cancel. The source includes the Neural Agency Engine, on your own computer. Simulated results only."',
             "Get Seduma Trade.",
+            "Practice your trades first, then go Live whenever you're ready.",
+            "Get Seduma Trade, $49 once",
+            "See how it works",
+            "Trading real money involves risk, and you can lose money.",
             "Seduma Trade is the $49 Practice eval.",
             "The Neural Agency Engine researches. Seduma is the front door.",
             "Seduma Trade Founder Edition",
@@ -960,7 +961,7 @@ def verify_english(page: str, content: str) -> None:
             '"priceCurrency": "USD"',
             '"availability": "https://schema.org/InStock"',
             f'"url": "{PAYHIP}"',
-            "Why a one-time Dojo",
+            "Why a one-time purchase",
             "You get the source.",
             "Honest Practice. Simulated results only. No passive-income promise, and no profit promise.",
             "We don\u2019t fake Practice. We don\u2019t trade until you say so.",
@@ -972,14 +973,14 @@ def verify_english(page: str, content: str) -> None:
         "facts.html": [
             "<title>What Seduma is and isn\u2019t | Quantum Karate</title>",
             'content="Plain facts: $49 once, no subscription. Simulated results only. Live stays off unless you choose it. Not a broker."',
-            "<strong>A one-time Dojo.</strong>",
+            "<strong>A one-time purchase.</strong>",
             "No passive-income promise, and no profit promise.",
             "All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.",
         ],
         "contact.html": [
             "<title>Contact | Quantum Karate</title>",
             'content="Product questions about Seduma Trade go through the Payhip listing. $49 once, no subscription, nothing to cancel. Simulated results only."',
-            'Support: <a class="support-address" href="mailto:v-nat@outlook.com">v-nat@outlook.com</a>, replies within 2 business days.',
+            'Support: <a class="support-address" href="mailto:quantumkarate@mail.grokbot.com">quantumkarate@mail.grokbot.com</a>, replies within 2 business days.',
             "Get Seduma Trade on Payhip",
             "All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.",
         ],
@@ -1018,20 +1019,23 @@ def verify_static_en(page: str, content: str) -> None:
         raise SystemExit(f"{page} should not publish email")
     if f'href="{PAYHIP}"' in content:
         raise SystemExit(f"{page} has a bare Payhip link")
-    button = payhip_button_url("", page)
-    top = button.replace(
-        f"utm_content={utm_content('', page)}",
-        f"utm_content={utm_content('', page)}-top",
-    )
-    if content.count(f'href="{button}"') != 1 or content.count(f'href="{top}"') != 1:
-        raise SystemExit(f"{page} should have the tracked Payhip button and the -top variant once each")
     script = f'<script type="text/javascript" src="{PAYHIP_JS}"></script>'
-    if content.count(script) != 1:
-        raise SystemExit(f"{page} should include the Payhip embed script once")
-    if content.count('class="btn btn--primary payhip-buy-button"') != 2:
-        raise SystemExit(f"{page} Payhip buttons are missing the embed class")
-    if content.count(f'data-product="{PAYHIP_PRODUCT}"') != 2 or content.count('data-theme="none"') != 2:
-        raise SystemExit(f"{page} Payhip buttons are missing embed attributes")
+    if page in PAYHIP_EXTRA_PAGES:
+        button = payhip_button_url("", page)
+        top = button.replace(
+            f"utm_content={utm_content('', page)}",
+            f"utm_content={utm_content('', page)}-top",
+        )
+        if content.count(f'href="{button}"') != 1 or content.count(f'href="{top}"') != 1:
+            raise SystemExit(f"{page} should have the tracked Payhip button and the -top variant once each")
+        if content.count(script) != 1:
+            raise SystemExit(f"{page} should include the Payhip embed script once")
+        if content.count('class="btn btn--primary payhip-buy-button"') != 2:
+            raise SystemExit(f"{page} Payhip buttons are missing the embed class")
+        if content.count(f'data-product="{PAYHIP_PRODUCT}"') != 2 or content.count('data-theme="none"') != 2:
+            raise SystemExit(f"{page} Payhip buttons are missing embed attributes")
+    elif "payhip-buy-button" in content or PAYHIP_JS in content:
+        raise SystemExit(f"{page} should not include a Payhip button")
     title = re.search(r"<title>([^<]*)</title>", content)
     og_title = re.search(r'<meta property="og:title" content="([^"]*)"', content)
     for kind, match in (("title", title), ("og:title", og_title)):
@@ -1046,12 +1050,19 @@ def verify_static_en(page: str, content: str) -> None:
             "Practice trading with simulated fills, a 7-day Dojo, and strategy research, "
             "all on your own computer. Live is optional and off by default. $49 once."
         )
-    else:
+    elif page == "how-to-use.html":
         expected_title = "How to Use Seduma Trade: Install, Practice, and Read Your Results | Quantum Karate"
         expected_og = "How to Use Seduma Trade: Install, Practice, and Read Your Results"
         expected_desc = (
             "Install Seduma Trade on Windows, Mac, Linux, or Docker, start Practice, "
             "run the 60-second demo, follow the 7-day Dojo, and read simulated results."
+        )
+    else:
+        expected_title = "Advanced Setup for Seduma Trade | Quantum Karate"
+        expected_og = "Advanced Setup for Seduma Trade"
+        expected_desc = (
+            "Optional Docker, console token, and backtest-import steps for Seduma Trade. "
+            "Practice stays on your own computer. Python 3.11 or newer."
         )
     if not title or title.group(1) != expected_title:
         raise SystemExit(f"{page} title mismatch")
@@ -1067,6 +1078,8 @@ def verify_static_en(page: str, content: str) -> None:
         raise SystemExit(f"{page} og:image mismatch")
     if 'href="features.html"' not in content or 'href="how-to-use.html"' not in content:
         raise SystemExit(f"{page} missing Features or Guide nav links")
+    if 'href="advanced-setup.html"' not in content:
+        raise SystemExit(f"{page} missing Advanced setup nav links")
     if "set-and-forget" in lowered:
         raise SystemExit(f"{page} contains set-and-forget")
 
