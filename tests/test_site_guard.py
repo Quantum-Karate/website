@@ -607,6 +607,7 @@ def test_a11y_polish_and_locale_switch():
     assert "transition: top" not in css
     assert "text-decoration: underline" in css
     assert ".chip--honest { color: hsl(var(--qk-fg)); font-size: 0.75rem; }" in css
+    assert ".site-header .nav__item--advanced { display: none; }" in css
     index = (site_guard.DOCS_DIR / "index.html").read_text(encoding="utf-8")
     assert '<ul role="list">' in index
     assert 'aria-label="Language"' in index
@@ -769,6 +770,11 @@ def test_nav_includes_features_and_guide():
         assert text.count('href="features.html"') >= 2  # nav + footer
         assert text.count('href="how-to-use.html"') >= 2
         assert text.count('href="advanced-setup.html"') >= 2
+        assert text.count('class="nav__item--advanced"') == 2
+        header = text.split("</header>", 1)[0]
+        footer = text.split("<footer", 1)[1]
+        assert 'class="nav__item--advanced"' in header
+        assert 'class="nav__item--advanced"' in footer
     for _code, folder, _direction, _name in LOCALES:
         if not folder:
             continue

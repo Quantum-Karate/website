@@ -149,21 +149,27 @@ def head(L: Copy, folder: str, page: str, title_key: str, desc_key: str, og_titl
 
 
 def nav_items(L: Copy, folder: str, page: str) -> str:
-    """Header and footer links. Features and Guide are English-only, so locale pages go up one level."""
+    """Header and footer links. Features and Guide are English-only, so locale pages go up one level.
+
+    Advanced setup stays in the footer at every width, and in the header from
+    960px up. On smaller screens the header keeps the original six items so
+    the bar does not clip.
+    """
     links = [
-        ("index.html", L.html("nav_home"), False),
-        ("seduma.html", latin(L.locale, "Seduma\u2122"), False),
-        ("features.html", L.html("nav_features"), True),
-        ("how-to-use.html", L.html("nav_guide"), True),
-        ("advanced-setup.html", L.html("nav_advanced"), True),
-        ("facts.html", L.html("nav_facts"), False),
-        ("contact.html", L.html("nav_contact"), False),
+        ("index.html", L.html("nav_home"), False, ""),
+        ("seduma.html", latin(L.locale, "Seduma\u2122"), False, ""),
+        ("features.html", L.html("nav_features"), True, ""),
+        ("how-to-use.html", L.html("nav_guide"), True, ""),
+        ("advanced-setup.html", L.html("nav_advanced"), True, "nav__item--advanced"),
+        ("facts.html", L.html("nav_facts"), False, ""),
+        ("contact.html", L.html("nav_contact"), False, ""),
     ]
     items = []
-    for target, label, english_only in links:
+    for target, label, english_only, extra_class in links:
         href = rel_page(folder, "", target) if english_only else target
         current = ' aria-current="page"' if target == page else ""
-        items.append(f'<li><a href="{href}"{current}>{label}</a></li>')
+        cls = f' class="{extra_class}"' if extra_class else ""
+        items.append(f'<li{cls}><a href="{href}"{current}>{label}</a></li>')
     return "".join(items)
 
 
