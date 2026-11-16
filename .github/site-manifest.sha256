@@ -9,6 +9,15 @@ b5a078d15afda42319525d77acccc6581833176f2372c83e33f31ec7727c209a  ./assets/favic
 e5b49cc2e3e6934743bfd90c5b0fb30ee1e914698a0e4b8b74775ec1f568d35f  ./assets/logo-horizontal-transparent.svg
 2eb5d3d7dc15034f471297bd2ef96f0368d3249557f340b01adaa8516fa9def7  ./assets/mark.svg
 c609d4c0274eb7559ada01f83a00cf3bde62d39494ea570afefecf928094d9fd  ./assets/og-seduma.png
+7f6a1db8b4cb8a00c4f125c9b0decc21b6c84f561cc094fb331a7ed58f03b786  ./assets/seduma-trade-practice-walkthrough-poster.jpg
+a3939421ed643d292b4d434f1d410fe3fc91567c4f985b179a7761597ad17943  ./assets/seduma-trade-practice-walkthrough.mp4
+bdc8ab867c453924df5b3f8e7c32a0bd9fd0103b2a5740ca66831d9c41ac9d03  ./assets/seduma-trade-practice-walkthrough.vtt
+d15dc6ad1cc52b9f12deba3ffb75176c618fa6aa32e5431aa9c1bee7d8388946  ./assets/shots/screenshot-01-home.jpg
+a517615b25d4c23728dc66b126d747df0d12d6ace91e02e49fea6099cde7b3c7  ./assets/shots/screenshot-02-practice-dojo.jpg
+4d5efa862f8869fa2ec9ead08d7ee12eb77b128c00c1e6e692b2ffe115214a8d  ./assets/shots/screenshot-03-activity-simulated-fill.jpg
+24b15ce59cfd0d57eaa65d3144f2051a8db19e1717c42ac0d31d5e9eb4652329  ./assets/shots/screenshot-04-safety-live-off.jpg
+c9b5ca9b83a5098d350f36132126c7146da10ac38fc602e941a10d7fb50b5aca  ./assets/shots/screenshot-05-live-confirm-modal.jpg
+73b555d02d49a3e00dd67f58715d149d2efc2d62e540f70dd8f1898d55bbee8d  ./assets/shots/screenshot-06-practice-results-log.jpg
 a8dd86b3c660a3c0713ca950dd9434d742f8f1747f181a937900f39a5489acc8  ./contact.html
 f207cf020f22b23f95b09971906f854d7396a778646cec67ba5b6ce1657622b9  ./copy-deck.md
 8a12aa8b824e16ce20b688cf94d2c2579bf3a86b660117f4c02a5e04fc602df8  ./de/contact.html
@@ -20,7 +29,7 @@ f207cf020f22b23f95b09971906f854d7396a778646cec67ba5b6ce1657622b9  ./copy-deck.md
 54f997041ea3ebb91cce2fb79c791cfebbc833ecf642bb697b3139015e32e615  ./es/index.html
 de111a7243d08e284b311e5dd606bab05150ede3f739df6f4d918aa36b0f1788  ./es/seduma.html
 db999ccaef71c76372a044248b8e34e6a1973a393be21e0b41ea09bf5bb03cc3  ./facts.html
-35a69f28084fb95a554df4dde1b7232b8a50034621822874422add50e0eb9003  ./features.html
+dec3505358aba4ba3c22aceaa31cab3fa6cea490af0b5aca4e3924ab9e494ce7  ./features.html
 c60cc95eb9c929b59d8006962264880c80ff19f29e23310de7ae845f1613c0d9  ./fonts/Geist-Variable.woff2
 03da15854703d5e9f4037acf365b60580fd999dede1038b46d328a05958e523e  ./fonts/GeistMono-Variable.woff2
 c683bfbcc7e087f5d37a54ef628f10387c451a83ddc459b151403a164ac46c90  ./fonts/OFL.txt
@@ -32,7 +41,7 @@ a023164eac5d09bf9867805caea5374aef8809f280eb56950dfa758fbcc33589  ./fr/index.htm
 9d1d406493678066c979404a832ee38169aca65b28f352e32d4016628c9ecd6b  ./hi/facts.html
 aff9865b95b949c1c56869a4d76ec66eabc462dee69286ac7f7fa248dea09411  ./hi/index.html
 be6e67e759eed48c810babd5c02c398e293e160d065e85d58b9e8a9f6a32195e  ./hi/seduma.html
-c875732d2919a9f7e4c194a1c6e3628af57741e6aa2e297f1d0413e32d022d04  ./how-to-use.html
+ba1591846be34df42778371608e47e890dfcd63bb7990f4a171df7d6c07587f8  ./how-to-use.html
 cfa0a3cdef4310d0da4d705971f42289b3c7645b018a5d31d6cd27e113ab3355  ./id/contact.html
 c498fa624f9376a03895520928fb1637aa6ad4e642dabc485de440ce2d461017  ./id/facts.html
 d421bec73832e39a523b1f56e93b561ed6682ba55d6963fd20536cea61d17749  ./id/index.html
@@ -62,7 +71,7 @@ b1cb89dffd325ab94a3bdc40eeffade803815f6d3cf8566c95a160c6699eee18  ./pt-BR/facts.
 0e45b3dd1de98b4b95423622b8560497f6016558ef441699fc5b2247033d2000  ./ru/index.html
 8aff6cc21c7cd9dea0ee5b69678a8c4eee625fdec961dc8d67f790d25d186a4b  ./ru/seduma.html
 e16ff420a244ef6b2a6e31870825338114dd4a2000335c6de19122056a32ad31  ./seduma.html
-8e8e3ebc7b7969666f03aa4db7d9a3aa77fda5eddcbdc3412da7d216eef4ac0d  ./site.css
+88416889de58a6a787e967a1983deb1fbf252aac965ef4686ad12f4f419e06a7  ./site.css
 e7830c65fd9e1c415faa5ea8dc3d74111ac20b609329755850f0bfb017d7395d  ./site.js
 0d89e28c5b73f1fe01d0be78ad9f702cc70a6f8095cd5c25f99a1d5521324762  ./sitemap.xml
 8eeeb587da03558073baa97c197a9f9cc3c1822501b7efe224095147108a71b1  ./zh-Hans/contact.html

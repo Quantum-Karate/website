@@ -60,6 +60,23 @@
     </div>
   </section>
 
+  <section class="section" id="watch" aria-labelledby="watch-title">
+    <div class="container">
+      <div class="section__head section__head--split">
+        <h2 id="watch-title" class="h2" data-reveal>Watch a Practice walkthrough.</h2>
+        <p class="lead" data-reveal style="--d:1">About 77 seconds, recorded on a fresh install in Practice. It starts at the download check, runs one practice cycle, shows the simulated fill in Activity, and opens the Live confirmation step without turning Live on.</p>
+      </div>
+      <figure class="video" data-reveal>
+        <video controls muted playsinline preload="metadata" poster="assets/seduma-trade-practice-walkthrough-poster.jpg" aria-describedby="watch-cap">
+          <source src="assets/seduma-trade-practice-walkthrough.mp4" type="video/mp4">
+          <track kind="captions" src="assets/seduma-trade-practice-walkthrough.vtt" srclang="en" label="English">
+          Your browser cannot play this video. <a href="assets/seduma-trade-practice-walkthrough.mp4">Download the MP4</a>.
+        </video>
+        <figcaption id="watch-cap">Seduma Trade Practice walkthrough, with captions on screen. The fill shown is simulated. Live was not turned on.</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section class="section" id="install" aria-labelledby="install-title">
     <div class="container">
       <p class="index label" data-reveal><span class="index__num">01</span><span>Install</span></p>
@@ -77,10 +94,9 @@ python -m venv .venv
 . .venv/bin/activate
 python -m pip install -e ".[api]"
 seduma practice</code></pre><p>On Windows, activate with <code>.venv\Scripts\activate</code> instead of the <code>. .venv/bin/activate</code> line.</p><p class="gstep__sub">Health check only (does not start anything)</p><pre class="code" tabindex="0" aria-label="Health check"><code>seduma practice --check</code></pre><p>If the health check fails, Practice will not start and it tells you why. Common reasons: the local page (port 8765) is already in use, or a part of the app is missing.</p><p>Optional Docker setup for the Neural Agency Engine paper stack is on the <a href="advanced-setup.html">Advanced setup</a> page.</p></div></li><li class="gstep" data-reveal><div class="gstep__body"><h3 class="h3">Open Practice</h3><p>Practice opens in your browser at <span class='kbd-addr'>http://127.0.0.1:8765/</span>. That address only works on your own computer.</p><ul><li>No browser opened? Run <code>seduma practice --no-open</code> to print the address, then paste it into your browser. If it asks for a token, it is in <code>~/.seduma/practice/api.token</code>.</li><li>You should see <strong>Paper Practice</strong>, <strong>Honest Practice</strong>, and <strong>Live: Off</strong> on every screen.</li></ul></div><div class="gstep__media"><figure class="slot slot--sm">
-  <div class="slot__frame" role="img" aria-label="Placeholder for a Practice console screenshot of Practice home, showing the Paper Practice, Honest Practice and Live: Off labels. Replace with a real capture of the shipped build and write alt text that describes it.">
+  <div class="slot__frame slot__frame--filled">
+    <img src="assets/shots/screenshot-01-home.jpg" alt="Seduma Trade Practice home in a browser. Chips read Paper Practice, Honest Practice and Live: Off, next to the line “We don’t fake Practice. We don’t trade until you say so.” and a Simulated fills ≠ live chip. Below, three lock chips read Practice only, Auto-trading off and Real sending off." width="1600" height="900" loading="lazy" decoding="async">
     <span class="chip chip--sim slot__chip">Simulated</span>
-    <span class="slot__title">Practice console screenshot</span>
-    <span class="slot__meta">Practice home at 127.0.0.1:8765 · 16:10</span>
   </div>
   <figcaption>Practice home. Practice mode and Live: Off are visible.</figcaption>
 </figure></div></li></ol>
@@ -95,26 +111,23 @@ seduma practice</code></pre><p>On Windows, activate with <code>.venv\Scripts\act
         <p class="lead" data-reveal style="--d:1">Practice fills are simulated — they are not live fills. Use these steps to check your own rules, and to check Seduma’s work.</p>
       </div>
       <ol class="guide" role="list" style="counter-reset:gstep 2"><li class="gstep" data-reveal><div class="gstep__body"><h3 class="h3">The first-run walkthrough</h3><p>Four short steps:</p><ol class='sublist'><li><strong>Welcome to Paper Practice.</strong> Then pick what you would like to practice first: “Just show me how orders work”, Stocks, Crypto, Events, or “Not sure yet”. Options is greyed out and marked “Coming later”. You can change this anytime.</li><li><strong>Safety check.</strong> Read and tick the two acknowledgements. This does not turn on Live.</li><li><strong>Try a practice run.</strong> Run one practice cycle with the sample strategy. The sample only holds, so it is for learning how a cycle works. The fill you see is simulated.</li><li><strong>You’re set.</strong> The badge reads “Live trading: Off · Practice default”.</li></ol><p>Example symbols such as EXAMPLE are only for learning how orders work. They are not suggestions.</p></div></li><li class="gstep" data-reveal><div class="gstep__body"><h3 class="h3">Run the 60-second demo</h3><p>The demo fills Practice with simulated data so you can see every screen in about a minute.</p><pre class="code" tabindex="0" aria-label="Demo command"><code>seduma practice --demo --no-open</code></pre><p>It uses its own folder (<code>~/.seduma/practice-demo</code>), separate from your everyday Practice. It prints a short list of what to look at, then serves Practice at the same address: <span class='kbd-addr'>http://127.0.0.1:8765/</span>. Everything in it is simulated. Do not type LIVE during the demo.</p></div></li><li class="gstep" data-reveal><div class="gstep__body"><h3 class="h3">Do the 7-day Practice Dojo</h3><p>The Dojo is on Practice home. One short lesson a day, each tied to something you can click:</p><ol class='sublist lessons'><li><span class='lesson__day'>Day 1</span> Words on this page (open the glossary)</li><li><span class='lesson__day'>Day 2</span> Pick a starting setup</li><li><span class='lesson__day'>Day 3</span> Run one practice cycle</li><li><span class='lesson__day'>Day 4</span> Read a simulated fill</li><li><span class='lesson__day'>Day 5</span> Read the practice results log</li><li><span class='lesson__day'>Day 6</span> Try Emergency stop</li><li><span class='lesson__day'>Day 7</span> Leave Live off</li></ol><p>Press “Mark this day done” when you finish a day. Progress stays on your computer. “Days finished” counts lessons. It is not a score. You can do the seven days at your own pace.</p></div><div class="gstep__media"><figure class="slot slot--sm">
-  <div class="slot__frame" role="img" aria-label="Placeholder for a Practice console screenshot of the 7-day Dojo day view. Replace with a real capture of the shipped build and write alt text that describes it.">
+  <div class="slot__frame slot__frame--filled">
+    <img src="assets/shots/screenshot-02-practice-dojo.jpg" alt="The 7-day Practice Dojo card on Practice home. It reads “Days finished: 0 of 7. This is not a score.” and shows a day-one lesson, “Words on this page”, about 3 minutes, with links to the glossary and New to trading? and a Mark this day done button." width="1600" height="900" loading="lazy" decoding="async">
     <span class="chip chip--sim slot__chip">Simulated</span>
-    <span class="slot__title">Practice console screenshot</span>
-    <span class="slot__meta">7-day Dojo, day view · 16:10</span>
   </div>
   <figcaption>The 7-day Practice Dojo. Every result shown is simulated.</figcaption>
 </figure></div></li><li class="gstep" data-reveal><div class="gstep__body"><h3 class="h3">Read your results</h3><p>Each practice cycle is saved to a local results log. You read it on the Neural Agency Engine console, which is a separate page from Practice. Start it from the <code>seduma/nae-integration</code> folder:</p><pre class="code" tabindex="0" aria-label="Start the results console"><code>cd Seduma_Trade/seduma/nae-integration
 pip install -r requirements-console.txt
 python -m web_console</code></pre><p>Use the same Python environment you installed Seduma Trade into. Then open <span class='kbd-addr'>http://127.0.0.1:8745/practice-results</span>.</p><p>The results page needs a console token, and that page only runs on your own computer. The token steps, and optional backtest import, are on the <a href="advanced-setup.html">Advanced setup</a> page.</p><p>Pick a strategy and a lane. You will see the number of trades, win rate, average win, average loss, worst drawdown, an equity curve, and time in practice.</p><p><strong>How to read it honestly</strong></p><ul><li>Every figure is <strong>simulated</strong>. The page says: “Simulated Practice results. Not a prediction of future or Live performance.”</li><li>With <strong>fewer than 30 closed trades</strong> the page says <strong>“Too few trades to judge yet”</strong> and gives no verdict. That is normal in your first days.</li><li>Fees and slippage assumptions change the simulated result. The page explains how.</li><li>A “?” help button sits next to each figure and explains it in plain words.</li><li><strong>Export CSV</strong> saves the log for the strategy and lane you are viewing. The file starts with the simulated-results disclaimer.</li></ul><p>Everything stays on your computer.</p></div><div class="gstep__media"><figure class="slot slot--sm">
-  <div class="slot__frame" role="img" aria-label="Placeholder for a Practice console screenshot of the Practice results page with the under-30-trades notice. Replace with a real capture of the shipped build and write alt text that describes it.">
+  <div class="slot__frame slot__frame--filled">
+    <img src="assets/shots/screenshot-06-practice-results-log.jpg" alt="The Practice results page. Chips read This computer only and Live: Off, and a banner says “Simulated Practice results. Not a prediction of future or Live performance.” The view shows 1 Practice cycle, the notice “Too few trades to judge yet”, and tiles for trades, win rate, average win, average loss, worst drawdown and time in Practice." width="1600" height="900" loading="lazy" decoding="async">
     <span class="chip chip--sim slot__chip">Simulated</span>
-    <span class="slot__title">Practice console screenshot</span>
-    <span class="slot__meta">Practice results log · 16:10</span>
   </div>
   <figcaption>The Practice results page. Every figure is simulated.</figcaption>
 </figure></div></li><li class="gstep" data-reveal><div class="gstep__body"><h3 class="h3">Know your Emergency stop</h3><p>Press <strong>Emergency stop</strong> any time, on Practice home or in Safety. It refuses new orders. It does <strong>not</strong> close positions that are already open. In Practice it reads “Stopped, still in Practice”. The Dojo has you try it on day 6.</p></div><div class="gstep__media"><figure class="slot slot--sm">
-  <div class="slot__frame" role="img" aria-label="Placeholder for a Practice console screenshot of the Emergency stop control and its state. Replace with a real capture of the shipped build and write alt text that describes it.">
+  <div class="slot__frame slot__frame--filled">
+    <img src="assets/shots/screenshot-04-safety-live-off.jpg" alt="The Safety card on Practice home. A chip reads Live trading: Off · Practice default, a red Emergency stop button sits below it (not pressed), the text says Practice only, Auto-trading off, Real sending off, and a Turn on Live trading… button is shown unclicked." width="1600" height="900" loading="lazy" decoding="async">
     <span class="chip chip--sim slot__chip">Simulated</span>
-    <span class="slot__title">Practice console screenshot</span>
-    <span class="slot__meta">Emergency stop · 16:10</span>
   </div>
   <figcaption>Emergency stop: refuses new orders. Does not close open positions.</figcaption>
 </figure></div></li></ol>
@@ -151,10 +164,9 @@ python -m web_console</code></pre><p>Use the same Python environment you install
       <div class="live-foot" data-reveal>
         <p class="live-promise"><strong>Paper/Practice P&amp;L is not a promise of live results.</strong> Practice fills are simulated. Trading real money involves risk, and you can lose money.</p>
         <figure class="slot">
-  <div class="slot__frame" role="img" aria-label="Placeholder for a screenshot of the Live confirmation step, showing the checks and the field where you type LIVE. Replace with a real capture of the shipped build and write alt text that describes it.">
+  <div class="slot__frame slot__frame--filled">
+    <img src="assets/shots/screenshot-05-live-confirm-modal.jpg" alt="The Turn on Live trading dialog, opened and left untouched. It shows three unticked acknowledgment boxes, an empty Type LIVE field with only a faint hint, and two buttons, Turn on Live and Stay in Practice." width="1600" height="900" loading="lazy" decoding="async">
     <span class="chip chip--sim slot__chip">Shown, not enabled</span>
-    <span class="slot__title">Live confirmation screenshot</span>
-    <span class="slot__meta">Checks and the LIVE field · 16:10</span>
   </div>
   <figcaption>The Live confirmation step: pass the checks and type LIVE. Shown for explanation only.</figcaption>
 </figure>

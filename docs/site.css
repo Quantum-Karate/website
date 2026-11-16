@@ -1081,3 +1081,11 @@ html[lang="ko"] :where(.display, .h1, .h2, .h3, .hero__sub, .hero__tagline, .hon
 .option__body ol { margin: 0; padding-inline-start: 1.25rem; display: grid; gap: var(--s-2); color: hsl(var(--qk-fg-muted)); }
 .option__body li strong, .option__body p strong { color: hsl(var(--qk-fg)); font-weight: 560; }
 .option__body p { color: hsl(var(--qk-fg-muted)); }
+
+/* ---------- Filled screenshot slots and the walkthrough video ---------- */
+.slot__frame--filled { border-style: solid; border-color: hsl(var(--qk-border-strong)); background: #0B0F14; padding: 0; }
+.slot__frame--filled::before { display: none; }
+.slot__frame--filled img { object-fit: contain; }
+.video { margin: 0; display: grid; gap: var(--s-3); max-width: 60rem; }
+.video video { width: 100%; height: auto; aspect-ratio: 16 / 9; background: #0B0F14; border: 1px solid hsl(var(--qk-border-strong)); border-radius: var(--lf-radius-lg); display: block; }
+.video figcaption { font-size: var(--fs-sm); color: hsl(var(--qk-fg-muted)); }
