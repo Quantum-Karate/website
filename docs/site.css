@@ -233,6 +233,7 @@ a { color: inherit; text-decoration: none; }
     scrollbar-width: none;
   }
   .nav ul { gap: 0; margin-inline-start: -0.75rem; }
+  .site-header .nav__item--advanced { display: none; }
   :root { --header-h: 6.5rem; }
 }
 
@@ -894,7 +895,7 @@ html[lang="ko"] :where(.display, .h1, .h2, .h3, .hero__sub, .hero__tagline, .hon
   .lang-switch__menu { border: 1px solid CanvasText; }
 }
 
-/* Features and Guide page styles, plus the six-item nav and the Seduma link band. */
+/* Features and Guide page styles, plus the header nav and the Seduma link band. */
 
 
 /* ---------- Screenshot slot (16:10 placeholder for Practice console captures) ---------- */
@@ -1044,7 +1045,7 @@ html[lang="ko"] :where(.display, .h1, .h2, .h3, .hero__sub, .hero__tagline, .hon
 /* ---------- Focus (inherits the site's :focus-visible ring; extra for TOC + code) ---------- */
 .toc a:focus-visible, .code:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 2px; }
 
-/* ---------- Nav: six items now. Keep each label on one line; the row already scrolls on narrow screens ---------- */
+/* ---------- Nav: keep each label on one line. Advanced setup is footer-only below 960px so the header does not clip. ---------- */
 .nav a { white-space: nowrap; }
 
 /* ---------- Copy-deck additions: inline code, lists inside steps/cards, small headings ---------- */
