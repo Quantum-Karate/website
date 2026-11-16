@@ -608,6 +608,7 @@ def test_a11y_polish_and_locale_switch():
     assert "text-decoration: underline" in css
     assert ".chip--honest { color: hsl(var(--qk-fg)); font-size: 0.75rem; }" in css
     assert ".site-header .nav__item--advanced { display: none; }" in css
+    assert ".nav a { padding-inline: 0.5rem; }" in css
     index = (site_guard.DOCS_DIR / "index.html").read_text(encoding="utf-8")
     assert '<ul role="list">' in index
     assert 'aria-label="Language"' in index
