@@ -34,4 +34,4 @@ Pages is switched on by the repository owner after review. Internal links are re
 
 ## Contact
 
-Support is on `contact.html`: v-nat@outlook.com, replies within 2 business days. Seduma Trade, the Practice eval, is listed at https://payhip.com/b/K7UaW.
+Support is on `contact.html`: quantumkarate@mail.grokbot.com, replies within 2 business days. Seduma Trade, the Practice eval, is listed at https://payhip.com/b/K7UaW. Seduma Trade Founder Edition is listed at https://payhip.com/b/a7GkH.

@@ -303,17 +303,21 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
     for page in (index, seduma):
         assert "outlook.com" not in page.lower()
         assert "mailto:" not in page.lower()
-    # Home leads with the Seduma Trade headline; the offer must sit in the
-    # hero right after the H1, before the hero actions.
+    # Home leads with the Seduma Trade headline and Chris's tagline. The
+    # $49 offer and refunds sit in the hero under the actions.
     home_section = index.split('id="hero-title"')[1].split("</section>")[0]
-    home_hero = home_section.split("</h1>", 1)[1].split('class="actions"')[0]
+    home_hero = home_section.split("</h1>", 1)[1]
     assert "Seduma Trade" in home_section.split("</h1>")[0]
+    assert "Practice your trades first, then go Live whenever you're ready." in home_hero
+    assert "Get Seduma Trade, $49 once" in home_hero
+    assert "See how it works" in home_hero
     seduma_hero = seduma.split('id="hero-title"')[1].split("</h1>")[0]
     for hero in (home_hero, seduma_hero):
         assert "$49 once," in hero
         assert "no subscription," in hero
         assert "nothing to cancel." in hero
-    assert "Why a one-time Dojo" in seduma
+    assert "Why a one-time purchase" in seduma
+    assert "Why a one-time Dojo" not in seduma
     assert "You get the source." in seduma
     assert "Honest Practice. Simulated results only. No passive-income promise, and no profit promise." in seduma
     assert "Get Seduma Trade on Payhip" in contact
@@ -333,15 +337,19 @@ def test_get_seduma_payhip_markup_and_no_waitlist():
         for href, product in placements:
             assert page.count(f'href="{href}"') == 1
             assert f'data-product="{product}"' in page
-    support = 'Support: <a class="support-address" href="mailto:v-nat@outlook.com">v-nat@outlook.com</a>, replies within 2 business days.'
+    support = 'Support: <a class="support-address" href="mailto:quantumkarate@mail.grokbot.com">quantumkarate@mail.grokbot.com</a>, replies within 2 business days.'
     assert support in contact
     assert contact.lower().count("mailto:") == 1
     assert "data-copy-email" not in script
     assert "clipboard" not in script
     assert "waitlist" not in css
     assert "outlook.com" not in css.lower()
-    assert "Seduma Trade" in index.split('index__num">04')[1].split("</section>")[0]
-    assert "Seduma Trade Dojo" not in index.split('index__num">04')[1].split("</section>")[0]
+    get_band = index.split('id="get-seduma-title"')[1].split("</section>")[0]
+    assert "Seduma Trade" in get_band
+    assert "Seduma Trade Dojo" not in get_band
+    assert "Trading real money involves risk, and you can lose money." in index
+    assert "Trading real money involves risk, and you can lose money." in seduma
+    assert "Trading real money involves risk, and you can lose money." in contact
 
 
 def test_hidden_copy_button_is_not_shown_by_btn_display():
@@ -424,7 +432,8 @@ def test_seo_files_canonical_and_software_application():
     assert f'<meta name="description" content="{facts_description}">' in facts
     assert "<title>Contact | Quantum Karate</title>" in contact
     assert 'content="Product questions about Seduma Trade go through the Payhip listing. $49 once, no subscription, nothing to cancel. Simulated results only."' in contact
-    assert "<strong>A one-time Dojo.</strong>" in facts
+    assert "<strong>A one-time purchase.</strong>" in facts
+    assert "Trading real money involves risk, and you can lose money." in facts
     assert "No passive-income promise, and no profit promise." in facts
     assert site_guard.REFUNDS in facts
     assert facts.count('<script type="text/javascript" src="https://payhip.com/payhip.js"></script>') == 1
@@ -467,11 +476,12 @@ def test_seo_files_canonical_and_software_application():
         "https://quantum-karate.github.io/website/llms.txt",
         "https://quantum-karate.github.io/website/llms-full.txt",
     ]
-    assert locs[-4:-2] == [
+    assert locs[-5:-2] == [
         "https://quantum-karate.github.io/website/features.html",
         "https://quantum-karate.github.io/website/how-to-use.html",
+        "https://quantum-karate.github.io/website/advanced-setup.html",
     ]
-    assert len(locs) == 4 * 13 + 2 + 2
+    assert len(locs) == 4 * 13 + 3 + 2
 
 
 def _jsonld_script(payload: dict) -> str:
@@ -553,7 +563,9 @@ def test_llms_files_and_product_name():
         assert "$49" in text
         assert site_guard.REFUNDS in text
         assert "https://payhip.com/b/K7UaW" in text
-        assert "payhip.com/" not in text.replace("https://payhip.com/b/K7UaW", "")
+        assert "https://payhip.com/b/a7GkH" in text
+        stripped = text.replace("https://payhip.com/b/K7UaW", "").replace("https://payhip.com/b/a7GkH", "")
+        assert "payhip.com/" not in stripped
         assert "Neural Agency Engine" in text
         assert "NAE" not in text
         assert "Thoth" not in text
@@ -599,7 +611,7 @@ def test_a11y_polish_and_locale_switch():
     assert '<ul role="list">' in index
     assert 'aria-label="Language"' in index
     assert "What it is and isn\u2019t" not in index
-    assert index.count("What Seduma is and isn\u2019t") >= 2
+    assert index.count("What Seduma is and isn\u2019t") >= 1
     es = (site_guard.DOCS_DIR / "es" / "index.html").read_text(encoding="utf-8")
     assert '<html lang="es" dir="ltr">' in es
     assert "Qué es Seduma y qué no es" in es
@@ -665,6 +677,7 @@ def test_locale_titles_platforms_and_payhip_tags():
         assert f'<meta name="twitter:title" content="{title}">' in text
         assert f'href="{payhip_button_url(folder, "index.html", "edition-standard")}"' in text
         assert f'href="{payhip_button_url(folder, "index.html", "edition-founder", PAYHIP_FOUNDER_PRODUCT)}"' in text
+        assert f'href="{payhip_button_url(folder, "index.html", "hero")}"' in text
 
 
 def test_delivered_docs_pass():
@@ -737,6 +750,7 @@ def test_features_and_guide_pages():
         if name == "how-to-use.html":
             heading_and_cta = hero.split('<ul class="toc"', 1)[0]
             assert "Live" not in heading_and_cta
+        assert site_guard.REFUNDS in hero
         # Payhip bands must not mention Live.
         for href in (payhip_button_url("", name), _payhip_top(name)):
             # Check the surrounding band/actions block roughly by ensuring the button itself has no Live label
@@ -751,8 +765,10 @@ def test_nav_includes_features_and_guide():
         text = (site_guard.DOCS_DIR / name).read_text(encoding="utf-8")
         assert 'href="features.html">Features</a>' in text
         assert 'href="how-to-use.html">Guide</a>' in text
+        assert 'href="advanced-setup.html">Advanced setup</a>' in text
         assert text.count('href="features.html"') >= 2  # nav + footer
         assert text.count('href="how-to-use.html"') >= 2
+        assert text.count('href="advanced-setup.html"') >= 2
     for _code, folder, _direction, _name in LOCALES:
         if not folder:
             continue
@@ -760,10 +776,49 @@ def test_nav_includes_features_and_guide():
             text = (site_guard.DOCS_DIR / folder / name).read_text(encoding="utf-8")
             assert 'href="../features.html">Features</a>' in text
             assert 'href="../how-to-use.html">Guide</a>' in text
+            assert 'href="../advanced-setup.html">Advanced setup</a>' in text
             assert text.count('href="../features.html"') >= 2
             assert text.count('href="../how-to-use.html"') >= 2
+            assert text.count('href="../advanced-setup.html"') >= 2
     seduma = (site_guard.DOCS_DIR / "seduma.html").read_text(encoding="utf-8")
     assert 'id="more-title"' in seduma
     assert "Look closer, or set it up." in seduma
     assert 'href="features.html">Seduma Trade features' in seduma
     assert 'href="how-to-use.html">How to use Seduma Trade' in seduma
+
+
+def test_advanced_setup_page():
+    if not site_guard.DOCS_DIR.is_dir():
+        pytest.skip("docs/ is not present")
+    name = "advanced-setup.html"
+    text = (site_guard.DOCS_DIR / name).read_text(encoding="utf-8")
+    canonical = "https://quantum-karate.github.io/website/advanced-setup.html"
+    title = "Advanced Setup for Seduma Trade | Quantum Karate"
+    og = "Advanced Setup for Seduma Trade"
+    desc = (
+        "Optional Docker, console token, and backtest-import steps for Seduma Trade. "
+        "Practice stays on your own computer. Python 3.11 or newer."
+    )
+    assert f"<title>{title}</title>" in text
+    assert f'<meta property="og:title" content="{og}">' in text
+    assert f'<meta name="twitter:title" content="{og}">' in text
+    assert f'<meta name="description" content="{desc}">' in text
+    assert f'<link rel="canonical" href="{canonical}">' in text
+    assert "application/ld+json" not in text
+    assert "hreflang=" not in text
+    assert "lang-switch" not in text
+    assert "mailto:" not in text
+    assert "payhip-buy-button" not in text
+    assert "https://payhip.com/payhip.js" not in text
+    assert "Neural Agency Engine" in text
+    assert "Python 3.11 or newer" in text
+    assert "console.token" in text
+    assert "backtest" in text.lower()
+    assert 'href="how-to-use.html">Guide</a>' in text
+    assert 'href="advanced-setup.html" aria-current="page">Advanced setup</a>' in text
+    assert "Docker is not used for the Practice console" in text
+    assert "Thoth" not in text
+    assert "Phisher" not in text
+    assert "Seduma Trade Dojo" not in text
+    hero = text.split('<section class="hero', 1)[1].split("</section>", 1)[0]
+    assert "Live" not in hero

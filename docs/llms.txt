@@ -6,7 +6,7 @@ Seduma Trade is the Practice eval from Quantum Karate. You bring your own tradin
 
 Buyers get the source, including the Neural Agency Engine, and run it on their own computer. The Neural Agency Engine researches. It does not pick or recommend trades, and it is not the Live switch. Seduma is the front door. Simulated results only. No passive-income promise, and no profit promise.
 
-The only buy link is the Payhip listing. There is no waitlist and no other purchase link.
+Buy links: the standard edition at https://payhip.com/b/K7UaW ($49 once) and Seduma Trade Founder Edition at https://payhip.com/b/a7GkH ($149 once). There is no waitlist.
 
 ## Pages
 
@@ -14,12 +14,14 @@ The only buy link is the Payhip listing. There is no waitlist and no other purch
 - [Seduma](https://quantum-karate.github.io/website/seduma.html): Seduma Trade: Practice Trading Simulator, $49 Once
 - [Features](https://quantum-karate.github.io/website/features.html): Seduma Trade Features: Practice Trading on Your Own Computer
 - [Guide](https://quantum-karate.github.io/website/how-to-use.html): How to Use Seduma Trade: Install, Practice, and Read Your Results
+- [Advanced setup](https://quantum-karate.github.io/website/advanced-setup.html): Optional Docker, console token, and backtest import
 - [Facts](https://quantum-karate.github.io/website/facts.html): What Seduma is and is not
 - [Contact](https://quantum-karate.github.io/website/contact.html): Product questions and support
 
 ## Buy
 
 - [Get Seduma Trade on Payhip](https://payhip.com/b/K7UaW): $49 once, no subscription, nothing to cancel. All sales are final. Seduma Trade has no refunds at this time, except where applicable law requires otherwise.
+- [Seduma Trade Founder Edition on Payhip](https://payhip.com/b/a7GkH): $149 once. The same core software and source as the standard edition, plus the founder extras published on that listing.
 
 ## Longer summary
 

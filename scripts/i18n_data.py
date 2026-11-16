@@ -22,9 +22,11 @@ LOCALES = (
 )
 
 PAGES = ("index.html", "seduma.html", "facts.html", "contact.html")
-# English-only pages (no locale copies yet). Each gets its canonical URL and two tracked Payhip buttons
-# (utm_content "<page>-top" for the hero button and "<page>" for the closing button).
-EXTRA_PAGES = ("features.html", "how-to-use.html")
+# English-only pages (no locale copies yet). Features and the Guide each get two tracked Payhip
+# buttons (utm_content "<page>-top" for the hero button and "<page>" for the closing button).
+# Advanced setup is English-only documentation and has no Payhip button.
+EXTRA_PAGES = ("features.html", "how-to-use.html", "advanced-setup.html")
+PAYHIP_EXTRA_PAGES = ("features.html", "how-to-use.html")
 ORIGIN = "https://quantum-karate.github.io/website/"
 PAYHIP = "https://payhip.com/b/K7UaW"
 PAYHIP_JS = "https://payhip.com/payhip.js"
@@ -88,7 +90,7 @@ def payhip_placements(folder: str, page: str) -> list[tuple[str, str]]:
             (payhip_button_url(folder, page, "edition-standard"), PAYHIP_PRODUCT),
             (payhip_button_url(folder, page, "edition-founder", PAYHIP_FOUNDER_PRODUCT), PAYHIP_FOUNDER_PRODUCT),
         ]
-        if page == "seduma.html":
+        if page in ("index.html", "seduma.html"):
             items.append((payhip_button_url(folder, page, "hero"), PAYHIP_PRODUCT))
         return items
     return [(payhip_button_url(folder, page), PAYHIP_PRODUCT)]
@@ -103,16 +105,17 @@ def allowed_urls() -> frozenset[str]:
                 urls.add(href)
     for page in EXTRA_PAGES:
         urls.add(page_url("", page))
+    for page in PAYHIP_EXTRA_PAGES:
         urls.add(payhip_button_url("", page))
         urls.add(payhip_button_url("", page, "top"))
     return frozenset(urls)
 
 
 def email_link(locale: str) -> str:
-    visible = "v-nat@outlook.com"
+    visible = "quantumkarate@mail.grokbot.com"
     if locale == "ar":
-        visible = "<bdi>v-nat@outlook.com</bdi>"
-    return f'<a class="support-address" href="mailto:v-nat@outlook.com">{visible}</a>'
+        visible = "<bdi>quantumkarate@mail.grokbot.com</bdi>"
+    return f'<a class="support-address" href="mailto:quantumkarate@mail.grokbot.com">{visible}</a>'
 
 
 def fill(text: str, locale: str, *, html_mode: bool, extras: dict[str, str] | None = None) -> str:
