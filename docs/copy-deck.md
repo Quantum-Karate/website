@@ -36,7 +36,7 @@
 - Sub: Master the smallest details. Create the biggest impact.
 - Buttons: Meet Seduma → · What Seduma is and isn’t
 
-**01 Philosophy**
+**01 Philosophy** *(historical — superseded by the 2026-10-22 renumber, where Philosophy is section 04; superseded again by the 2026-11-18 rebuild, sections 01–04 as listed below)*
 - Index: 01 Philosophy
 - H2: Small decisions, made exactly.
 - Lead: Quantum Karate™ builds technology the way a martial artist trains: with precision, discipline, and attention to the smallest detail.
@@ -50,12 +50,12 @@
 - H2: Seduma™: practice first, on your terms.
 - P1: Seduma is a Paper-first, strategy-free runtime — software that runs trading rules you bring. It does not pick, recommend, or generate trades.
 - P2: **Practice** (also called **Paper**) is the default: orders get simulated fills, and no real money moves. **Live** — real orders with real money — stays off until you choose it yourself.
-- Buttons: Explore Seduma → · What it is and isn’t
-- Mini console (`aria-label`): Illustrative Seduma status view: Practice mode, Live: Off, Emergency stop available, Last audit, and Simulated fills ≠ live.
+- Buttons: Explore Seduma → · What Seduma is and isn’t
+- Mini console (`aria-label`): Illustrative Seduma status view: Practice mode, Live: Off, Emergency stop available (does not close open positions), and Simulated fills (not live).
   - Bar: Seduma · Paper Practice
-  - Cards: Practice mode [chip: Practice mode] · Live election [chip: Live: Off] · Emergency stop / Emergency stop available · Audit honesty / Last audit / 14:32:08
+  - Cards: Practice mode [chip: Practice mode] · Live election [chip: Live: Off] · Emergency stop / Emergency stop available
   - Chip: Simulated fills ≠ live
-  - Caption: Illustrative console view.
+  - Caption: Illustrative console view. Emergency stop does not close open positions.
 
 **03 How we talk about it**
 - Index: 03 How we talk about it
@@ -63,7 +63,7 @@
 - Lead: Plain facts, including the limits. No performance numbers and no promises of results.
 - Link: Read the facts →
 
-**04 Waitlist**
+**04 Waitlist** *(historical — removed by Addendum 2026-10-13)*
 - Index: 04 Waitlist
 - H2: Join the Practice waitlist.
 - Lead: Get notified when Seduma™ is ready to try in Practice. No real money moves until you choose Live.
@@ -83,13 +83,13 @@
 - Buttons: How it works ↓ · What Seduma is and isn’t
 - Definitions:
   - PRACTICE: Running your trading rules with simulated fills. No real money moves. It is the default.
-  - PAPER: Another word for Practice. A broker’s own paper account is called Real paper — still not live money.
+  - PAPER: Another word for Practice. A broker’s own paper account is called Real paper — still no real money.
   - LIVE: Real orders with real money, through a connection you set up. Off until you elect it yourself.
 
 **Console visual** (`aria-label`): Illustrative Seduma console. Status chips read Practice mode, Live: Off, and Honest Practice. Trust cards show Practice mode, Live election set to Live: Off, Emergency stop available, and Last audit. The Activity list, marked Simulated fills ≠ live, shows practice order states for the placeholder symbol EXAMPLE. No prices or results are shown.
 - Bar: Seduma · Paper Practice · chips: Practice mode · Live: Off · Honest Practice
 - Side nav: Home · Connections · Activity · Safety · foot: Live: Off · Practice default
-- Banner: We don’t fake Practice. We don’t trade until you say so. · chip: Honest Practice · Practice fills are simulated — they are not live fills.
+- Banner: We don't fake Practice. We don't trade until you say so. · chip: Honest Practice · Practice fills are simulated — they are not live fills.
 - Trust cards:
   - Practice mode · chip: Practice mode · Practice mode · Live: Off (until election). Soft locks on.
   - Live election · chip: Live: Off · Live: Off · Practice default
@@ -111,7 +111,7 @@
 - Lead: Seduma is strategy-free. You bring the rules. Seduma runs them in Practice by default, and nothing goes Live unless you say so.
 - Step 01, Bring your rules: A strategy is the set of rules that decides when to place an order. You bring your own. Seduma does not pick, recommend, or generate trades.
 - Step 02, Start in Practice: Practice is the default start. Fills are simulated and no real money moves. Your first Practice run needs no Live or real broker keys.
-- Step 03, Know how to stop: Emergency stop lets you stop Practice calmly. Seduma keeps a chain-of-custody audit trail, written before any external call. / (small) Emergency stop does not close open positions.
+- Step 03, Know how to stop: Emergency stop makes Seduma refuse to send new orders until you release it. It does not close open positions or cancel orders already at your broker. / (small) Seduma keeps an audit trail: a record written before it contacts any outside service.
 - Step 04, Live, only if you choose: Live is optional and off by default. Finishing setup does not turn it on. To elect Live, you confirm it yourself by typing LIVE. It does not switch on by itself. / (small) Emergency stop is always available — Live does not remove it.
 
 **First run (duo)**
@@ -119,7 +119,7 @@
 - H3: Setup stays Paper.
 - P1: First-run setup has four steps: Welcome to Paper Practice, Safety check, Try a practice run, and You’re set — setup stays Paper.
 - P2: The Safety check records that you read the Paper disclosures. It does not turn on Live. Completing setup does not turn on Live — you choose later.
-- Wizard visual (`aria-label`): Illustrative first-run setup. Four steps: Welcome to Paper Practice, Safety check, Try a practice run, and You’re set — setup stays Paper. Status reads Live trading: Off · Practice default.
+- Wizard visual (`aria-label`): Illustrative first-run setup. Four steps: Welcome to Paper Practice, Safety check, Try a practice run, and You're set — setup stays Paper. Status reads Live trading: Off · Practice default.
   - Head chips: Paper Practice · Live: Off
   - ✓ Welcome to Paper Practice: No real money · You bring or review the rules
   - ✓ Safety check: This does not turn on Live trading.
@@ -131,23 +131,23 @@
 **Live election (duo)**
 - Label: Live election
 - H3: Live is a choice, not a default.
-- P1: If you ever elect Live, you confirm it yourself: check each item and type LIVE. Until you do, the button stays disabled. Cancelling keeps you in Practice.
+- P1: If you ever elect Live, Seduma won’t turn it on until every item is checked and LIVE is typed. Cancelling keeps you in Practice.
 - P2: Connecting a broker does not unlock Live, and Emergency stop is always available — Live does not remove it.
-- Modal visual (`aria-label`): Illustrative Live confirm dialog titled Turn on Live trading. Three unchecked items, an empty field asking you to type LIVE, a Stay in Practice button, and a disabled Turn on Live button.
+- Modal visual (`aria-label`): Illustrative Live confirm dialog titled Turn on Live trading. Three unchecked items, an empty field labeled Type LIVE, a Turn on Live button, and a Stay in Practice button.
   - Label: Safety
   - Title: Turn on Live trading
   - Body: You’re choosing to leave Practice-only at your own will. Real money/orders may be at risk. You bring strategies & credentials. Seduma does not pick trades. Kill switch + audit stay on.
-  - Checklist (unchecked): Choosing Live at my own will · Real money/orders may be at risk · Seduma does not pick trades for me
-  - Field label: Type LIVE to confirm (field empty)
-  - Buttons: Stay in Practice · Turn on Live (shown disabled)
+  - Checklist (unchecked): I am choosing Live at my own will — not Practice-only. · I understand real money and real orders may be at risk. · I understand Seduma does not pick trades for me.
+  - Field label: Type LIVE (field empty)
+  - Buttons: Turn on Live · Stay in Practice
   - Caption: Illustrative console view.
 
 **02 Honest Practice** (`#honesty`)
 - Index: 02 Honest Practice
-- H2: Three lines we keep everywhere.
+- H2: Three plain lines.
 - 01 Practice fills are simulated — they are not live fills.
 - 02 Paper/Practice P&L is not a promise of live results.
-- 03 Emergency stop is always available — Live does not remove it.
+- 03 Emergency stop stays available in Practice and in Live. It does not close open positions.
 - Note: P&L is the running gain or loss on trades. A broker’s paper account also differs from that broker’s live market, and Seduma does not paper over that.
 
 **03 Connections** (`#connections`)
@@ -155,32 +155,32 @@
 - H2: Bring your own connections.
 - Lead: A connection links Seduma to a trading platform you have access to. Built-in connections are conveniences, not an exclusive list. You can bring another API.
 - Card, Built-in / Practice stub: First run uses the built-in Practice connection. No broker account or keys needed.
-- Card, Connection type / Real paper: Broker paper account — still not live money.
+- Card, Connection type / Real paper: Broker paper account — still no real money.
 - Card, Connection type / Test sandbox: Vendor/test sandbox — not the same as broker paper trading.
 - Card, Connection type / Live-capable: Can send live orders only after you elect Live.
 - Foot 1: Connecting does not unlock Live.
-- Foot 2: Advanced: bring your own HTTP connection. Invalid settings fail closed — they stop instead of sending.
+- Foot 2: Advanced: bring your own HTTP connection. Invalid settings are designed to stop instead of sending.
 - Foot 3: Each connection is labeled Real paper, Test sandbox, or Live-capable, so you know which one you are using.
 
 **04 Research** (`#research`)
 - Index: 04 Research
 - H2: Where the Neural Agency Engine fits.
-- P1: The Neural Agency Engine is the research brain — not the front door. It is a separate research engine.
-- P2: It does not pick trades and is not the Live switch. Seduma is the front door.
+- P1: The Neural Agency Engine is the research engine behind Seduma.
+- P2: It does not pick or recommend trades, and it is not the Live switch. Seduma is the front door.
 
 **Facts CTA**
 - H2: Read the plain facts.
 - Lead: What Seduma is, what it isn’t, and the words we use.
 - Link: What Seduma is and isn’t →
 
-**Waitlist CTA** (after Read the plain facts.)
-- H2: Join the Practice waitlist.
-- Lead: Get notified when Seduma™ is ready to try in Practice. No real money moves until you choose Live.
-- Button: Email the waitlist → (`mailto:[address removed]?subject=Seduma%20waitlist`)
+**Get Seduma band** *(current per Addendum 2026-11-11)*
+- H2: Get Seduma Trade.
+- Lead: Seduma Trade is the $49 Practice eval. Practice fills are simulated — they are not live fills. **Practice** (also called **Paper**) is the default. **Live** stays off until the buyer elects it. The Neural Agency Engine researches. Seduma is the front door. $49 once, no subscription, nothing to cancel. Buyers get the source, including the Neural Agency Engine, and run it on their own computer. Simulated results only. No passive-income promise, and no profit promise.
+- Button: Get Seduma Trade on Payhip → · href `https://payhip.com/b/K7UaW` · rel `noopener`
 
 ---
 
-## 3. What Seduma is and isn’t: `facts.html`
+## 3. What Seduma is and isn't: `facts.html`
 
 - **Title:** What Seduma™ is and isn’t | Quantum Karate™
 - **Meta description:** Plain facts about Seduma™: what it is, what it isn’t, and the words we use.
@@ -194,37 +194,37 @@
 2. **Practice by default.** Paper is the default start. Lockdown is on and execution is off by default. *(C4, C5)*
 3. **Built around your own strategy.** You bring the strategy — the rules that decide when to place an order. *(C3)*
 4. **Live only when you elect it.** Live is available when you elect it, through a confirm-gated step. Completing setup does not turn on Live — you choose later. *(C6, C7)*
-5. **Equipped with an Emergency stop.** Emergency stop is always available — Live does not remove it. *(C14)*
-6. **Recorded before external calls.** Seduma keeps a chain-of-custody audit trail, written before any external call. *(C17)*
-7. **Bounded by limits you set.** Risk limits are configured by you, the operator. *(C18)*
-8. **Open to the connections you bring.** Named platforms are examples, not an exclusive list. You can bring another API you have access to. *(C26)*
+5. **Equipped with an Emergency stop.** Emergency stop stays available in Practice and in Live. It does not close open positions. *(C14)*
+6. **Recorded before external calls.** Seduma keeps an audit trail: a record written before it contacts any outside service. *(C17)*
+7. **Uses risk limits you set.** You configure the risk limits. *(C18)*
+8. **Open to the connections you bring.** Built-in connections are conveniences, not an exclusive list. You can bring another API you have access to. *(C26)*
 9. **Ready to practice without broker keys.** Your first Practice run needs no Live or real broker keys. *(C19)*
 
-**Seduma™ isn’t**
+**Seduma™ isn't**
 1. **A broker.** Seduma is not a broker and makes no broker-license claim. *(C28)*
 2. **An investment adviser.** It makes no investment-adviser claim. It does not pick, recommend, or generate trades. *(C29, C2)*
 3. **A source of strategies.** It is strategy-free. It is not a strategy marketplace. *(C1, C31)*
-4. **Trading before you say so.** We don’t trade until you say so. Installing Seduma or completing setup does not place live orders. *(C32, C9)*
-5. **A promise of results.** Paper/Practice P&L is not a promise of live results. Practice fills are simulated — they are not live fills. *(C12, C10)*
+4. **Trading before you say so.** We don’t fake Practice. We don’t trade until you say so. Installing Seduma or completing setup does not place live orders. *(C32, C9)*
+5. **A promise of results.** Paper/Practice P&L is not a promise of live results. Practice fills are simulated — they are not live fills. Simulated results only. No passive-income promise, and no profit promise. *(C12, C10)*
 6. **Unlocked by connecting.** Connecting a broker or loading a connection does not unlock Live. *(C25)*
-7. **An auto-close.** Emergency stop does not close open positions. *(C16)*
-8. **The Neural Agency Engine.** Seduma is the front door. The Neural Agency Engine is the research brain. It does not pick trades and is not the Live switch. *(C34)*
-
-**Machine-readable link** (below the two lists, small mono text): `Machine-readable facts: facts.json` linking to relative `facts.json` so it works on the GitHub Pages subpath and a custom domain (generated from Seduma main, mirrors /v1/facts; engineer-owned).
+7. **An auto-close.** Emergency stop does not close open positions or cancel orders already at your broker. *(C16)*
+8. **The Neural Agency Engine.** Seduma is the front door. The Neural Agency Engine is the research engine behind Seduma. It does not pick or recommend trades, and it is not the Live switch. *(C34, M6)*
 
 **Glossary**
 - Index: — Glossary · H2: Words we use.
 - **Practice**: Running trading rules with simulated fills. No real money moves. In Seduma, Practice is the default.
 - **Paper**: Another word for Practice.
-- **Real paper**: A broker’s own paper account. Still not live money.
+- **Real paper**: A broker’s own paper account. Still no real money.
 - **Live**: Real orders with real money, sent through a connection you set up. In Seduma, Live is off until you elect it yourself.
-- **Confirm-gated**: A step that stays locked until you confirm it yourself. For Live, that means checking each item and typing LIVE.
+- **Confirm-gated**: A step that doesn’t take effect until you confirm it yourself. For Live, Seduma won’t turn it on until every item is checked and LIVE is typed.
 - **Fill**: The moment an order completes, and the price it completes at. In Practice, fills are simulated.
 - **P&L**: The running gain or loss on trades. Paper/Practice P&L is not a promise of live results.
 - **Strategy**: The rules that decide when to place an order. You bring these. Seduma does not supply them.
 - **Connection**: A link from Seduma to a trading platform you have access to, labeled Real paper, Test sandbox, or Live-capable.
-- **Emergency stop**: A control that lets you stop calmly. It stays available in Practice and in Live. It does not close open positions.
-- **Audit trail**: A chain-of-custody record Seduma writes before it makes an external call.
+- **Emergency stop**: A control that makes Seduma refuse to send new orders until you release it. It stays available in Practice and in Live. It does not close open positions or cancel orders already at your broker.
+- **Audit trail**: A record Seduma writes before it contacts any outside service. It is Seduma’s own log, not an independent audit.
+
+*(Historical note: the deck once listed a machine-readable facts link; removed 2026-09-28 per Lock addendum 2, and the CONTACT_EMAIL placeholder block was replaced on 2026-10-13 and 2026-10-13b with the v-nat@outlook.com support line.)*
 
 ---
 
@@ -236,15 +236,7 @@
 - H1: Talk to Quantum Karate™.
 - Sub: Reach out about product questions, partnership, or acquisition inquiries.
 - Label (H2): Email
-- Link: `<a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}} →</a>`
-- Helper: Opens your own email app.
-- Topic chips (`aria-label="Topics"`): Product questions · Partnership · Acquisition inquiries
-- **Placeholder flag** (`aria-label="Placeholder notice"`, `data-remove-before-launch`), plus an HTML comment next to the link:
-  - PLACEHOLDER — REMOVE BEFORE LAUNCH
-  - Chris must supply the real contact address. Replace both instances of {{CONTACT_EMAIL}} in contact.html (the mailto: link and its visible text), then delete this note.
-- No form, no backend, no phone, no location.
-
-> ⚠️ **FLAG FOR CHRIS:** `{{CONTACT_EMAIL}}` is a placeholder. You need to supply the real address before launch. Nothing was invented.
+- Historical placeholders removed per Addendum 2026-10-13; the page keeps the Payhip button and, per Addendum 2026-10-13b, a support line.
 
 ---
 
@@ -266,11 +258,11 @@ Every factual claim on the site is listed below with its source. "SP n" means nu
 | C10 | Practice fills are simulated — they are not live fills | all | SP 9 + locked honesty line | "**Practice fills are simulated — they are not live fills.**" |
 | C11 | No real money moves in Practice | Home, Seduma, Facts | SP 13 | "Run a Paper cycle with the sample HOLD — still Practice, still no real money." |
 | C12 | Paper/Practice P&L is not a promise of live results | all | SP 9 + locked honesty line | "Paper/Practice P&L is not a promise of live results." |
-| C13 | A broker’s paper account differs from its live market; Seduma does not paper over that | Seduma | SP 9 | "Broker paper (Alpaca paper, IBKR paper, Tradier sandbox) also diverges from that venue’s live book; Seduma does not paper over that." |
+| C13 | A broker's paper account differs from its live market; Seduma does not paper over that | Seduma | SP 9 | "Broker paper (Alpaca paper, IBKR paper, Tradier sandbox) also diverges from that venue's live book; Seduma does not paper over that." |
 | C14 | Emergency stop is always available — Live does not remove it | Seduma, Facts | SP 12 + locked honesty line | "Emergency stop is always available — Live does not remove it." |
 | C15 | Emergency stop lets you stop Practice calmly | Seduma, Facts glossary | SP 13 | "*Confirm you can stop Practice calmly; Live does not remove this control later.*" |
 | C16 | Emergency stop does not close open positions | Seduma, Facts | SP 14 | "Emergency stop does not close open positions." |
-| C17 | Chain-of-custody audit trail, written before any external call | Seduma, Facts | SP 3 | "**Safety primitives are real:** kill-switch, chain-of-custody audit *before* external calls, operator-configured risk limits." |
+| C17 | Audit trail, written before any external call | Seduma, Facts | SP 3 | "**Safety primitives are real:** kill-switch, chain-of-custody audit *before* external calls, operator-configured risk limits." |
 | C18 | Risk limits are configured by you, the operator | Facts | SP 3 | "operator-configured risk limits" |
 | C19 | Your first Practice run needs no Live or real broker keys | Seduma, Facts | SP 10 / SP 15 | "First Practice success needs no Live / real venue keys." |
 | C20 | First run uses the built-in Practice connection (Practice stub); no broker account or keys | Seduma | SP 15 | "First-run stays the built-in **Practice stub** (no keys)." |
@@ -292,12 +284,12 @@ Every factual claim on the site is listed below with its source. "SP n" means nu
 | C36 | Honest Practice (chip) | Home, Seduma | SP 10 | "Chip: **Honest Practice**." |
 | C37 | First-run steps: Welcome to Paper Practice · Safety check · Try a practice run · You’re set — setup stays Paper | Seduma | SP 13 | "wizard titles stay Welcome to Paper Practice · Safety check · Try a practice run · You’re set — setup stays Paper" |
 | C38 | The Safety check records that you read the Paper disclosures; it does not turn on Live | Seduma | SP "What this pack is not" | "The in-repo two-ack … is **Paper-eval only**. It records disclosure fingerprints. It does **not** elect Live." |
-| C39 | Trust chrome: Practice mode · Live election · Live: Off · Emergency stop available · Audit honesty · Last audit · Simulated fills ≠ live | Home, Seduma | SP 12 + UCD §5 | "Cards: **Practice mode**; **Live election** (**Live: Off** / …); **Emergency stop** (**Emergency stop available**); **Audit honesty** (**Last audit** …). … Optional fill chip: *Simulated fills ≠ live*." |
+| C39 | Trust chrome: Practice mode · Live election · Live: Off · Emergency stop available · Simulated fills ≠ live | Home, Seduma | SP 12 + UCD §5 | "Cards: **Practice mode**; **Live election** (**Live: Off** / …); **Emergency stop** (**Emergency stop available**). … Optional fill chip: *Simulated fills ≠ live*." |
 | C40 | Sample HOLD | Seduma | SP 13 | "Run a Paper cycle with the sample HOLD" |
 | C41 | Live = real orders with real money | Home, Seduma, Facts | FRCD Live modal (locked) | "Real money/orders may be at risk." |
-| C42 | Live modal content (title, body, checklist, type LIVE, Stay in Practice / Turn on Live, disabled until valid, cancelling keeps you in Practice) | Seduma | FRCD "Live graduation modal" + SP 13 | "Title: Turn on Live trading" … "Primary: Turn on Live · Secondary: Stay in Practice" … "Primary disabled until valid; cancel returns to Practice." *(body/checklist trimmed; see deviations)* |
-| C43 | Wizard lines: No real money · You bring or review the rules · This does not turn on Live trading. · Sample strategy: HOLD only · One Paper cycle · Paper Practice is ready · Kill switch and audit stay on · Live trading: Off · Practice default · Practice is the default. Completing setup does not turn on Live — you choose that later. | Seduma | FRCD Steps 1–4 + global footer (locked) | verbatim FRCD strings |
-| C44 | Soft locks: Practice only · Auto-trading off · Real sending off; Practice cycle complete · still Paper · Live: Off; Stopped — still in Practice | Seduma | FRCD microcopy (locked) | verbatim FRCD strings |
+| C42 | Live modal content (title, body, checklist, type LIVE, Turn on Live / Stay in Practice, cancelling keeps you in Practice) | Seduma | FRCD "Live graduation modal" + SP 13 | "Title: Turn on Live trading" … "Primary: Turn on Live · Secondary: Stay in Practice" … server-enforced checks and LIVE phrase per Lock addendum 2026-09-28 |
+| C43 | Wizard lines: No real money · You bring or review the rules · This does not turn on Live trading. · Sample strategy: HOLD only · One Paper cycle · Paper Practice is ready · Kill switch + audit on · Live trading: Off · Practice default · Practice is the default. Completing setup does not turn on Live — you choose that later. | Seduma | FRCD Steps 1–4 + Lock addendum 2026-09-28 | verbatim shipped strings |
+| C44 | Practice cycle complete · still Paper · Live: Off; Stopped — still in Practice | Seduma | FRCD microcopy (locked) | verbatim shipped strings |
 | C45 | Practice mode · Live: Off (until election). Soft locks on. / Live: Off · Practice default | Seduma | UCD §5 (locked) | verbatim |
 | C46 | Emergency stop stays available in Practice and in Live | Facts glossary | SP 12 | "Emergency stop is always available — Live does not remove it." |
 | C47 | Quantum Karate is an early-stage company; philosophy of precision, discipline, advanced technology | Home | **BRIEF** | "Quantum Karate is an early-stage company. Its philosophy is precision, disciplined execution, and advanced technology." |
@@ -307,7 +299,7 @@ Every factual claim on the site is listed below with its source. "SP n" means nu
 The following are **definitions or illustration, not product claims**: Practice, Paper, Fill, P&L, and Strategy as general terms; "A connection links Seduma to a trading platform you have access to"; the console's neutral timestamps (14:32:08, and so on); the placeholder symbol EXAMPLE; and the illustrative order states (No order / Placed / Filled · simulated).
 
 ### Deviations from locked sources (need Chris's or Muse's OK)
-1. **Wizard step 4 title.** SP 13 says "You’re set — setup stays Paper", but UCD and FRCD say "You’re set — Live stays off". I used the SP version because SP is the claims authority.
+1. **Wizard step 4 title.** SP 13 says "You're set — setup stays Paper", but UCD and FRCD say "You're set — Live stays off". I used the SP version because SP is the claims authority.
 2. **Live modal body and checklist.** In FRCD, the body contains "…Seduma does not pick trades or run set-and-forget automation…" and checklist item 3 is "Seduma does not pick trades / set-and-forget for me". The site grep bans `set-and-forget`, so I trimmed these to "Seduma does not pick trades." and "Seduma does not pick trades for me". I also rephrased checklist item 1 as "Choosing Live at my own will".
 3. **Live confirm token.** FRCD says both "type **LIVE**" and "type **REAL** to enable confirm". SP 13 says type LIVE, so I used LIVE only.
 4. **"Automations"** is left out of the console side nav (FRCD nav is Home · Connections · Automations · Activity · Safety) so the visual can't be read as automation hype.
@@ -326,10 +318,8 @@ The following are **definitions or illustration, not product claims**: Practice,
 | "Seduma does not custody your funds" / "does not give investment advice" | README only ("What Seduma is not"). Useful for acquirers, so I suggest adding them to SAFE_PUBLIC. |
 | "Tamper-evident, hash-chained audit log" | README only. The site says only "chain-of-custody". |
 | Win/Mac installers, "no Docker" Practice | README only. |
-| Named venues (Alpaca, IBKR, Schwab, Tradier, Coinbase, Kalshi) | Supportable (SP 5 and 15) but left out on purpose: the brief asks for generic connections and no logo wall. |
-| Plan tiers, billing, KYC, optional Postgres | Supportable (SP 6–8) but too technical and off-message for a public site. |
-| Any company fact beyond the brief (founding year, team, location, phone) | No source. Not invented. |
-| A "Research lab" link to the Neural Agency Engine | No public target URL. The Neural Agency Engine repository should not be linked publicly while IP protection is pending. |
+| Named venues (Alpaca, IBKR, Schwab, Tradier, Coinbase, Kalshi) as built-in connections | SP 5 lists them as examples only, not an exclusive list; the site never names them as built-in. |
+| 2FA support, read-only modes, billing portals, pop-ups | Out of narrative scope. |
 
 ---
 
@@ -363,7 +353,7 @@ The following are **definitions or illustration, not product claims**: Practice,
 - M1. Seduma hero sub is now "In Practice, no real money moves until you choose Live."
 - M2. Every "Emergency stop is always available — Live does not remove it." on the site (Step 04, the Live election prose, honesty line 03, and facts item 5) now reads "Emergency stop stays available in Practice and in Live. It does not close open positions." The honesty section heading is now "Three plain lines.", because the site wording no longer matches the product word for word. Both console aria-labels add "(does not close open positions)". The limit is not added to the drawn stop cards, because the illustrations use shipped strings only. It goes in the figcaption instead: "Illustrative console view. Emergency stop does not close open positions." (Home mini console and Seduma hero console.)
 - M2c/d (checked against shipped code: docs/KILL_SWITCH.md and execution/kill_switch.py). Step 03 now reads "Emergency stop makes Seduma refuse to send new orders until you release it. It does not close open positions or cancel orders already at your broker.", followed by "Seduma keeps an audit trail: a record written before it contacts any outside service." (V-Nat 3 R2, final.) The glossary now reads "A control that makes Seduma refuse to send new orders until you release it. It stays available in Practice and in Live. It does not close open positions or cancel orders already at your broker." The facts "An auto-close." item now reads "Emergency stop does not close open positions or cancel orders already at your broker."
-- M3. Step 03 and facts item 6 now read "Seduma keeps an audit trail: a record written before it contacts any outside service." The facts heading is "Recorded before outside requests." The glossary Audit trail entry is "A record Seduma writes before it contacts any outside service. It is Seduma’s own log, not an independent audit." The illustrated "Audit honesty / Last audit" card is **removed** from both consoles rather than renamed, because renaming would break the shipped-string rule. The trust grid is now 3 cards.
+- M3. Step 03 and facts item 6 now read "Seduma keeps an audit trail: a record written before it contacts any outside service." The facts heading is "Recorded before outside requests." The glossary Audit trail entry is "A record Seduma writes before it contacts any outside service. It is Seduma's own log, not an independent audit." The illustrated "Audit honesty / Last audit" card is **removed** from both consoles rather than renamed, because renaming would break the shipped-string rule. The trust grid is now 3 cards.
 - M4. The facts heading is "Uses risk limits you set." The line is "You configure the risk limits."
 - M5. The soft-locks row keeps only "Practice only" (a shipped string). "Auto-trading off" and "Real sending off" are removed.
 - M6. The Research section now reads "The Neural Agency Engine is the research engine behind Seduma." and "It does not pick or recommend trades, and it is not the Live switch. Seduma is the front door." Facts item 8 is updated to match.
@@ -371,9 +361,8 @@ The following are **definitions or illustration, not product claims**: Practice,
 - M8. The facts.json line is removed. contact.html now uses [address removed] for both the mailto link and the visible text (relayed by V-Nat 3). The placeholder comment and the "remove before launch" aside are gone.
 - © line removed from all footers until the LLC exists (Chris decided).
 - S1 "Sending real orders is off by default." · S2 "Seduma is not a broker." / "Seduma is not an investment adviser. It does not pick, recommend, or generate trades." · S3 "no real money" in place of "not live money" (hero Paper definition, Real paper card, glossary) · S5 "Invalid settings are designed to stop instead of sending."
-- Also fixed: the glossary Confirm-gated entry is now "A step that doesn’t take effect until you confirm it yourself. For Live, Seduma won’t turn it on until every item is checked and LIVE is typed." The old "stays locked" wording had the same flaw as the disabled-button line.
 
-**Chris decided (via V-Nat 3):** no footer advice or risk line, and the named promise stays "We don’t fake Practice. We don’t trade until you say so." on the site and in the console banner. The D1 public variant is not used.
+**Chris decided (via V-Nat 3):** no footer advice or risk line, and the named promise stays "We don't fake Practice. We don't trade until you say so." on the site and in the console banner. The D1 public variant is not used.
 
 **Kept as shipped strings in the illustrations:**
 - S4. The wizard's "Kill switch + audit on" item is removed rather than renamed.
@@ -388,7 +377,7 @@ The following are **definitions or illustration, not product claims**: Practice,
 **Placement policy (brand chrome only — do not spam every prose mention):**
 - **Quantum Karate™:** header/footer wordmarks; home hero eyebrow; contact H1; document `<title>` / matching `og:title` where the company name is the brand; `og:site_name` on all four pages; first company-name occurrence in meta / og descriptions; Seduma page hero eyebrow (`Seduma™ · by Quantum Karate™`); home philosophy lead first word.
 - **Seduma™:** home product section eyebrow + H2; home meta / og description first product mention; Seduma / Facts titles and meta (first Seduma); Facts eyebrow, H1, and column heads (`Seduma™ is` / `Seduma™ isn’t`); primary nav + footer nav product link text on all four pages.
-- **Do not mark:** named promise (`We don’t fake Practice. We don’t trade until you say so.` — hero H1 + console banner); footer disclaimer (any word); illustrated console chrome / aria-labels (shipped-app UI mirrors); CTA button / link text (`Meet Seduma`, `Explore Seduma`, `What Seduma is and isn’t`, etc.); running body prose / glossary / steps / honesty / Live dialog after the brand chrome above; CSS/JS.
+- **Do not mark:** named promise (hero H1 + console banner); footer disclaimer (any word); illustrated console chrome / aria-labels (shipped-app UI mirrors); CTA button / link text; running body prose / glossary / steps / honesty / Live dialog after the brand chrome above; CSS/JS.
 
 **Footer disclaimer synced to live HTML (Chris via V-Nat 1):** now ends with `Not investment advice.` Deck Global row updated to match. Exact disclaimer (HTML uses `P&amp;L`):
 `Seduma is not a broker or an investment adviser. It does not pick, recommend, or generate trades. Practice fills are simulated — they are not live fills. Paper/Practice P&L is not a promise of live results. Not investment advice.`
@@ -398,16 +387,15 @@ Do **not** insert ™ inside the disclaimer.
 
 **Claims:** otherwise unchanged (SAFE_PUBLIC / approved wording). V-Nat 3 re-reviews ™ only if anything else drifted.
 
-
 ---
 
 ## Addendum 2026-09-30b — Practice waitlist CTA (DIY marketplace)
 
-**Channel:** `mailto:[address removed]?subject=Seduma%20waitlist` (opens the visitor’s email app). No form unless Chris picks one later.
+**Channel:** `mailto:[address removed]?subject=Seduma%20waitlist` (opens the visitor's email app). No form unless Chris picks one later.
 
 **Placement**
-- `index.html`: new section **04 Waitlist**, after the “How we talk about it” facts band, before `</main>`.
-- `seduma.html`: new band section after “Read the plain facts.”, before `</main>` (no section index number; matches the facts CTA band pattern).
+- `index.html`: new section **04 Waitlist**, after the "How we talk about it" facts band, before `</main>`.
+- `seduma.html`: new band section after "Read the plain facts.", before `</main>` (no section index number; matches the facts CTA band pattern).
 
 **Locked strings (both pages)**
 - H2: Join the Practice waitlist.
@@ -417,7 +405,6 @@ Do **not** insert ™ inside the disclaimer.
 - Home-only index label: `04` / `Waitlist`
 
 **Ceiling:** no new product claims; named promise untouched; footer disclaimer untouched (still ends with Not investment advice.). Does not promise launch dates, results, or Live access.
-
 
 ---
 
@@ -437,13 +424,13 @@ Do **not** insert ™ inside the disclaimer.
 
 **Section name:** Get Seduma.
 
-**Home** (`index.html`): section index `04` / `Get Seduma`, after “How we talk about it”, before the interim waitlist.
+**Home** (`index.html`): section index `04` / `Get Seduma`, after "How we talk about it", before the interim waitlist.
 
-**Seduma** (`seduma.html`): unnumbered band after “Read the plain facts.”, before the interim waitlist. Research keeps index `04`. This band does not add a second `04`.
+**Seduma** (`seduma.html`): unnumbered band after "Read the plain facts.", before the interim waitlist. Research keeps index `04`. This band does not add a second `04`.
 
 **Locked strings (both pages) — Get Seduma**
 - H2: Get the Practice eval.
-- Lead: The Practice eval is $49. Practice fills are simulated — they are not live fills. Practice (also called Paper) is the default. Live stays off until the buyer elects it.
+- Lead: The Practice eval is $49. Practice fills are simulated — they are not live fills. **Practice** (also called **Paper**) is the default. **Live** stays off until the buyer elects it.
 - In the HTML, Practice, Paper, and Live in that lead are `<strong>`.
 - Button: Get it on Payhip → (the arrow is the same decorative span as the other buttons)
 - `href`: `https://payhip.com/b/K7UaW`
@@ -478,7 +465,7 @@ Do **not** insert ™ inside the disclaimer.
 
 **Locked strings (both pages)**
 - H2: Get Seduma Trade.
-- Lead: Seduma Trade is the $49 Practice eval. Practice fills are simulated — they are not live fills. Practice (also called Paper) is the default. Live stays off until the buyer elects it. The Neural Agency Engine researches. Seduma is the front door.
+- Lead: Seduma Trade is the $49 Practice eval. Practice fills are simulated — they are not live fills. **Practice** (also called **Paper**) is the default. **Live** stays off until the buyer elects it. The Neural Agency Engine researches. Seduma is the front door.
 - In the HTML, Practice, Paper, and Live in that lead are `<strong>`.
 - Button: Get Seduma Trade on Payhip →
 - `href`: `https://payhip.com/b/K7UaW`
@@ -486,9 +473,9 @@ Do **not** insert ™ inside the disclaimer.
 
 **What the lead is allowed to say:** the listing name, that this is the $49 Practice eval, the existing simulated-fills line, Practice (also called Paper) as the default, Live off until the buyer elects it, and the existing front-door line with Neural Agency Engine spelled out in full. No performance numbers. No profit claim. No promise that Seduma runs by itself.
 
-**Left off the site, even though the Payhip page mentions them:** win rate, worst drop, balance curve, and any other result metric. Also left off: localhost, and “not cloud trading”.
+**Left off the site, even though the Payhip page mentions them:** win rate, worst drop, balance curve, and any other result metric. Also left off: localhost, and "not cloud trading".
 
-**Copy email:** the button stays `hidden` until `site.js` removes that attribute. `site.css` keeps `[hidden] { display: none !important; }` so `.btn`’s `display` cannot show the control with scripting off. The temporary copy field sets a 16px font before focus, so iOS Safari does not zoom in on Copy email.
+**Copy email:** the button stays `hidden` until `site.js` removes that attribute. `site.css` keeps `[hidden] { display: none !important; }` so `.btn`'s `display` cannot show the control with scripting off. The temporary copy field sets a 16px font before focus, so iOS Safari does not zoom in on Copy email.
 
 **Ceiling:** named promise untouched. Footer disclaimer untouched. No personal name and no personal handle in the new page text. The waitlist block is unchanged.
 
@@ -500,7 +487,7 @@ Do **not** insert ™ inside the disclaimer.
 
 **Home and Seduma:** the interim Practice waitlist section is removed. The Get Seduma Trade band stays, with the Payhip button only (`https://payhip.com/b/K7UaW`).
 
-**Contact:** the mailto address, the “opens your email app” line, and the topic chips are removed. The page keeps the same Payhip button and the Practice-eval lead.
+**Contact:** the mailto address, the "opens your email app" line, and the topic chips are removed. The page keeps the same Payhip button and the Practice-eval lead.
 
 **Titles and descriptions**
 - `index.html` title: Quantum Karate: Seduma Trade, Practice-First Trading Console
@@ -508,7 +495,7 @@ Do **not** insert ™ inside the disclaimer.
 - `seduma.html` title: Seduma Trade: Practice Trading Simulator on Your Computer | Quantum Karate
 - `seduma.html` description: Practice your own trading rules with simulated fills on a self-hosted localhost console. No real money moves, and Live stays off until you choose it. Not a broker.
 
-**Every page:** a canonical link to `https://quantum-karate.github.io/website/` plus the page file (`index.html`, `seduma.html`, `facts.html`, `contact.html`). Open Graph and Twitter `summary_large_image` tags use the shared title “Seduma Trade: Practice Trading, Simulated Fills Only”, the shared description that all results are simulated and no real money moves, and `assets/og-seduma.png` (1200×630).
+**Every page:** a canonical link to `https://quantum-karate.github.io/website/` plus the page file (`index.html`, `seduma.html`, `facts.html`, `contact.html`). Open Graph and Twitter `summary_large_image` tags use the shared title "Seduma Trade: Practice Trading, Simulated Fills Only", the shared description that all results are simulated and no real money moves, and `assets/og-seduma.png` (1200×630).
 
 **`seduma.html` only:** SoftwareApplication JSON-LD. Offer price 49 USD. Offer url `https://payhip.com/b/K7UaW`. No ratings.
 
@@ -555,11 +542,11 @@ From the 2026-10-21 competitor brief, the short edge moves only. No competitor i
 - Price: A subscription you have to cancel · $49 once, no subscription, nothing to cancel.
 - Software: A closed copy you do not run · Buyers get the source, including the Neural Agency Engine, and run it on their own computer.
 - Results: A passive-income pitch · Simulated results only. No passive-income promise, and no profit promise.
-- Control: Trading before you say so · Practice by default. We don’t trade until you say so.
+- Control: Trading before you say so · Practice by default. We don't trade until you say so.
 
 **02 Source** (`#source`)
 - H2: You get the source.
-- P1: Buyers get the source, including the Neural Agency Engine, and run it on their own computer.
+- P1: Buyers get the, including the Neural Agency Engine, and run it on their own computer.
 - P2: Every line of Seduma and the Neural Agency Engine is yours to read. The Neural Agency Engine does not pick or recommend trades, and it is not the Live switch. Seduma is the front door.
 
 **Renumber:** How it works is 03. Honest Practice is 04. Connections is 05. Research is 06. The Get Seduma band stays unnumbered.
@@ -664,3 +651,40 @@ From the 2026-10-21 competitor brief, the short edge moves only. No competitor i
 - Each buy button also uses `class="btn btn--primary payhip-buy-button"`, `data-product="K7UaW"`, and `data-theme="none"` so Payhip's overlay opens without replacing the site's button style.
 - Pages with a buy button load Payhip's documented embed script: `<script type="text/javascript" src="https://payhip.com/payhip.js"></script>`.
 - Facts has no buy button and does not load the script.
+
+---
+
+## Addendum 2026-11-18 — Prediction markets terminology, Practice-lane naming, product narrative sync
+
+**Approved term:** "Prediction markets" is the approved site-wide English term for the practice lane (formerly labeled "Event markets" / "Events"). Approved by Chris on 2026-11-18. Per-locale translations of this term are approved for the 12 locale pages, using the equivalents listed below. Use "Prediction markets" or its approved locale equivalent; do not revert to "event markets" or coin third terms ("event contracts", "forecasting markets", and so on) without a new dated addendum.
+
+**Where the term appears now (English pages, this commit series):**
+- `index.html` hero bullet: "Practice in traditional markets, crypto, and prediction markets."
+- `features.html` Lane 03: heading "Prediction markets"; body "Practice in prediction markets."; slot meta "Prediction lane · 16:10"; slot aria-label "…of the Prediction lane…"; figcaption "Prediction markets lane in Practice. Fills shown are simulated."
+- `how-to-use.html` first-run walkthrough, step 1 picker: "…pick what you would like to practice first: 'Just show me how orders work', Stocks, Crypto, Prediction markets, or 'Not sure yet'…"
+
+**Approved locale equivalents** (for `es`, `pt-BR`, `fr`, `de`, `it`, `zh-Hans`, `ja`, `ko`, `hi`, `ar`, `ru`, `id` pages where the lane is named):
+- es: Mercados de predicción
+- pt-BR: Mercados de previsão
+- fr: Marchés de prévision
+- de: Märkte für Vorhersagen
+- it: Mercati di previsione
+- zh-Hans: 预测市场
+- ja: 予測市場
+- ko: 예측 시장
+- hi: भविष्यवाणी बाज़ार
+- ar: أسواق التنبؤ
+- ru: рынки прогнозов
+- id: pasar prediksi
+
+**Seduma hero 02 sub:** "It is a Paper-first, strategy-free runtime — software that runs trading rules you bring. You bring the rules. The 7-day Dojo and the plain-language glossary teach the words." (approved 2026-11-18, with the "no real money in Practice" guarantee still carried by the Practice line elsewhere on the page.)
+
+**Dojo lesson 4 (features.html 7-day list):** "Read a simulated fill" (was "Read a simulated pass").
+
+**Home 03 body (consumer word order, low keyword density):** "No jargon walls. No dark patterns. No profit promises." (approved 2026-11-18.)
+
+**Benefits-first Founder Edition card (index.html 03):** The Founder Edition card leads with the survey response benefit: "plus one onboarding feedback survey and one written response within 14 calendar days of receiving your completed survey. Updates released for Seduma Trade version 0.x (the version supplied at purchase) are included at no additional update charge while Quantum Karate maintains version 0.x. This does not promise a release schedule, a minimum maintenance period, or future major versions. The founder program is capped at 50 purchases."
+
+**Left off the site:** "event contracts" (the regulated-industry neutral term; kept out for buyer familiarity and search terms), any third naming variant, and any result metric.
+
+**Ceiling:** named promise untouched. Footer disclaimer untouched. Practice-first. Results stay labeled simulated. No profit claim. Neural Agency Engine stays spelled out. The Payhip listing stays the only purchase link. No refunds line unchanged.
