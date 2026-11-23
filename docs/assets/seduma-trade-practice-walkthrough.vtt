@@ -1,69 +1,69 @@
 WEBVTT
 
 1
-00:00:00.648 --> 00:00:02.629
+00:00:00.651 --> 00:00:02.631
 Seduma Trade arrives as a zip. Check its SHA256 first.
 
 2
-00:00:02.779 --> 00:00:08.272
+00:00:02.781 --> 00:00:08.279
 Unzip, make a virtual environment, install. No keys needed.
 
 3
-00:00:08.422 --> 00:00:14.169
+00:00:08.429 --> 00:00:12.770
 Start Practice mode. It listens on localhost only. Live trading: Off.
 
 4
-00:00:14.319 --> 00:00:18.388
+00:00:14.355 --> 00:00:18.429
 Welcome to Paper Practice. Nothing here uses real money.
 
 5
-00:00:18.538 --> 00:00:21.788
+00:00:18.579 --> 00:00:21.709
 Pick what to practice. The example symbol is only for learning.
 
 6
-00:00:21.938 --> 00:00:27.939
+00:00:21.859 --> 00:00:27.865
 Acknowledge the Paper disclosures. This does not turn on Live.
 
 7
-00:00:28.089 --> 00:00:32.422
+00:00:28.015 --> 00:00:32.345
 Optional: tick the order-practice sample. It requests one simulated order. Nothing is sent.
 
 8
-00:00:32.572 --> 00:00:34.904
+00:00:32.495 --> 00:00:34.826
 Run one Practice cycle.
 
 9
-00:00:35.054 --> 00:00:40.588
+00:00:34.976 --> 00:00:39.860
 One simulated fill recorded. It is a Practice fill, not a live fill.
 
 10
-00:00:40.738 --> 00:00:44.195
+00:00:40.663 --> 00:00:44.120
 Home. Paper Practice and Live: Off stay on screen. The Neural Agency Engine researches; you bring the rules.
 
 11
-00:00:44.345 --> 00:00:48.515
+00:00:44.270 --> 00:00:48.436
 A 7-day Practice Dojo teaches the basics, on your own computer.
 
 12
-00:00:48.665 --> 00:00:53.235
+00:00:48.586 --> 00:00:53.159
 Activity lists the simulated fill. Simulated, not live.
 
 13
-00:00:53.385 --> 00:01:00.143
+00:00:53.309 --> 00:00:59.010
 The Practice results log stays on this computer. Figures are simulated, not a forecast.
 
 14
-00:01:00.293 --> 00:01:04.666
+00:01:00.241 --> 00:01:04.608
 Safety: Live is off by default. Practice only, auto-trading off, real sending off.
 
 15
-00:01:04.816 --> 00:01:09.774
+00:01:04.758 --> 00:01:09.749
 Turning Live on takes three acknowledgments and a typed word. We are not doing that.
 
 16
-00:01:09.924 --> 00:01:13.854
+00:01:09.899 --> 00:01:13.825
 Stay in Practice. Emergency stop is always available and does not close positions.
 
 17
-00:01:14.004 --> 00:01:17.010
+00:01:13.975 --> 00:01:16.980
 Practice your trades first, then go Live whenever you're ready.
